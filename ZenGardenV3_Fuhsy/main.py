@@ -169,8 +169,8 @@ class QtCapture(QtGui.QWidget):
 
 
         #TEST
-        self.im = cv2.imread('test1.png')
-        self.im_standard = cv2.imread('test1.png')
+        self.im = cv2.imread('test2.png')
+        self.im_standard = cv2.imread('test2.png')
 
         self.current_point = [100,300]
         self.previous_angle = 0
@@ -351,7 +351,9 @@ class QtCapture(QtGui.QWidget):
             self.path_timer = QtCore.QTimer()
             self.path_timer.timeout.connect(self.follow_garden)
             self.path_timer.start(10000./self.fps)
-            self.feat,self.im = ds.getFeatures(self.im_standard)
+            self.feat,self.frame = ds.getFeatures(self.frame)
+            # cv2.imshow("features",self.frame)
+            # cv2.waitKey(0)
 
         except Exception, e:
             self.path_timer = QtCore.QTimer()
@@ -362,7 +364,8 @@ class QtCapture(QtGui.QWidget):
             self.listw.addItem(itemlist)
 
     def follow_garden(self):
-        img_garden_copy = self.im.copy()
+        # img_garden_copy = self.im.copy()
+        img_garden_copy = self.frame
         self.current_point,self.previous_angle,garden_update_img = self.path_finder.finder(self.feat,self.current_point,img_garden_copy,self.previous_angle)
         cv2.imshow('result',garden_update_img)
         #Press ESC for exit
@@ -409,9 +412,9 @@ class QtCapture(QtGui.QWidget):
         height, width, shape = frame.shape
         # print width, height
 
-        features = detect_sand.getFeatures(self.frame)
-
-
+        features,features_image = detect_sand.getFeatures(self.frame)
+        cv2.imshow("webcam_loaded_image", features_image)
+        cv2.waitKey(0)
         rawim = cv2.cvtColor(rawimage, cv2.COLOR_RGB2GRAY)
         ret,thresh1 = cv2.threshold(rawim,40,255,cv2.THRESH_BINARY)
         kernel = np.ones((5,5),np.uint8)
@@ -465,6 +468,7 @@ class QtCapture(QtGui.QWidget):
     def draw_circle(self,event,x,y,flags,param):
         global mouseX,mouseY
         cv2.imshow('image',self.img)
+        cv2.waitKey(0)
         if event == cv2.EVENT_LBUTTONUP:
             cv2.circle(self.img,(x,y),2,(255,255,255),-1)
             mouseX,mouseY = x,y

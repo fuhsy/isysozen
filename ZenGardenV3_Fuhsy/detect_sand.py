@@ -46,15 +46,14 @@ def getFeatures(img):
     im = cv2.adaptiveThreshold(v, 255, cv2.ADAPTIVE_THRESH_GAUSSIAN_C, cv2.THRESH_BINARY_INV, 251, 2)
     kernel = np.ones((3,3),np.uint8)
 
-    im = cv2.erode(im,kernel,iterations = 4)
-    im = cv2.dilate(im,kernel,iterations = 4)
-    im = cv2.erode(im,kernel,iterations = 5)
+    im = cv2.erode(im,kernel,iterations = 2)
+    im = cv2.dilate(im,kernel,iterations = 2)
+    # im = cv2.erode(im,kernel,iterations = 2)
 
     #Find contours at a constant value of 0.8
     # contours1 = measure.find_contours(im, 0.8)
     image, contours, hierarchy = cv2.findContours(im,cv2.RETR_EXTERNAL,cv2.CHAIN_APPROX_SIMPLE)
     im = cv2.cvtColor(im, cv2.COLOR_GRAY2RGB)
-
     count = 0
 
 
@@ -116,6 +115,8 @@ def getFeatures(img):
     # color = [255, 255, 255]
     # cv2.fillPoly(stencil, contours, color)
     # result = cv2.bitwise_and(img2, stencil)
+    # cv2.imshow("inside_detect_sand",im)
+    # cv2.waitKey(0)
     return features,im
 
 def distance(p1,p2):
