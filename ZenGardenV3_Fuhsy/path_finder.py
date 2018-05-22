@@ -6,11 +6,13 @@ from math import atan2,degrees
 
 class PathFinder():
     def __init__(self,lineFeatures=None,start_point=None):
+
         self.line_data = lineFeatures
         self.start_point = start_point
 
 
     def finder(self,lineFeatures,current_point,img,previous_angle):
+
         radius = 100
         angles_in_radius = 0
         angles_in_radius_n = 0
@@ -26,6 +28,7 @@ class PathFinder():
 
                 im = cv2.line(im, (feature.line_p1.x,feature.line_p1.y), (feature.line_p2.x,feature.line_p2.y), (255,0,0),4)
                 im = cv2.line(im, (feature.line_p1.x,feature.line_p1.y), (current_point[0],current_point[1]), (255,0,0),4)
+
                 cv2.putText(im,str(self.GetAngleOfLineBetweenTwoPoints(feature.line_p1,current_point)),(feature.line_p1.x+5,feature.line_p1.y+5), cv2.FONT_HERSHEY_DUPLEX, 0.8,(0,0,255),2,cv2.LINE_AA)
                 print self.angle_in_range(previous_angle,feature.line_direction)
                 if self.angle_in_range(previous_angle,feature.line_direction) > 1:

@@ -1,5 +1,7 @@
+
 import cv2,sys, time
 from PyQt4 import QtGui
+
 from PyQt4.QtGui import QImage,QPixmap
 import pyqtgraph as pg
 import PyQt4.QtCore as QtCore
