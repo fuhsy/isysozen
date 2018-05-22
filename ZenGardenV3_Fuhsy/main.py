@@ -218,6 +218,7 @@ class QtCapture(QtGui.QWidget):
             max_brightness = 4
 
             ret, self.frame = self.cap.read()
+            print "self.frame type"
             #img = cv2.imread(frame, cv2.IMREAD_COLOR)
             self.current_frame = self.frame
             self.snap_delay_time = time.time()
@@ -314,10 +315,9 @@ class QtCapture(QtGui.QWidget):
     def new_calibration(self):
         #self.edgeDetectionApproach()
         itemlist= QtGui.QListWidgetItem('Camera Stopped')
-        self.img = self.frame
 
         cv2.namedWindow('image')
-        cv2.imshow('image',self.img)
+        cv2.imshow('image',self.frame)
         #cv2.setMouseCallback('canny',img)
         cv2.setMouseCallback('image',self.draw_circle)
         self.listw.addItem(itemlist)
@@ -353,7 +353,7 @@ class QtCapture(QtGui.QWidget):
             self.path_timer = QtCore.QTimer()
             self.path_timer.timeout.connect(self.follow_garden)
             self.path_timer.start(10000./self.fps)
-            self.feat,self.frame = ds.getFeatures(self.frame)
+            self.feat,self.im = ds.getFeatures(self.frame)
             # cv2.imshow("features",self.frame)
             # cv2.waitKey(0)
 
@@ -366,8 +366,9 @@ class QtCapture(QtGui.QWidget):
             self.listw.addItem(itemlist)
 
     def follow_garden(self):
-        # img_garden_copy = self.im.copy()
-        img_garden_copy = self.frame
+        img_garden_copy = self.frame.copy()
+        # print "self.frame %s self.image %s"  %(self.frame.format,self.im.format)
+        # img_garden_copy = self.frame
         self.current_point,self.previous_angle,garden_update_img = self.path_finder.finder(self.feat,self.current_point,img_garden_copy,self.previous_angle)
         cv2.imshow('result',garden_update_img)
         #Press ESC for exit
