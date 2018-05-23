@@ -19,6 +19,7 @@ def panner(method, x, y):
 		c4 = (1 -x) * y     # (0, 1)
 		return [c1,c2,c3,c4]   #
 	elif method == "quad_circle":
+		# But this method doesn't deal with the amplitude right. 
 		rho, phi = cart2pol(x - 0.5,y - 0.5)
 		phi_norm = phi/pi /2
 		c = np.zeros(4)
