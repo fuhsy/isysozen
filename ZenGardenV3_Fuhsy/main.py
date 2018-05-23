@@ -366,7 +366,8 @@ class QtCapture(QtGui.QWidget):
             self.listw.addItem(itemlist)
 
     def follow_garden(self):
-        img_garden_copy = self.frame.copy()
+        img_garden_copy = self.im.copy()
+        # img_garden_copy = self.frame.copy()
         # print "self.frame %s self.image %s"  %(self.frame.format,self.im.format)
         # img_garden_copy = self.frame
         self.current_point,self.previous_angle,garden_update_img = self.path_finder.finder(self.feat,self.current_point,img_garden_copy,self.previous_angle)
