@@ -7,6 +7,7 @@ class AudioEngine():
         self.client = OSC.OSCClient()
         self.client.connect(self.addr)
 
+        # panning is required via QuadPanner
     def playOSC(self, path, panning, amp):
         bundle = OSC.OSCBundle()
         bundle.setAddress("playsound")
