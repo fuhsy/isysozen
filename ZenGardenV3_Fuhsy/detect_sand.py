@@ -8,7 +8,7 @@ import math
 from imutils import perspective
 from imutils import build_montages
 from math import atan2,degrees
-
+import detect_stones as dstones
 
 class LineFeatures():
 
@@ -48,13 +48,23 @@ def getFeatures(img):
 
     im = cv2.erode(im,kernel,iterations = 2)
     im = cv2.dilate(im,kernel,iterations = 2)
-    # im = cv2.erode(im,kernel,iterations = 2)
+    im = cv2.erode(im,kernel,iterations = 2)
+    blob_im = im.copy()
+    keypoints = dstones.blob_detection(im)
+    coordinates = dstones.getCoordinates(keypoints)
 
+
+    # print
     #Find contours at a constant value of 0.8
     # contours1 = measure.find_contours(im, 0.8)
     image, contours, hierarchy = cv2.findContours(im,cv2.RETR_EXTERNAL,cv2.CHAIN_APPROX_SIMPLE)
     im = cv2.cvtColor(im, cv2.COLOR_GRAY2RGB)
     count = 0
+
+    for i in range(len(coordinates)):
+        cv2.circle(im,(coordinates[i,0],coordinates[i,1]),200,(255,0,255),1)
+        print coordinates[i,0]
+        print coordinates[i,1]
 
 
     for cnt in contours:

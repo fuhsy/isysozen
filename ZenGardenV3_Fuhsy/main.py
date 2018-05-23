@@ -24,6 +24,7 @@ import soundfile as sf
 import audio_theme
 import path_finder as pf
 import detect_sand as ds
+import detect_stones as dstones
 
 
 import usb
@@ -280,6 +281,7 @@ class QtCapture(QtGui.QWidget):
             img = QtGui.QImage(self.frame, self.frame.shape[1], self.frame.shape[0], self.frame.strides[0], qformat)
             img = img.rgbSwapped()
             self.video_frame.setPixmap(QtGui.QPixmap.fromImage(img))
+
             self.video_frame.setScaledContents(True)
         except Exception, e:
             itemlist = QtGui.QListWidgetItem('Camera Activation failed')
@@ -360,19 +362,25 @@ class QtCapture(QtGui.QWidget):
         except Exception, e:
             self.path_timer = QtCore.QTimer()
             self.feat,self.im = ds.getFeatures(self.im)
+            cv2.imshow("coor",self.im)
             self.path_timer.timeout.connect(self.follow_garden)
             self.path_timer.start(10000./self.fps)
             itemlist= QtGui.QListWidgetItem('Calibration loading failed')
             self.listw.addItem(itemlist)
 
     def follow_garden(self):
-        img_garden_copy = self.frame.copy()
+        try:
+            img_garden_copy = self.frame.copy()
         # print "self.frame %s self.image %s"  %(self.frame.format,self.im.format)
         # img_garden_copy = self.frame
-        self.current_point,self.previous_angle,garden_update_img = self.path_finder.finder(self.feat,self.current_point,img_garden_copy,self.previous_angle)
-        cv2.imshow('result',garden_update_img)
+        except:
+            img_garden_copy = self.im.copy()
+        finally:
+            self.current_point,self.previous_angle,garden_update_img = self.path_finder.finder(self.feat,self.current_point,img_garden_copy,self.previous_angle)
+            cv2.imshow('result',garden_update_img)
+
         #Press ESC for exit
-        if cv2.waitKey(100) == 27:
+        if cv2.waitKey(0) == 27:
             cv2.destroyAllWindows()
             self.path_timer.stop()
             sys.exit()
