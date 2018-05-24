@@ -45,15 +45,19 @@ def getFeatures(img):
     # ret,thresh = cv2.threshold(gray,155,255,cv2.THRESH_BINARY)
     im = cv2.adaptiveThreshold(v, 255, cv2.ADAPTIVE_THRESH_GAUSSIAN_C, cv2.THRESH_BINARY_INV, 251, 2)
     kernel = np.ones((3,3),np.uint8)
-
+    blob_im = im.copy()
     im = cv2.erode(im,kernel,iterations = 2)
     im = cv2.dilate(im,kernel,iterations = 2)
     im = cv2.erode(im,kernel,iterations = 2)
-    blob_im = im.copy()
-    keypoints = dstones.blob_detection(im)
-    coordinates = dstones.getCoordinates(keypoints)
 
+    blob_im = cv2.erode(blob_im,kernel,iterations = 20)
+    blob_im = cv2.dilate(blob_im,kernel,iterations = 20)
 
+    stone_features = dstones.blob_detection3(blob_im)
+    # cv2.imshow("stones",blob_im)
+    # coordinates = dstones.getCoordinates(keypoints)
+
+    # print coordinates[1,0]
     # print
     #Find contours at a constant value of 0.8
     # contours1 = measure.find_contours(im, 0.8)
@@ -61,24 +65,23 @@ def getFeatures(img):
     im = cv2.cvtColor(im, cv2.COLOR_GRAY2RGB)
     count = 0
 
-    for i in range(len(coordinates)):
-        cv2.circle(im,(coordinates[i,0],coordinates[i,1]),200,(255,0,255),1)
-        print coordinates[i,0]
-        print coordinates[i,1]
+    # for i in range(len(coordinates)):
+    #     cv2.circle(im,(coordinates[i,0],coordinates[i,1]),int(keypoints[i].size),(255,0,255),1)
+    #     print "Keypoint %i P1:%i, P2:%i"%(i,coordinates[i,0],coordinates[i,1])
 
+    cv2.imshow("Blob_pre_image", blob_im)
 
     for cnt in contours:
         if cv2.contourArea(cnt) > 50 and cv2.contourArea(cnt) < 30000:
             p1 = Point(0,0)
             p2 = Point(0,0)
-            # cv2.drawContours(im, contours, count, (0,0,255), 2)
+
             hull = cv2.convexHull(cnt)
             x,y,w,h = cv2.boundingRect(cnt)
             # cv2.rectangle(im,(x,y),(x+w,y+h),(0,255,0),2)
             rect = cv2.minAreaRect(cnt)
             box = cv2.boxPoints(rect)
             box = np.int0(box)
-            cv2.drawContours(im,[box],0,(0,0,255),2)
             a,b,c,d = box
             rect = perspective.order_points(box)
             box_side1 = distance(rect[0],rect[1])
@@ -107,7 +110,7 @@ def getFeatures(img):
             p2.y = np.int0(p2.y)
 
             boxArea = box_side1 * box_side2
-            area_proportion = 1
+            area_proportion = 2
             if boxArea > (area_proportion*cv2.contourArea(cnt)):
                 if boxArea < 50000:
                     line_angle = GetAngleOfLineBetweenTwoPoints(p1,p2)
@@ -118,15 +121,20 @@ def getFeatures(img):
                     # line_features.__init__(line_mid_point,line_len,line_angle,line_curvyness)
                     features.append(line_features)
                     im = cv2.line(im, (p1.x,p1.y), (p2.x,p2.y), (0,255,0),4)
+                    cv2.drawContours(im,[box],0,(0,0,255),2)
                     # cv2.putText(im,str(cv2.contourArea(cnt)),(p1.x+5,p1.y+5), font, 0.8,(0,0,255),2,cv2.LINE_AA)
             count += 1
+
+    noisy_area = 10
+    for feat in stone_features:
+        cv2.circle(im,(feat.center),(feat.radius+noisy_area),(0,0,0),-1)
     # get mix image real and filtered
     # stencil = np.zeros(im.shape).astype(im.dtype)
     # color = [255, 255, 255]
     # cv2.fillPoly(stencil, contours, color)
     # result = cv2.bitwise_and(img2, stencil)
-    # cv2.imshow("inside_detect_sand",im)
-    # cv2.waitKey(0)
+    cv2.imshow("inside_detect_sand",im)
+    cv2.waitKey(0)
     return features,im
 
 def distance(p1,p2):

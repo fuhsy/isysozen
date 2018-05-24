@@ -25,6 +25,10 @@ class PathFinder():
             mid_point = [(feature.line_p1.x+feature.line_p2.x)/2,(feature.line_p1.y+feature.line_p2.y)/2]
 
             if ds.distance([feature.line_p1.x,feature.line_p1.y],current_point) < radius or ds.distance([feature.line_p2.x,feature.line_p2.y],current_point) < radius or ds.distance(mid_point,current_point) < radius:
+                direction1 = self.angle_comparison(previous_angle,self.GetAngleOfLineBetweenTwoPoints(feature.line_p1,current_point))
+                direction2 = self.angle_comparison(previous_angle,self.GetAngleOfLineBetweenTwoPoints(feature.line_p2,current_point))
+                if(direction1<direction2):
+
 
                 im = cv2.line(im, (feature.line_p1.x,feature.line_p1.y), (feature.line_p2.x,feature.line_p2.y), (255,0,0),4)
                 # im = cv2.line(im, (feature.line_p1.x,feature.line_p1.y), (current_point[0],current_point[1]), (255,0,0),4)
@@ -74,7 +78,17 @@ class PathFinder():
         y = sin
         # print 'sin %f, 1-cos%f'%(sin,(1-cos))
         return x,y
-        
+
+    def angle_comparison(self,previous_angle,line_angle):
+        previous_point = path_direction(previous_angle)
+        line_point = path_direction(line_angle)
+        distance = distance(previous_point,line_point)
+        return distance
+
+    def distance((x1,y1),(x2,y2)):
+        distance = math.sqrt( ((x1-y1)**2)+((x2-y2)**2) )
+        return distance
+
     def GetAngleOfLineBetweenTwoPoints(self,p1, p2):
             xDiff = p2[0]-p1.x
             yDiff = p2[1]-p1.y

@@ -219,7 +219,6 @@ class QtCapture(QtGui.QWidget):
             max_brightness = 4
 
             ret, self.frame = self.cap.read()
-            print "self.frame type"
             #img = cv2.imread(frame, cv2.IMREAD_COLOR)
             self.current_frame = self.frame
             self.snap_delay_time = time.time()
@@ -331,6 +330,8 @@ class QtCapture(QtGui.QWidget):
         self.button_load_cal.setEnabled(False)
         self.button_end.setEnabled(False)
         self.button_detection.setEnabled(True)
+        self.frame = cv2.flip(self.frame,0)
+        self.frame = cv2.flip(self.frame,1)
         try:
             itemlist= QtGui.QListWidgetItem('Calibration loaded')
             self.listw.addItem(itemlist)
@@ -353,9 +354,10 @@ class QtCapture(QtGui.QWidget):
             self.video_frame.setScaledContents(True)
             self.timer.stop()
             self.path_timer = QtCore.QTimer()
+            self.feat,self.im = ds.getFeatures(self.frame)
             self.path_timer.timeout.connect(self.follow_garden)
             self.path_timer.start(10000./self.fps)
-            self.feat,self.im = ds.getFeatures(self.frame)
+
             # cv2.imshow("features",self.frame)
             # cv2.waitKey(0)
 
