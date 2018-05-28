@@ -74,7 +74,7 @@ class PathFinder():
         y = sin
         # print 'sin %f, 1-cos%f'%(sin,(1-cos))
         return x,y
-        
+
     def GetAngleOfLineBetweenTwoPoints(self,p1, p2):
             xDiff = p2[0]-p1.x
             yDiff = p2[1]-p1.y

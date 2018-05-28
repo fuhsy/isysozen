@@ -23,6 +23,7 @@ import sounddevice as sd
 import soundfile as sf
 import audio_theme
 import path_finder as pf
+import path_finder_contrast as pfc
 import detect_sand as ds
 import detect_stones as dstones
 
@@ -76,7 +77,9 @@ class QtCapture(QtGui.QWidget):
         self.txtslider4 = QtGui.QLabel('-empty-')
         self.txtslider5 = QtGui.QLabel('-empty-')
         self.slider1.setFixedWidth(300)
+        self.slider1.setRange(2,100)
         self.slider2.setFixedWidth(300)
+        self.slider2.setRange(2,100)
         self.slider3.setFixedWidth(300)
         self.slider4.setFixedWidth(300)
         self.slider5.setFixedWidth(300)
@@ -175,10 +178,16 @@ class QtCapture(QtGui.QWidget):
         self.im = cv2.imread('test2.png')
         self.im_standard = cv2.imread('test2.png')
 
-        self.current_point = [100,300]
+        self.current_point = [100,800]
         self.previous_angle = 0
         self.feat = None
-        self.path_finder = pf.PathFinder()
+        self.path_finder = pfc.PathFinder()
+        
+        #Radius Slider Default Value
+        self.slider1.setValue(self.path_finder.radius)
+        #Speed Slider Default Value to max
+        self.slider2.setValue(100)
+
         self.w.show()
 
     def setDefaultSoundDevice(self):
@@ -356,7 +365,7 @@ class QtCapture(QtGui.QWidget):
             self.path_timer = QtCore.QTimer()
             self.feat,self.im = ds.getFeatures(self.frame)
             self.path_timer.timeout.connect(self.follow_garden)
-            self.path_timer.start(10000./self.fps)
+            self.path_timer.start(1./self.fps)
 
             # cv2.imshow("features",self.frame)
             # cv2.waitKey(0)
@@ -364,9 +373,9 @@ class QtCapture(QtGui.QWidget):
         except Exception, e:
             self.path_timer = QtCore.QTimer()
             self.feat,self.im = ds.getFeatures(self.im)
-            cv2.imshow("coor",self.im)
+            # cv2.imshow("coor",self.im)
             self.path_timer.timeout.connect(self.follow_garden)
-            self.path_timer.start(10000./self.fps)
+            self.path_timer.start(1./self.fps)
             itemlist= QtGui.QListWidgetItem('Calibration loading failed')
             self.listw.addItem(itemlist)
 
@@ -378,34 +387,40 @@ class QtCapture(QtGui.QWidget):
         except:
             img_garden_copy = self.im.copy()
         finally:
-            self.current_point,self.previous_angle,garden_update_img = self.path_finder.finder(self.feat,self.current_point,img_garden_copy,self.previous_angle)
+            # print img_garden_copy.shape[0],' g2 ',img_garden_copy.shape[1],'a2', img_garden_copy.shape[2]
+            garden_update_img,self.current_point,self.previous_angle = self.path_finder.finder(img_garden_copy,self.current_point,self.previous_angle)
             cv2.imshow('result',garden_update_img)
 
         #Press ESC for exit
-        if cv2.waitKey(0) == 27:
+        if cv2.waitKey(1) == 27:
             cv2.destroyAllWindows()
             self.path_timer.stop()
             sys.exit()
-        # self.frame = self.im
+
+
         # qformat= QImage.Format_Indexed8
-        #
-        # if len(self.frame.shape) == 3:
-        #     if self.frame.shape[2] == 4:
+        # # img_garden_copy = np.asarray(img_garden_copy)
+        # if len(self.im.shape) == 3:
+        #     if self.im.shape[2] == 4:
         #         qformat=QImage.Format_RGBA8888
         #     else:
         #         qformat=QImage.Format_RGB888
         #
-        # img = QtGui.QImage(self.frame, self.frame.shape[1], self.frame.shape[0], self.frame.strides[0], qformat)
+        # img = QtGui.QImage(self.im, self.im[1], self.im[0], self.im.strides[0], qformat)
         # img=img.rgbSwapped()
         # self.video_frame.setPixmap(QtGui.QPixmap.fromImage(img))
         # self.video_frame.setScaledContents(True)
 
     def threshold_slider1(self):
         txt1 = "Radius of Circle (" + str(self.slider1.value())+"%)"
-        self.txtslider1.setText(txt1)
+        self.path_finder.radius  = self.slider1.value()
     def threshold_slider2(self):
         txt1 = "Speed (" + str(self.slider2.value())+"%)"
         self.txtslider2.setText(txt1)
+        # setFPS(self.slider2.value())
+        self.path_timer.stop()
+        self.path_timer.start(5000./self.slider2.value())
+        # self.path_timer.setInterval(self.slider2.value())
     def threshold_slider3(self):
         txt1 = "Appeal (" + str(self.slider3.value())+"%)"
         self.txtslider3.setText(txt1)
@@ -415,67 +430,6 @@ class QtCapture(QtGui.QWidget):
     def threshold_slider5(self):
         txt1 = "-empy- (" + str(self.slider5.value())+"%)"
         self.txtslider5.setText(txt1)
-
-
-
-    def start_detection(self, frame):
-        self.button_load_cal.setEnabled(False)
-        self.button_end.setEnabled(False)
-        rawimage = frame
-        height, width, shape = frame.shape
-        # print width, height
-
-        features,features_image = detect_sand.getFeatures(self.frame)
-        cv2.imshow("webcam_loaded_image", features_image)
-        cv2.waitKey(0)
-        rawim = cv2.cvtColor(rawimage, cv2.COLOR_RGB2GRAY)
-        ret,thresh1 = cv2.threshold(rawim,40,255,cv2.THRESH_BINARY)
-        kernel = np.ones((5,5),np.uint8)
-        im = cv2.erode(thresh1,kernel,iterations = 3)
-        im = cv2.dilate(im,kernel,iterations = 3)
-        # Set up the detector with default parameters.
-        _, contours, hierarchy = cv2.findContours(im, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
-        contour_list = []
-        for contour in contours:
-            area = cv2.contourArea(contour)
-
-            if area > 100 and area < 100000:
-                M = cv2.moments(contour)
-                cX = int(M["m10"] / M["m00"])
-                cY = int(M["m01"] / M["m00"])
-                cv2.circle(rawimage, (cX, cY), 7, (0, 255, 0), -1)
-                contour_list.append(contour)
-
-                # print 'blob is in col %i, raw %i' % (math.ceil(float(cX)/float(width/3)),math.ceil((float(cY)/float(height/3))))
-        # cv2.imshow('blobgrey', im)
-        # cv2.imshow('blob',rawimage)
-        # cv2.waitKey(0)
-        lineThickness = 2
-        cv2.line(rawimage, ((width/3), 0), ((width/3), (height)), (255,255,0), lineThickness)
-        cv2.line(rawimage, ((width/3)*2, 0), ((width/3)*2, (height)), (255,255,0), lineThickness)
-        cv2.line(rawimage, (0, (height/3)), (width, (height/3)), (255,255,0), lineThickness)
-        cv2.line(rawimage, (0, (height/3)*2), (width, (height/3)*2), (255,255,0), lineThickness)
-        cv2.drawContours(rawimage, contour_list,  -1, (0,255,0), 2)
-        self.frame = rawimage
-
-        try:
-            itemlist= QtGui.QListWidgetItem('Stone Detection')
-            self.listw.addItem(itemlist)
-            qformat= QImage.Format_Indexed8
-
-            if len(self.frame.shape) == 3:
-                if self.frame.shape[2] == 4:
-                    qformat=QImage.Format_RGBA8888
-                else:
-                    qformat=QImage.Format_RGB888
-
-            img = QtGui.QImage(self.frame, self.frame.shape[1], self.frame.shape[0], self.frame.strides[0], qformat)
-            img=img.rgbSwapped()
-            self.video_frame.setPixmap(QtGui.QPixmap.fromImage(img))
-            self.video_frame.setScaledContents(True)
-        except Exception, e:
-            itemlist= QtGui.QListWidgetItem('Stone Detection failed')
-            self.listw.addItem(itemlist)
 
 
     def draw_circle(self,event,x,y,flags,param):

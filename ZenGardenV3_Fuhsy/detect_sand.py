@@ -46,9 +46,9 @@ def getFeatures(img):
     im = cv2.adaptiveThreshold(v, 255, cv2.ADAPTIVE_THRESH_GAUSSIAN_C, cv2.THRESH_BINARY_INV, 251, 2)
     kernel = np.ones((3,3),np.uint8)
     blob_im = im.copy()
-    im = cv2.erode(im,kernel,iterations = 2)
-    im = cv2.dilate(im,kernel,iterations = 2)
-    im = cv2.erode(im,kernel,iterations = 2)
+    im = cv2.erode(im,kernel,iterations = 3)
+    im = cv2.dilate(im,kernel,iterations = 3)
+    im = cv2.erode(im,kernel,iterations = 3)
 
     blob_im = cv2.erode(blob_im,kernel,iterations = 20)
     blob_im = cv2.dilate(blob_im,kernel,iterations = 20)
@@ -69,7 +69,7 @@ def getFeatures(img):
     #     cv2.circle(im,(coordinates[i,0],coordinates[i,1]),int(keypoints[i].size),(255,0,255),1)
     #     print "Keypoint %i P1:%i, P2:%i"%(i,coordinates[i,0],coordinates[i,1])
 
-    cv2.imshow("Blob_pre_image", blob_im)
+    # cv2.imshow("Blob_pre_image", blob_im)
 
     for cnt in contours:
         if cv2.contourArea(cnt) > 50 and cv2.contourArea(cnt) < 30000:
@@ -120,8 +120,8 @@ def getFeatures(img):
                     # print line_angle
                     # line_features.__init__(line_mid_point,line_len,line_angle,line_curvyness)
                     features.append(line_features)
-                    im = cv2.line(im, (p1.x,p1.y), (p2.x,p2.y), (0,255,0),4)
-                    cv2.drawContours(im,[box],0,(0,0,255),2)
+                    # im = cv2.line(im, (p1.x,p1.y), (p2.x,p2.y), (0,255,0),4)
+                    # cv2.drawContours(im,[box],0,(0,0,255),2)
                     # cv2.putText(im,str(cv2.contourArea(cnt)),(p1.x+5,p1.y+5), font, 0.8,(0,0,255),2,cv2.LINE_AA)
             count += 1
 
@@ -133,8 +133,8 @@ def getFeatures(img):
     # color = [255, 255, 255]
     # cv2.fillPoly(stencil, contours, color)
     # result = cv2.bitwise_and(img2, stencil)
-    cv2.imshow("inside_detect_sand",im)
-    cv2.waitKey(0)
+    # cv2.imshow("inside_detect_sand",im)
+    # cv2.waitKey(0)
     return features,im
 
 def distance(p1,p2):
