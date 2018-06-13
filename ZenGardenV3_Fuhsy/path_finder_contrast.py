@@ -7,11 +7,11 @@ import statistics
 
 class PathFinder():
     def __init__(self):
-        self.radius = 40
-        self.detecting_angle = 50
+        self.radius = 20
+        self.detecting_angle = 60
         self.px_thresh = 100
         self.average_direction  = 0
-        self.mov_step = 5
+        self.mov_step = 3
         self.col_px = []
     # This func is called every Frame and realizes the movement through the sand lines
     def finder(self,img,current_point,previous_angle):
@@ -50,15 +50,17 @@ class PathFinder():
 
             previous_angle = div_angle
         else:
-            previous_angle = 360 - previous_angle
-
+            if previous_angle >= 180:
+                previous_angle = (previous_angle-180)
+            else:
+                previous_angle = (previous_angle+180)
         dir_path_x_norm,dir_path_y_norm = self.path_direction(previous_angle)
         current_point[0] = np.int0(current_point[0]+(self.radius*dir_path_x_norm/(self.radius/self.mov_step)))
         current_point[1] = np.int0(current_point[1]+(self.radius*dir_path_y_norm/(self.radius/self.mov_step)))
         path_len_x = np.int0(current_point[0]+(self.radius*dir_path_x_norm))
         path_len_y = np.int0(current_point[1]+(self.radius*dir_path_y_norm))
-        img = cv2.line(img, current_point_tuple, (path_len_x,path_len_y), (255,255,255),4)
-        img = cv2.circle(img, current_point_tuple, self.radius+2, (255,0,255), 5)
+        img = cv2.line(img, current_point_tuple, (path_len_x,path_len_y), (0,200,0),4)
+        img = cv2.circle(img, current_point_tuple, self.radius+2, (0,0,255), 5)
         return img,current_point,previous_angle
 
     def check_angle(self,j,previous_angle):

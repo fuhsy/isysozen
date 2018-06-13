@@ -10,7 +10,7 @@ def cart2pol(x, y):
     return(rho, phi)
 
 
-# The x, y position should be normalised. 
+# The x, y position should be normalised.
 def panner(method, x, y):
 	if method == "quad_square":
 		c1 = (1- x) * (1-y) # (0, 0)
@@ -19,7 +19,7 @@ def panner(method, x, y):
 		c4 = (1 -x) * y     # (0, 1)
 		return [c1,c2,c3,c4]   #
 	elif method == "quad_circle":
-		# But this method doesn't deal with the amplitude right. 
+		# But this method doesn't deal with the amplitude right.
 		rho, phi = cart2pol(x - 0.5,y - 0.5)
 		phi_norm = phi/pi /2
 		c = np.zeros(4)
@@ -33,9 +33,9 @@ def panner(method, x, y):
 		print c
 
 	elif method == "stereo":
-		return [x, (1-x), 0, 0]
-	else: 
+		return [(1-x), x, 0, 0]
+	else:
 		print "Error: unrecognised panning method: choose quad or stereo"
 
 
-panner("quad_rad", 0.0 , 0.5)
+# panner("quad_rad", 0.0 , 0.5)

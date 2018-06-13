@@ -46,12 +46,15 @@ def getFeatures(img):
     im = cv2.adaptiveThreshold(v, 255, cv2.ADAPTIVE_THRESH_GAUSSIAN_C, cv2.THRESH_BINARY_INV, 251, 2)
     kernel = np.ones((3,3),np.uint8)
     blob_im = im.copy()
-    im = cv2.erode(im,kernel,iterations = 3)
-    im = cv2.dilate(im,kernel,iterations = 3)
-    im = cv2.erode(im,kernel,iterations = 3)
+    # cv2.imshow("inside_detect_sand",im)
+    # cv2.waitKey(0)
+    im = cv2.erode(im,kernel,iterations = 2)
+    im = cv2.dilate(im,kernel,iterations = 2)
+    im = cv2.erode(im,kernel,iterations = 2)
 
-    blob_im = cv2.erode(blob_im,kernel,iterations = 20)
-    blob_im = cv2.dilate(blob_im,kernel,iterations = 20)
+    blob_im = cv2.erode(blob_im,kernel,iterations = 15)
+    blob_im = cv2.dilate(blob_im,kernel,iterations = 15)
+
 
     stone_features = dstones.blob_detection3(blob_im)
     # cv2.imshow("stones",blob_im)
@@ -133,9 +136,8 @@ def getFeatures(img):
     # color = [255, 255, 255]
     # cv2.fillPoly(stencil, contours, color)
     # result = cv2.bitwise_and(img2, stencil)
-    # cv2.imshow("inside_detect_sand",im)
-    # cv2.waitKey(0)
-    return features,im
+
+    return features,stone_features,im
 
 def distance(p1,p2):
     distance = math.sqrt( ((p1[0]-p2[0])**2)+((p1[1]-p2[1])**2) )

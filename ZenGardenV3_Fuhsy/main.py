@@ -26,17 +26,20 @@ import path_finder as pf
 import path_finder_contrast as pfc
 import detect_sand as ds
 import detect_stones as dstones
-
-
+import audio_controller as actrl
+import audio_theme as atheme
+from pyo import pa_get_output_devices,pa_get_output_max_channels
 import usb
 
 class QtCapture(QtGui.QWidget):
     def __init__(self, *args):
         self.app = QtGui.QApplication(sys.argv)
         super(QtGui.QWidget, self).__init__()
-        theme = audio_theme.AudioTheme('water')
+        self.theme = audio_theme.AudioTheme('water')
         self.fps = 50
+        # print pa_get_output_max_channels(4)
         #Lowest snapshot threshold for starting detection
+        self.output_device_index = 0
         self.snap_thres = 2.6
         self.brightness_value_min = 1.2
         self.brightness_value_max = 1.45
@@ -46,7 +49,7 @@ class QtCapture(QtGui.QWidget):
         self.sampleinterval = 0.1
         self.brightness_v = 0
         self.timewindow=10
-        self.size = (600,350)
+        self.size = (600,400)
         self.layout = QtGui.QGridLayout()
         self.w = QtGui.QWidget()
         self.w.setMinimumHeight(480)
@@ -55,15 +58,18 @@ class QtCapture(QtGui.QWidget):
         self.pic = QtGui.QLabel()
         self.video_frame = QtGui.QLabel()
         self.select_audio_output = QtGui.QComboBox()
-        self.audio_device_list = sd.query_devices()
         audio_index_count =0
-        for key in self.audio_device_list:
-            self.select_audio_output.addItem('%s (Output Channels=%s)' %(self.audio_device_list[audio_index_count]['name'],self.audio_device_list[audio_index_count]['max_output_channels']))
+        self.devicelist = pa_get_output_devices()
+        for i in range(0,len(self.devicelist[0])):
+            self.select_audio_output.addItem(self.devicelist[0][i])
             audio_index_count = audio_index_count+1
+        self.select_theme = QtGui.QComboBox()
+        for k,v in self.theme.type.items():
+            self.select_theme.addItem(k)
 
         #self.pic.setPixmap(QtGui.QPixmap('sand_lines.png').scaled(600, 400, QtCore.Qt.KeepAspectRatio))
         self.button_start = QtGui.QPushButton('Camera Connect')
-        self.button_detection = QtGui.QPushButton('Start Detection')
+        self.button_start_default = QtGui.QPushButton('Start Default Image')
         self.button_load_cal = QtGui.QPushButton('Load Calibration')
         self.slider1 = QtGui.QSlider(QtCore.Qt.Horizontal)
         self.slider2 = QtGui.QSlider(QtCore.Qt.Horizontal)
@@ -72,8 +78,8 @@ class QtCapture(QtGui.QWidget):
         self.slider5 = QtGui.QSlider(QtCore.Qt.Horizontal)
 
         self.txtslider1 = QtGui.QLabel('Radius of Circle')
-        self.txtslider2 = QtGui.QLabel('Speed')
-        self.txtslider3 = QtGui.QLabel('Appeal')
+        self.txtslider2 = QtGui.QLabel('Speed '+str(self.fps)+' fps')
+        self.txtslider3 = QtGui.QLabel('Detecting Angle')
         self.txtslider4 = QtGui.QLabel('-empty-')
         self.txtslider5 = QtGui.QLabel('-empty-')
         self.slider1.setFixedWidth(300)
@@ -89,17 +95,19 @@ class QtCapture(QtGui.QWidget):
         self.txtslider4.setFixedWidth(300)
         self.txtslider5.setFixedWidth(300)
 
-        self.button_detection.setFixedWidth(300)
+        self.button_start_default.setFixedWidth(300)
         self.select_audio_output.setFixedWidth(300)
+        self.select_theme.setFixedWidth(300)
         self.button_start.setFixedWidth(300)
         self.button_load_cal.setFixedWidth(300)
         self.button_end = QtGui.QPushButton('New Calibration')
         self.button_end.setFixedWidth(300)
         self.button_start.clicked.connect(lambda: self.start())
         self.select_audio_output.currentIndexChanged.connect(lambda: self.setDefaultSoundDevice())
+        self.select_theme.currentIndexChanged.connect(lambda: self.setTheme())
         self.button_load_cal.clicked.connect(lambda: self.load_calibration())
         self.button_end.clicked.connect(lambda: self.new_calibration())
-        self.button_detection.clicked.connect(lambda: self.start_detection(self.frame))
+        self.button_start_default.clicked.connect(lambda: self.start_default_image())
         self.slider1.sliderReleased.connect(lambda: self.threshold_slider1())
         self.slider2.sliderReleased.connect(lambda: self.threshold_slider2())
         self.slider3.sliderReleased.connect(lambda: self.threshold_slider3())
@@ -116,31 +124,32 @@ class QtCapture(QtGui.QWidget):
 
         self.layout.addWidget(self.button_start, 0, 0)
         self.layout.addWidget(self.select_audio_output,1,0)
-        self.layout.addWidget(self.button_end, 2, 0)
-        self.layout.addWidget(self.button_load_cal, 3, 0)
-        self.layout.addWidget(self.button_detection,4,0)
-        self.layout.addWidget(self.txtslider1,5,0)
-        self.layout.addWidget(self.slider1,6,0)
-        self.layout.addWidget(self.txtslider2,7,0)
-        self.layout.addWidget(self.slider2,8,0)
-        self.layout.addWidget(self.txtslider3,9,0)
-        self.layout.addWidget(self.slider3,10,0)
-        self.layout.addWidget(self.txtslider4,11,0)
-        self.layout.addWidget(self.slider4,12,0)
-        self.layout.addWidget(self.txtslider5,13,0)
-        self.layout.addWidget(self.slider5,14,0)
-        self.layout.addWidget(self.listw, 16, 0)
+        self.layout.addWidget(self.select_theme,2,0)
+        self.layout.addWidget(self.button_end, 3, 0)
+        self.layout.addWidget(self.button_load_cal, 4, 0)
+        self.layout.addWidget(self.button_start_default,5,0)
+        self.layout.addWidget(self.txtslider1,6,0)
+        self.layout.addWidget(self.slider1,7,0)
+        self.layout.addWidget(self.txtslider2,8,0)
+        self.layout.addWidget(self.slider2,9,0)
+        self.layout.addWidget(self.txtslider3,10,0)
+        self.layout.addWidget(self.slider3,11,0)
+        self.layout.addWidget(self.txtslider4,12,0)
+        self.layout.addWidget(self.slider4,13,0)
+        self.layout.addWidget(self.txtslider5,14,0)
+        self.layout.addWidget(self.slider5,15,0)
+        self.layout.addWidget(self.listw, 17, 0)
         # self.layout.setAlignment(self.txtslider1, QtCore.Qt.AlignCenter)
         # self.layout.setAlignment(self.txtslider2, QtCore.Qt.AlignCenter)
         # self.layout.setAlignment(self.txtslider3, QtCore.Qt.AlignCenter)
         # self.layout.setAlignment(self.txtslider4, QtCore.Qt.AlignCenter)
         # self.layout.setAlignment(self.txtslider5, QtCore.Qt.AlignCenter)
         self.connect(self, QtCore.SIGNAL('triggered()'), self.closeEvent)
-        self.layout.addWidget(self.pic, 0, 1, 16, 1)
-        self.layout.addWidget(self.video_frame, 0, 1, 16, 1)
+        self.layout.addWidget(self.pic, 0, 1, 18, 1)
+        self.layout.addWidget(self.video_frame, 0, 1, 18, 1)
         self.button_load_cal.setEnabled(False)
         self.button_end.setEnabled(False)
-        self.button_detection.setEnabled(False)
+        self.button_start_default.setEnabled(False)
         # self.select_audio_output.setEnabled(False)
         self.calibration_pts = []
 
@@ -160,7 +169,7 @@ class QtCapture(QtGui.QWidget):
             item = self.brightness_value_max
 
         self.plt = pg.PlotWidget(title='Lightning Condictions')
-        self.layout.addWidget(self.plt,15,0)
+        self.layout.addWidget(self.plt,16,0)
         self.plt.setFixedWidth(300)
         self.plt.setRange(yRange=[0.9,1.8])
 
@@ -175,26 +184,43 @@ class QtCapture(QtGui.QWidget):
 
 
         #TEST
-        self.im = cv2.imread('test2.png')
-        self.im_standard = cv2.imread('test2.png')
+        self.im = cv2.imread('images/test2.png')
+        self.im_standard = cv2.imread('images/test2.png')
 
-        self.current_point = [100,800]
+        self.current_point = [100,200]
         self.previous_angle = 0
         self.feat = None
+        self.stone_feat = None
         self.path_finder = pfc.PathFinder()
-        
+
         #Radius Slider Default Value
         self.slider1.setValue(self.path_finder.radius)
         #Speed Slider Default Value to max
         self.slider2.setValue(100)
+        self.slider3.setValue(self.path_finder.detecting_angle)
 
+        n_out_channel = pa_get_output_max_channels(self.output_device_index+1)
+        self.audio_controller = actrl.AudioController(n_out_channel, self.theme , self.output_device_index)
+
+        self.select_audio_output.setEnabled(False)
+        self.select_theme.setEnabled(False)
+        self.slider1.setEnabled(False)
+        self.slider2.setEnabled(False)
+        self.slider3.setEnabled(False)
+        self.slider4.setEnabled(False)
+        self.slider5.setEnabled(False)
         self.w.show()
 
     def setDefaultSoundDevice(self):
-        device_index = self.select_audio_output.currentIndex()
-        sd.default.device = self.audio_device_list[device_index]['name']
-        print sd.default.device
+        self.output_device_index = self.select_audio_output.currentIndex()
 
+        print self.devicelist[0][self.output_device_index]
+
+    def setTheme(self):
+        theme_index = self.select_theme.currentIndex()
+        theme_selector = self.theme.type.keys()
+        # print theme_selector[theme_index]
+        self.theme.setCurrentTheme(str(theme_selector[theme_index]))
 
 
     def getBrightness(self):
@@ -299,9 +325,17 @@ class QtCapture(QtGui.QWidget):
 
     def start(self):
         self.setDefaultSoundDevice()
-        self.button_load_cal.setEnabled(True)
-        self.button_end.setEnabled(True)
         try:
+            self.button_load_cal.setEnabled(True)
+            self.button_end.setEnabled(True)
+            self.button_start_default.setEnabled(True)
+            self.select_audio_output.setEnabled(True)
+            self.select_theme.setEnabled(True)
+            self.slider1.setEnabled(True)
+            self.slider2.setEnabled(True)
+            self.slider3.setEnabled(True)
+            self.slider4.setEnabled(False)
+            self.slider5.setEnabled(False)
             self.cap = cv2.VideoCapture(1)
             self.cap.set(cv2.CAP_PROP_FRAME_HEIGHT,480)
             self.cap.set(cv2.CAP_PROP_FRAME_WIDTH,640)
@@ -322,12 +356,13 @@ class QtCapture(QtGui.QWidget):
             itemlist = QtGui.QListWidgetItem('Camera Activation failed')
             self.listw.addItem(itemlist)
 
+
     def new_calibration(self):
         #self.edgeDetectionApproach()
         itemlist= QtGui.QListWidgetItem('Camera Stopped')
-
+        self.img = self.frame.copy()
         cv2.namedWindow('image')
-        cv2.imshow('image',self.frame)
+        cv2.imshow('image',self.img)
         #cv2.setMouseCallback('canny',img)
         cv2.setMouseCallback('image',self.draw_circle)
         self.listw.addItem(itemlist)
@@ -336,19 +371,26 @@ class QtCapture(QtGui.QWidget):
 
 
     def load_calibration(self):
+        self.button_start.setEnabled(False)
         self.button_load_cal.setEnabled(False)
         self.button_end.setEnabled(False)
-        self.button_detection.setEnabled(True)
+        self.button_start_default.setEnabled(False)
+        self.select_audio_output.setEnabled(False)
+        self.select_theme.setEnabled(False)
+        self.slider1.setEnabled(True)
+        self.slider2.setEnabled(True)
+        self.slider3.setEnabled(True)
         self.frame = cv2.flip(self.frame,0)
         self.frame = cv2.flip(self.frame,1)
         try:
-            itemlist= QtGui.QListWidgetItem('Calibration loaded')
-            self.listw.addItem(itemlist)
             self.cap.release()
             self.timer.stop()
             self.cal_pts = np.load('caldata.npy')
+
             warped = callibration.four_point_transform(self.frame,self.cal_pts)
+            print 'inside0'
             self.frame = warped
+            print 'inside1'
             qformat= QImage.Format_Indexed8
 
             if len(self.frame.shape) == 3:
@@ -359,71 +401,86 @@ class QtCapture(QtGui.QWidget):
 
             img = QtGui.QImage(self.frame, self.frame.shape[1], self.frame.shape[0], self.frame.strides[0], qformat)
             img=img.rgbSwapped()
+            print 'inside2'
             self.video_frame.setPixmap(QtGui.QPixmap.fromImage(img))
             self.video_frame.setScaledContents(True)
             self.timer.stop()
             self.path_timer = QtCore.QTimer()
-            self.feat,self.im = ds.getFeatures(self.frame)
+            self.feat,self.stone_feat,self.frame = ds.getFeatures(self.frame)
             self.path_timer.timeout.connect(self.follow_garden)
             self.path_timer.start(1./self.fps)
-
+            itemlist= QtGui.QListWidgetItem('Calibration loaded')
+            self.listw.addItem(itemlist)
             # cv2.imshow("features",self.frame)
             # cv2.waitKey(0)
 
         except Exception, e:
             self.path_timer = QtCore.QTimer()
-            self.feat,self.im = ds.getFeatures(self.im)
+            self.feat,self.stone_feat,self.im = ds.getFeatures(self.im)
             # cv2.imshow("coor",self.im)
             self.path_timer.timeout.connect(self.follow_garden)
             self.path_timer.start(1./self.fps)
             itemlist= QtGui.QListWidgetItem('Calibration loading failed')
             self.listw.addItem(itemlist)
+        finally:
+            n_out_channel = pa_get_output_max_channels(self.output_device_index+1)
+            self.audio_controller = actrl.AudioController(n_out_channel, self.theme,self.output_device_index)
 
     def follow_garden(self):
         try:
             img_garden_copy = self.frame.copy()
-        # print "self.frame %s self.image %s"  %(self.frame.format,self.im.format)
-        # img_garden_copy = self.frame
+
         except:
             img_garden_copy = self.im.copy()
         finally:
-            # print img_garden_copy.shape[0],' g2 ',img_garden_copy.shape[1],'a2', img_garden_copy.shape[2]
+
             garden_update_img,self.current_point,self.previous_angle = self.path_finder.finder(img_garden_copy,self.current_point,self.previous_angle)
-            cv2.imshow('result',garden_update_img)
 
-        #Press ESC for exit
-        if cv2.waitKey(1) == 27:
-            cv2.destroyAllWindows()
-            self.path_timer.stop()
-            sys.exit()
+            self.audio_controller.interact(self.current_point,self.stone_feat)
 
 
-        # qformat= QImage.Format_Indexed8
-        # # img_garden_copy = np.asarray(img_garden_copy)
-        # if len(self.im.shape) == 3:
-        #     if self.im.shape[2] == 4:
-        #         qformat=QImage.Format_RGBA8888
-        #     else:
-        #         qformat=QImage.Format_RGB888
-        #
-        # img = QtGui.QImage(self.im, self.im[1], self.im[0], self.im.strides[0], qformat)
-        # img=img.rgbSwapped()
-        # self.video_frame.setPixmap(QtGui.QPixmap.fromImage(img))
-        # self.video_frame.setScaledContents(True)
+        qformat= QImage.Format_Indexed8
+        # img_garden_copy = np.asarray(img_garden_copy)
+        if len(garden_update_img.shape) == 3:
+            if garden_update_img.shape[2] == 4:
+                qformat=QImage.Format_RGBA8888
+            else:
+                qformat=QImage.Format_RGB888
+
+        img = QtGui.QImage(garden_update_img, garden_update_img.shape[1], garden_update_img.shape[0], garden_update_img.strides[0], qformat)
+        img=img.rgbSwapped()
+        self.video_frame.setPixmap(QtGui.QPixmap.fromImage(img))
+        self.video_frame.setScaledContents(True)
+
+    def start_default_image(self):
+        self.button_load_cal.setEnabled(False)
+        self.button_end.setEnabled(False)
+        self.button_start_default.setEnabled(False)
+        self.path_timer = QtCore.QTimer()
+        self.feat,self.stone_feat,self.im = ds.getFeatures(self.im)
+        # cv2.imshow("coor",self.im)
+        self.path_timer.timeout.connect(self.follow_garden)
+        self.path_timer.start(1./self.fps)
+        itemlist= QtGui.QListWidgetItem('Calibration loading failed')
+        self.listw.addItem(itemlist)
+        # qformat= QImage.tents(True)
 
     def threshold_slider1(self):
-        txt1 = "Radius of Circle (" + str(self.slider1.value())+"%)"
         self.path_finder.radius  = self.slider1.value()
+        txt1 = "Radius of Circle " + str(self.path_finder.radius)
+        self.txtslider1.setText(txt1)
     def threshold_slider2(self):
-        txt1 = "Speed (" + str(self.slider2.value())+"%)"
+        txt1 = "Speed " + str(float(self.slider2.value())/100.*float(self.fps))+" fps"
         self.txtslider2.setText(txt1)
         # setFPS(self.slider2.value())
         self.path_timer.stop()
-        self.path_timer.start(5000./self.slider2.value())
+        self.path_timer.start(1./(float(self.slider2.value())/100.*float(self.fps)))
         # self.path_timer.setInterval(self.slider2.value())
     def threshold_slider3(self):
-        txt1 = "Appeal (" + str(self.slider3.value())+"%)"
+        self.path_finder.detecting_angle = self.slider3.value()
+        txt1 = "Detecting Angle " + str(self.path_finder.detecting_angle)
         self.txtslider3.setText(txt1)
+
     def threshold_slider4(self):
         txt1 = "-empy- (" + str(self.slider4.value())+"%)"
         self.txtslider4.setText(txt1)
@@ -434,10 +491,11 @@ class QtCapture(QtGui.QWidget):
 
     def draw_circle(self,event,x,y,flags,param):
         global mouseX,mouseY
-        cv2.imshow('image',self.img)
-        cv2.waitKey(0)
+        # cv2.imshow('image',self.img)
+        # cv2.waitKey(0)
         if event == cv2.EVENT_LBUTTONUP:
-            cv2.circle(self.img,(x,y),2,(255,255,255),-1)
+            cv2.circle(self.img,(x,y),4,(255,255,255),2)
+            print x,' , ',y
             mouseX,mouseY = x,y
             temparr = [x,y]
             self.calibration_pts.append(temparr)

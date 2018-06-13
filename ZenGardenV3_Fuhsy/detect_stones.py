@@ -93,12 +93,12 @@ def blob_detection3(img):
         # box = cv2.boxPoints(rect)
         # box = np.int0(box)
         # cv2.drawContours(img,[box],0,(0,0,255),2)
-
-        (x,y),radius = cv2.minEnclosingCircle(cnt)
-        center = (int(x),int(y))
-        radius = int(radius)
-        stone_object = StoneFeatures(center,radius)
-        stone_features.append(stone_object)
+        if cv2.contourArea(cnt) > 5000:
+            (x,y),radius = cv2.minEnclosingCircle(cnt)
+            center = (int(x),int(y))
+            radius = int(radius)
+            stone_object = StoneFeatures(center,radius)
+            stone_features.append(stone_object)
 
     return stone_features
 # img = cv2.imread('blob.png',0)
