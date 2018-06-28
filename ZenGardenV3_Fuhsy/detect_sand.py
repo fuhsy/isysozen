@@ -25,7 +25,7 @@ class LineFeatures():
     #IntxInt line_mid_point
 
 
-def getFeatures(img):
+def getFeatures(img,contour_value):
 
     features = []
     # img = cv2.imread('test2.png')
@@ -48,9 +48,9 @@ def getFeatures(img):
     blob_im = im.copy()
     # cv2.imshow("inside_detect_sand",im)
     # cv2.waitKey(0)
-    im = cv2.erode(im,kernel,iterations = 2)
-    im = cv2.dilate(im,kernel,iterations = 2)
-    im = cv2.erode(im,kernel,iterations = 2)
+    im = cv2.erode(im,kernel,iterations = contour_value)
+    im = cv2.dilate(im,kernel,iterations = contour_value)
+    im = cv2.erode(im,kernel,iterations = contour_value)
 
     blob_im = cv2.erode(blob_im,kernel,iterations = 15)
     blob_im = cv2.dilate(blob_im,kernel,iterations = 15)
@@ -128,7 +128,7 @@ def getFeatures(img):
                     # cv2.putText(im,str(cv2.contourArea(cnt)),(p1.x+5,p1.y+5), font, 0.8,(0,0,255),2,cv2.LINE_AA)
             count += 1
 
-    noisy_area = 10
+    noisy_area = 0
     for feat in stone_features:
         cv2.circle(im,(feat.center),(feat.radius+noisy_area),(0,0,0),-1)
     # get mix image real and filtered

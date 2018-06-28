@@ -93,7 +93,7 @@ def blob_detection3(img):
         # box = cv2.boxPoints(rect)
         # box = np.int0(box)
         # cv2.drawContours(img,[box],0,(0,0,255),2)
-        if cv2.contourArea(cnt) > 5000:
+        if cv2.contourArea(cnt) > 10000:
             (x,y),radius = cv2.minEnclosingCircle(cnt)
             center = (int(x),int(y))
             radius = int(radius)

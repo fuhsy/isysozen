@@ -15,8 +15,8 @@ def panner(method, x, y):
 	if method == "quad_square":
 		c1 = (1- x) * (1-y) # (0, 0)
 		c2 = x * (1- y)		#  ( 1, 0)
-		c3 = x * y          # (1, 1)
-		c4 = (1 -x) * y     # (0, 1)
+		c3 = (1 -x) * y          # (1, 1)
+		c4 = x * y     # (0, 1)
 		return [c1,c2,c3,c4]   #
 	elif method == "quad_circle":
 		# But this method doesn't deal with the amplitude right.

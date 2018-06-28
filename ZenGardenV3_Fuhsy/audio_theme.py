@@ -16,11 +16,11 @@ class AudioTheme():
                 	},
         		'water' : {
                 		0 : 'ambient.wav',
-                		1 : 'stone_hit.wav',
-                		2 : 'test.wav',
-                		3 : 'test.wav',
-                		4 : 'test.wav',
-                		5 : 'water5.wav'
+                		1 : 'water_test.wav',
+                		2 : 'water_test.wav',
+                		3 : 'water_test.wav',
+                		4 : 'water_test.wav',
+                		5 : 'water_test.wav'
                 	},
         		'forest' : {
                 		0 : 'forest0.wav',
@@ -32,10 +32,11 @@ class AudioTheme():
                 	}
         	}
         self.current_theme =  str_theme
-
+        # print self.type[self.current_theme][0]
+        # print self.current_theme
 
     def setCurrentTheme(self,str_theme):
-        self.current_theme = self.type[str_theme]
+        self.current_theme = str_theme
 
     def getSoundFile(self,index):
         return self.type[self.current_theme][index]

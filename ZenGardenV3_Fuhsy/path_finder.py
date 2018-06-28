@@ -61,8 +61,6 @@ class PathFinder():
         current_point[1] = np.int0(current_point[1]+(radius*dir_path_y_norm/(radius/5)))
         path_len_x = np.int0(current_point[0]+(radius*dir_path_x_norm))
         path_len_y = np.int0(current_point[1]+(radius*dir_path_y_norm))
-
-
         im = cv2.line(im, current_point_tuple, (path_len_x,path_len_y), (255,255,255),4)
 
         return current_point,previous_angle,im
@@ -89,5 +87,4 @@ class PathFinder():
         a = math.cos(previous_a*math.pi/180)
         b = math.cos(detected_b*math.pi/180)
         range = abs(a-b)
-
         return range
