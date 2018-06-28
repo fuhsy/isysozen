@@ -52,6 +52,7 @@ class View(QtGui.QWidget):
         self.w = QtGui.QWidget()
         self.w.setMinimumHeight(480)
         self.pic = QtGui.QLabel()
+
         self.video_frame = QtGui.QLabel()
         self.select_audio_output = QtGui.QComboBox()
         self.detector_amount = QtGui.QSpinBox()
@@ -93,10 +94,11 @@ class View(QtGui.QWidget):
         self.plt.setLabel('left', 'Brightness')
 
         self.slider1.setFixedWidth(300)
-        self.slider1.setRange(5,100)
+        self.slider1.setRange(5,45)
         self.slider2.setFixedWidth(300)
-        self.slider2.setRange(2,100)
+        self.slider2.setRange(1,100)
         self.slider3.setFixedWidth(300)
+        self.slider3.setRange(2,120)
         self.contour_slider.setFixedWidth(300)
         self.contour_slider.setRange(1,100)
         self.txtslider1.setFixedWidth(300)
@@ -169,7 +171,7 @@ class View(QtGui.QWidget):
         self.layout.addWidget(self.video_frame, 0, 1, self.widget_pos, 1)
 
         # self.select_audio_output.setEnabled(False)
-        self.calibration_pts = []
+        # self.view.im_show
 
         self._interval = int(self.sampleinterval*1000)
         self._bufsize = int(self.timewindow/self.sampleinterval)
@@ -236,7 +238,7 @@ class View(QtGui.QWidget):
     def setSliderDefault(self,radius=25,speed=(1./50.),angle=60):
         self.slider1.setValue(radius)
         #Speed Slider Default Value to max
-        self.slider2.setValue(100)
+        self.slider2.setValue(50)
         self.slider3.setValue(angle)
         self.contour_slider.setValue(50)
 
@@ -259,17 +261,17 @@ class View(QtGui.QWidget):
     def setFPS(self, fps):
         self.fps = fps
 
-    def new_calibration(self):
-        #self.edgeDetectionApproach()
-        itemlist= QtGui.QListWidgetItem('Camera Stopped')
-        self.img = self.frame.copy()
-        cv2.namedWindow('image')
-        cv2.imshow('image',self.img)
-        #cv2.setMouseCallback('canny',img)
-        cv2.setMouseCallback('image',self.draw_circle)
-        self.listw.addItem(itemlist)
-        self.cap.release()
-        self.timer.stop()
+    # def new_calibration(self):
+    #     #self.edgeDetectionApproach()
+    #     itemlist= QtGui.QListWidgetItem('Camera Stopped')
+    #     self.img = self.frame.copy()
+    #     cv2.namedWindow('image')
+    #     cv2.imshow('image',self.img)
+    #     #cv2.setMouseCallback('canny',img)
+    #     cv2.setMouseCallback('image',self.draw_circle)
+    #     self.listw.addItem(itemlist)
+    #     self.cap.release()
+    #     self.timer.stop()
 
     def setListInfo(self,message):
         itemlist= QtGui.QListWidgetItem(message)
@@ -288,25 +290,25 @@ class View(QtGui.QWidget):
         self.video_frame.setPixmap(QtGui.QPixmap.fromImage(temp_img))
         self.video_frame.setScaledContents(True)
 
-    def draw_circle(self,event,x,y,flags,param):
-        global mouseX,mouseY
-        # cv2.imshow('image',self.img)
-        # cv2.waitKey(0)
-        if event == cv2.EVENT_LBUTTONUP:
-            cv2.circle(self.img,(x,y),4,(255,255,255),2)
-            print (x,' , ',y)
-            mouseX,mouseY = x,y
-            temparr = [x,y]
-            self.calibration_pts.append(temparr)
-            #print(len(self.calibration_pts))
-            #print(self.calibration_pts)
-            if len(self.calibration_pts) == 4:
-                cv2.destroyAllWindows()
-                self.calibration_pts = np.asarray(self.calibration_pts)
-                self.calibration_pts = self.calibration_pts.astype(int)
-                warped = callibration.four_point_transform(self.img,self.calibration_pts)
-                np.save('caldata.npy', self.calibration_pts)
-                self.load_calibration()
+    # def draw_circle(self,event,x,y,flags,param):
+    #     global mouseX,mouseY
+    #     # cv2.imshow('image',self.img)
+    #     # cv2.waitKey(0)
+    #     if event == cv2.EVENT_LBUTTONUP:
+    #         cv2.circle(self.img,(x,y),4,(255,255,255),2)
+    #         print (x,' , ',y)
+    #         mouseX,mouseY = x,y
+    #         temparr = [x,y]
+    #         self.calibration_pts.append(temparr)
+    #         #print(len(self.calibration_pts))
+    #         #print(self.calibration_pts)
+    #         if len(self.calibration_pts) == 4:
+    #             cv2.destroyAllWindows()
+    #             self.calibration_pts = np.asarray(self.calibration_pts)
+    #             self.calibration_pts = self.calibration_pts.astype(int)
+    #             warped = callibration.four_point_transform(self.img,self.calibration_pts)
+    #             np.save('caldata.npy', self.calibration_pts)
+    #             self.load_calibration()
 
     def set_theme_box(self,theme):
         for k,v in theme.type.items():
@@ -325,7 +327,7 @@ class View(QtGui.QWidget):
         self.cap.release()
         super(QtGui.QWidget, self).deleteLater()
 
-    def set_enabled_selection(self,start=True,det_am=True,audio_out_chn=True,cnt_sl=True,theme=True,new_cal=True,load_cal=True,start_default=True,stop=True,play=True,sl1=True,sl2=True,sl3=True):
+    def set_enabled_selection(self,start=True,det_am=True,audio_out_chn=True,cnt_sl=True,theme=True,new_cal=True,load_cal=True,start_default=True,stop=True,play=True,reset=True,sl1=True,sl2=True,sl3=True):
         self.button_start.setEnabled(start)
         self.select_audio_output.setEnabled(audio_out_chn)
         self.select_theme.setEnabled(theme)
@@ -336,10 +338,11 @@ class View(QtGui.QWidget):
         self.button_start_default.setEnabled(start_default)
         self.button_stop.setEnabled(stop)
         self.button_play.setEnabled(play)
+        self.button_reset.setEnabled(reset)
         self.slider1.setEnabled(sl1)
         self.slider2.setEnabled(sl2)
         self.slider3.setEnabled(sl3)
-    def set_enabled_selection_n(self,start=False,det_am=False,audio_out_chn=False,cnt_sl=False,theme=False,new_cal=False,load_cal=False,start_default=False,stop=False,play=False,sl1=False,sl2=False,sl3=False):
+    def set_enabled_selection_n(self,start=False,det_am=False,audio_out_chn=False,cnt_sl=False,theme=False,new_cal=False,load_cal=False,start_default=False,stop=False,play=False,reset=False,sl1=False,sl2=False,sl3=False):
         self.button_start.setEnabled(start)
         self.select_audio_output.setEnabled(audio_out_chn)
         self.select_theme.setEnabled(theme)
@@ -350,6 +353,7 @@ class View(QtGui.QWidget):
         self.button_start_default.setEnabled(start_default)
         self.button_stop.setEnabled(stop)
         self.button_play.setEnabled(play)
+        self.button_reset.setEnabled(reset)
         self.slider1.setEnabled(sl1)
         self.slider2.setEnabled(sl2)
         self.slider3.setEnabled(sl3)

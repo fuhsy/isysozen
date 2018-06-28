@@ -25,7 +25,6 @@ def four_point_transform(image, pts):
     #hide this and show in QTLabel Panel
     #cv2.imshow('warped',warped)
 
-
     # return the warped image
     return warped
 

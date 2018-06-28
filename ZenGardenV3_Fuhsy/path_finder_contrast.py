@@ -3,7 +3,7 @@ import cv2
 import numpy as np
 import math
 from math import atan2,degrees
-import statistics
+# import statistics
 
 class PathFinder():
     def __init__(self):
@@ -16,7 +16,7 @@ class PathFinder():
         self.img_mid_point = Point(640/2,480/2)
         self.current_point = [100,200]
         self.previous_angle = 0
-        self.speed = 0
+        self.speed = 50
 
     # This func is called every Frame and realizes the movement through the sand lines
     def finder(self,img):
@@ -42,7 +42,7 @@ class PathFinder():
                         median_list.append(j)
             if median_list:
 
-                self.average_direction = statistics.median(median_list)
+                self.average_direction = np.median(median_list)
 
             else:
                 self.average_direction = self.detecting_angle/2
@@ -60,8 +60,8 @@ class PathFinder():
         self.current_point[1] = np.int0(self.current_point[1]+(self.radius*dir_path_y_norm/(self.radius/self.mov_step)))
         path_len_x = np.int0(self.current_point[0]+(self.radius*dir_path_x_norm))
         path_len_y = np.int0(self.current_point[1]+(self.radius*dir_path_y_norm))
-        img = cv2.line(img, current_point_tuple, (path_len_x,path_len_y), (0,200,0),4)
-        img = cv2.circle(img, current_point_tuple, self.radius+2, (0,0,255), 5)
+        img = cv2.line(img, current_point_tuple, (path_len_x,path_len_y), (0,200,0),3)
+        img = cv2.circle(img, current_point_tuple, self.radius+2, (0,0,255), 2)
         return img
 
     def check_angle(self,j):
