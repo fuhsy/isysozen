@@ -8,7 +8,7 @@ from time import sleep
 from random import randint
 
 class AudioController():
-    def __init__(self,n_out_channel, theme, output_device_index=0):
+    def __init__(self,n_out_channel, theme, output_device_index=0,width=640, height=420):
         print"init Audio Controller"
         print"Server started with",n_out_channel,"Ouput Channels"
         self.SNDS_PATH = 'soundfiles/'
@@ -26,6 +26,7 @@ class AudioController():
         self.n_sound = 2
         self.offset_hit_stone = 5 #in Seconds
         self.radius_thresh = 5
+        self.panning_main = [0.5,0.5,0.5,0.5]
         for i in range(0,self.n_sound):
             self.mixer.append(Mixer(outs=n_out_channel))
         self.init_sfplayers()
@@ -37,8 +38,8 @@ class AudioController():
         self.panning = None
         # Just Test Image
         # real image should have 600x400
-        self.img_width = float(1270)
-        self.img_height = float(972)
+        self.img_width = float(width)
+        self.img_height = float(height)
         self.stone_feat = None
 
         self.n_out_channel = 4
@@ -52,19 +53,17 @@ class AudioController():
             # self.setAmplitude(i,0
 
     def restart_all(self):
-        self.panning = [0.5,0.5,0.5,0.5]
-        for i in range(0,len(self.mixer)):
-            for j in range(0,self.n_out_channel):
-                self.mixer[i].setAmp(0,j,self.panning[j])
+        for j in range(0,self.n_out_channel):
+            self.mixer[0].setAmp(0,j,self.panning_main[j])
     #         self.mixer[i].play()
     #         self.mixer[i].out()
     #cur_position is norm starting top left (0,1)
     # sound_active_key which sound should be played
     def playAmbient(self):
-        self.panning = [0.5,0.5,0.5,0.5]
         self.mixer[0].out()
         for j in range(0,self.n_out_channel):
-            self.mixer[0].setAmp(0,j,self.panning[j])
+            self.mixer[0].setAmp(0,j,self.panning_main[j])
+        # self.mixer[0].setAmp(0,3,self.panning[1])
 
     def interact(self,cur_position):
         float_x = float(cur_position[0])
@@ -84,26 +83,32 @@ class AudioController():
                 self.panning = p.panner("quad_square",pos_x,pos_y)
                 # self.hit_stone = SfPlayer(self.SNDS_PATH+self.theme.getSoundFile(1),interp=3)
                 self.mixer[1].delInput(0)
-                self.hit_stone = SfPlayer(self.SNDS_PATH+self.theme.getSoundFile(randint(1,3)),interp=3)
+                self.hit_stone = SfPlayer(self.SNDS_PATH+self.theme.getSoundFile(randint(1,5)),interp=3)
+                # print 'cur_posx',float_x,' cur_posy: ', float_y
+                # print self.panning,' posx:',pos_x ,' posy: ',pos_y
                 self.mixer[1].addInput(0,self.hit_stone)
                 self.mixer[1].out()
-                print self.mixer[1].isPlaying()
+                # print self.panning
                 self.setAmplitude(1,self.panning)
-                print 'Hit Stone %f',self.mixer[1].time
+                # self.setAmplitude(0,self.panning)
+                # print 'Black Stone Detected'
                 t = Timer(self.offset_hit_stone, self.hit_delay)
                 t.start()
                 break
 
     def init_sfplayers(self):
-        self.s_background_theme = SfPlayer(self.SNDS_PATH+self.theme.getSoundFile(1),loop= True,interp=3)
-        self.hit_stone = SfPlayer(self.SNDS_PATH+self.theme.getSoundFile(randint(1,3)),interp=3)
+        self.s_background_theme = SfPlayer(self.SNDS_PATH+self.theme.getSoundFile(0),loop= True)
+        self.hit_stone = SfPlayer(self.SNDS_PATH+self.theme.getSoundFile(randint(1,5)),interp=3)
 
 
     def hit_delay(self):
         self.inStone = False;
-        print "delay passed"
+        # print "delay passed"
     def init_stone_feat(self,stone_feat):
         self.stone_feat = stone_feat
+    def shutdown(self):
+        self.s.stop()
+        self.s.shutdown()
 
     def distance(self,p1,p2):
         distance = sqrt( ((p1[0]-p2[0])**2)+((p1[1]-p2[1])**2) )

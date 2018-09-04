@@ -7,23 +7,37 @@ from math import atan2,degrees
 
 class PathFinder():
     def __init__(self):
+        self.auto_slider = False
         self.radius = 20
+        self.radius_slider = 20
+        self.radius_temp = self.radius_slider
         self.detecting_angle = 60
+        self.detecting_angle_slider = 60
         self.px_thresh = 100
         self.average_direction  = 0
         self.mov_step = 3
         self.col_px = []
-        self.img_mid_point = Point(640/2,480/2)
+        self.img_mid_point = Point(442/2,393/2)
         self.current_point = [100,200]
         self.previous_angle = 0
-        self.speed = 50
+        self.speed = 20
 
     # This func is called every Frame and realizes the movement through the sand lines
-    def finder(self,img):
+    def finder(self,img,stone_features):
 
         self.average_direction  = 0
+
         current_point_tuple = (self.current_point[0],self.current_point[1])
         current_point_t = Point(self.current_point[0],self.current_point[1])
+        # stone_distance_thresh = 200
+        # stone_gravity_angle = 0
+        # for stone in stone_features:
+        #     stone_pos = (stone[0],stone[1])
+        #     stone_distance = distance(current_point_tuple,stone_pos)
+        #     if stone_distance < stone_distance_thresh:
+        #         stone_point_t = Point(stone[0],stone[1])
+        #         stone_gravity_angle = GetAngleOfLineBetweenTwoPoints(current_point_t,stone_point_t)
+
         median_list = []
         width = img.shape[1]
         height = img.shape[0]
@@ -38,14 +52,25 @@ class PathFinder():
                     px_x_norm,px_y_norm = self.path_direction(temp_iter_angle)
                     self.col_px = [np.int0(self.current_point[0]+((self.radius/i)*px_x_norm)),np.int0(self.current_point[1]+((self.radius/i)*px_y_norm))]
                     px_value = img[self.col_px[1],self.col_px[0]]
-                    if px_value[0] > self.px_thresh:
+                    # do not detect stone with specific color
+                    px_value_sum = px_value[0]+px_value[1]+px_value[2]
+                    if px_value_sum > self.px_thresh:
                         median_list.append(j)
             if median_list:
 
                 self.average_direction = np.median(median_list)
 
+                if self.auto_slider:
+                    self.radius = self.radius_slider
+                    self.radius_temp = self.radius_slider
+                    self.detecting_angle = self.detecting_angle_slider
+
             else:
                 self.average_direction = self.detecting_angle/2
+                if self.auto_slider:
+                    self.radius_temp = self.radius_temp+0.2
+                    self.radius = int(self.radius_temp)
+                    self.detecting_angle = self.detecting_angle+1
             div_angle = self.check_angle(self.average_direction)
 
             self.previous_angle = div_angle
@@ -88,6 +113,9 @@ class PathFinder():
             return degrees(atan2(yDiff, xDiff))
     def set_current_point(self,x,y):
         self.current_point = [x,y]
+    def distance(p1,p2):
+        distance = math.sqrt( ((p1[0]-p2[0])**2)+((p1[1]-p2[1])**2) )
+        return distance
 class Point():
     def __init__(self,x=None,y=None):
         self.x = x or 0

@@ -2,7 +2,7 @@ import sys
 print (sys.version)
 import view as v
 import controller as c
-import cv2
+# import cv2
 
 
 def main():

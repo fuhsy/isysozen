@@ -31,6 +31,10 @@ from pyo import pa_get_output_devices,pa_get_output_max_channels
 import usb
 
 class View(QtGui.QWidget):
+    def __del__(self):
+        self.cap.release()
+        super(QtGui.QWidget, self).deleteLater()
+
     def __init__(self, *args):
         self.app = QtGui.QApplication(sys.argv)
         super(QtGui.QWidget, self).__init__()
@@ -47,7 +51,7 @@ class View(QtGui.QWidget):
         self.sampleinterval = 0.1
         self.brightness_v = 0
         self.timewindow=10
-        self.size = (600,400)
+        self.size = (800,600)
         self.layout = QtGui.QGridLayout()
         self.w = QtGui.QWidget()
         self.w.setMinimumHeight(480)
@@ -77,6 +81,7 @@ class View(QtGui.QWidget):
         self.button_play = QtGui.QPushButton('Start')
         self.button_reset = QtGui.QPushButton('Reset Scene')
         self.button_new_cal = QtGui.QPushButton('New Calibration')
+        self.auto_checkbox = QtGui.QCheckBox('Auto Slider')
         self.slider1 = QtGui.QSlider(QtCore.Qt.Horizontal)
         self.slider2 = QtGui.QSlider(QtCore.Qt.Horizontal)
         self.slider3 = QtGui.QSlider(QtCore.Qt.Horizontal)
@@ -86,7 +91,7 @@ class View(QtGui.QWidget):
         self.txtslider3 = QtGui.QLabel('Detecting Angle')
         self.contour_slider_txt = QtGui.QLabel('Contour Detection')
         self.detector_amount_txt = QtGui.QLabel('                                             Amount of Detectors')
-        self.plt = pg.PlotWidget(title='Lightning Condictions')
+        self.plt = pg.PlotWidget(title='Lightning Conditions')
         self.plt.setFixedWidth(300)
         self.plt.setRange(yRange=[0.9,1.8])
         self.plt.resize(*self.size)
@@ -100,7 +105,7 @@ class View(QtGui.QWidget):
         self.slider3.setFixedWidth(300)
         self.slider3.setRange(2,120)
         self.contour_slider.setFixedWidth(300)
-        self.contour_slider.setRange(1,100)
+        self.contour_slider.setRange(0,40)
         self.txtslider1.setFixedWidth(300)
         self.txtslider2.setFixedWidth(300)
         self.txtslider3.setFixedWidth(300)
@@ -144,6 +149,8 @@ class View(QtGui.QWidget):
         self.layout.addWidget(self.button_play,self.widget_pos,0)
         self.widget_pos+=1
         self.layout.addWidget(self.button_reset,self.widget_pos,0)
+        self.widget_pos+=1
+        self.layout.addWidget(self.auto_checkbox,self.widget_pos,0)
         self.widget_pos+=1
         self.layout.addWidget(self.contour_slider_txt,self.widget_pos,0)
         self.widget_pos+=1
@@ -213,6 +220,7 @@ class View(QtGui.QWidget):
         self.slider1.setEnabled(False)
         self.slider2.setEnabled(False)
         self.slider3.setEnabled(False)
+        self.button_reset.setEnabled(False)
         self.controller = None
         self.w.show()
 
@@ -232,6 +240,7 @@ class View(QtGui.QWidget):
         self.slider1.sliderReleased.connect(lambda: self.controller.threshold_slider1())
         self.slider2.sliderReleased.connect(lambda: self.controller.threshold_slider2())
         self.slider3.sliderReleased.connect(lambda: self.controller.threshold_slider3())
+        self.auto_checkbox.clicked.connect(lambda: self.controller.auto_slider())
         self.contour_slider.sliderReleased.connect(lambda: self.controller.contour_config())
 
 
@@ -240,7 +249,7 @@ class View(QtGui.QWidget):
         #Speed Slider Default Value to max
         self.slider2.setValue(50)
         self.slider3.setValue(angle)
-        self.contour_slider.setValue(50)
+        self.contour_slider.setValue(20)
 
 
     def getBrightness(self):
@@ -313,6 +322,7 @@ class View(QtGui.QWidget):
     def set_theme_box(self,theme):
         for k,v in theme.type.items():
             self.select_theme.addItem(k)
+
     def Cancel(self):
         print('closed')
         #self.close()

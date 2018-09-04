@@ -56,7 +56,7 @@ def getFeatures(img,contour_value):
     blob_im = cv2.dilate(blob_im,kernel,iterations = 15)
 
 
-    stone_features = dstones.blob_detection3(blob_im)
+    stone_features = dstones.blob_detection(blob_im)
     # cv2.imshow("stones",blob_im)
     # coordinates = dstones.getCoordinates(keypoints)
 
@@ -64,80 +64,82 @@ def getFeatures(img,contour_value):
     # print
     #Find contours at a constant value of 0.8
     # contours1 = measure.find_contours(im, 0.8)
-    image, contours, hierarchy = cv2.findContours(im,cv2.RETR_EXTERNAL,cv2.CHAIN_APPROX_SIMPLE)
-    im = cv2.cvtColor(im, cv2.COLOR_GRAY2RGB)
-    count = 0
-
-    # for i in range(len(coordinates)):
-    #     cv2.circle(im,(coordinates[i,0],coordinates[i,1]),int(keypoints[i].size),(255,0,255),1)
-    #     print "Keypoint %i P1:%i, P2:%i"%(i,coordinates[i,0],coordinates[i,1])
-
-    # cv2.imshow("Blob_pre_image", blob_im)
-
-    for cnt in contours:
-        if cv2.contourArea(cnt) > 50 and cv2.contourArea(cnt) < 30000:
-            p1 = Point(0,0)
-            p2 = Point(0,0)
-
-            hull = cv2.convexHull(cnt)
-            x,y,w,h = cv2.boundingRect(cnt)
-            # cv2.rectangle(im,(x,y),(x+w,y+h),(0,255,0),2)
-            rect = cv2.minAreaRect(cnt)
-            box = cv2.boxPoints(rect)
-            box = np.int0(box)
-            a,b,c,d = box
-            rect = perspective.order_points(box)
-            box_side1 = distance(rect[0],rect[1])
-            box_side2 = distance(rect[0],rect[3])
-            if box_side1 < box_side2:
-
-                p1.x = (rect[0][0] + rect[1][0])/2
-                p1.y = (rect[0][1] + rect[1][1])/2
-                p2.x = (rect[2][0] + rect[3][0])/2
-                p2.y = (rect[2][1] + rect[3][1])/2
-                line_len = box_side1
-                #1 for max curvyness and ... 0 for straight line
-                line_curvyness = 1/(box_side2/box_side1)
-                # cv2.line(im, (midpoint1), (midpoint2), (0, 255, 0), thickness=3, lineType=8)
-            else:
-                p1.x = (rect[0][0] + rect[3][0])/2
-                p1.y = (rect[0][1] + rect[3][1])/2
-                p2.x = (rect[2][0] + rect[1][0])/2
-                p2.y = (rect[2][1] + rect[1][1])/2
-                line_len = box_side2
-                line_curvyness = 1/(box_side1/box_side2)
-
-            p1.x = np.int0(p1.x)
-            p1.y = np.int0(p1.y)
-            p2.x  = np.int0(p2.x)
-            p2.y = np.int0(p2.y)
-
-            boxArea = box_side1 * box_side2
-            area_proportion = 2
-            if boxArea > (area_proportion*cv2.contourArea(cnt)):
-                if boxArea < 50000:
-                    line_angle = GetAngleOfLineBetweenTwoPoints(p1,p2)
-                    line_mid_point = GetMidPoint(p1,p2)
-                    line_features = LineFeatures(line_mid_point,line_len,line_angle,line_curvyness,p1,p2)
-                    # print 'p1: %f%f P2: %f%f' %(p1.x,p1.y,p2.x,p2.y)
-                    # print line_angle
-                    # line_features.__init__(line_mid_point,line_len,line_angle,line_curvyness)
-                    features.append(line_features)
-                    # im = cv2.line(im, (p1.x,p1.y), (p2.x,p2.y), (0,255,0),4)
-                    # cv2.drawContours(im,[box],0,(0,0,255),2)
-                    # cv2.putText(im,str(cv2.contourArea(cnt)),(p1.x+5,p1.y+5), font, 0.8,(0,0,255),2,cv2.LINE_AA)
-            count += 1
-
-    noisy_area = 0
+    # image, contours, hierarchy = cv2.findContours(im,cv2.RETR_EXTERNAL,cv2.CHAIN_APPROX_SIMPLE)
+    # im = cv2.cvtColor(im, cv2.COLOR_GRAY2RGB)
+    # count = 0
+    #
+    # # for i in range(len(coordinates)):
+    # #     cv2.circle(im,(coordinates[i,0],coordinates[i,1]),int(keypoints[i].size),(255,0,255),1)
+    # #     print "Keypoint %i P1:%i, P2:%i"%(i,coordinates[i,0],coordinates[i,1])
+    #
+    # # cv2.imshow("Blob_pre_image", blob_im)
+    #
+    # for cnt in contours:
+    #     if cv2.contourArea(cnt) > 50 and cv2.contourArea(cnt) < 30000:
+    #         p1 = Point(0,0)
+    #         p2 = Point(0,0)
+    #
+    #         hull = cv2.convexHull(cnt)
+    #         x,y,w,h = cv2.boundingRect(cnt)
+    #         # cv2.rectangle(im,(x,y),(x+w,y+h),(0,255,0),2)
+    #         rect = cv2.minAreaRect(cnt)
+    #         box = cv2.boxPoints(rect)
+    #         box = np.int0(box)
+    #         a,b,c,d = box
+    #         rect = perspective.order_points(box)
+    #         box_side1 = distance(rect[0],rect[1])
+    #         box_side2 = distance(rect[0],rect[3])
+    #         if box_side1 < box_side2:
+    #
+    #             p1.x = (rect[0][0] + rect[1][0])/2
+    #             p1.y = (rect[0][1] + rect[1][1])/2
+    #             p2.x = (rect[2][0] + rect[3][0])/2
+    #             p2.y = (rect[2][1] + rect[3][1])/2
+    #             line_len = box_side1
+    #             #1 for max curvyness and ... 0 for straight line
+    #             line_curvyness = 1/(box_side2/box_side1)
+    #             # cv2.line(im, (midpoint1), (midpoint2), (0, 255, 0), thickness=3, lineType=8)
+    #         else:
+    #             p1.x = (rect[0][0] + rect[3][0])/2
+    #             p1.y = (rect[0][1] + rect[3][1])/2
+    #             p2.x = (rect[2][0] + rect[1][0])/2
+    #             p2.y = (rect[2][1] + rect[1][1])/2
+    #             line_len = box_side2
+    #             line_curvyness = 1/(box_side1/box_side2)
+    #
+    #         p1.x = np.int0(p1.x)
+    #         p1.y = np.int0(p1.y)
+    #         p2.x  = np.int0(p2.x)
+    #         p2.y = np.int0(p2.y)
+    #
+    #         boxArea = box_side1 * box_side2
+    #         area_proportion = 2
+    #         if boxArea > (area_proportion*cv2.contourArea(cnt)):
+    #             if boxArea < 50000:
+    #                 line_angle = GetAngleOfLineBetweenTwoPoints(p1,p2)
+    #                 line_mid_point = GetMidPoint(p1,p2)
+    #                 line_features = LineFeatures(line_mid_point,line_len,line_angle,line_curvyness,p1,p2)
+    #                 # print 'p1: %f%f P2: %f%f' %(p1.x,p1.y,p2.x,p2.y)
+    #                 # print line_angle
+    #                 # line_features.__init__(line_mid_point,line_len,line_angle,line_curvyness)
+    #                 features.append(line_features)
+    #                 # im = cv2.line(im, (p1.x,p1.y), (p2.x,p2.y), (0,255,0),4)
+    #                 # cv2.drawContours(im,[box],0,(0,0,255),2)
+    #                 # cv2.putText(im,str(cv2.contourArea(cnt)),(p1.x+5,p1.y+5), font, 0.8,(0,0,255),2,cv2.LINE_AA)
+    #         count += 1
+    color_im = cv2.cvtColor(im,cv2.COLOR_GRAY2RGB)
+    noisy_area = 20
+    print 'for feat in stone_features: finish'
     for feat in stone_features:
-        cv2.circle(im,(feat.center),(feat.radius+noisy_area),(0,0,0),-1)
+        cv2.circle(color_im,(feat.center),(feat.radius+noisy_area),(0,0,0),-1)
+        cv2.circle(color_im,(feat.center),(feat.radius),(243,41,41),-1)
     # get mix image real and filtered
     # stencil = np.zeros(im.shape).astype(im.dtype)
     # color = [255, 255, 255]
     # cv2.fillPoly(stencil, contours, color)
     # result = cv2.bitwise_and(img2, stencil)
 
-    return features,stone_features,im
+    return features,stone_features,color_im
 
 def distance(p1,p2):
     distance = math.sqrt( ((p1[0]-p2[0])**2)+((p1[1]-p2[1])**2) )

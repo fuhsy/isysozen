@@ -8,16 +8,16 @@ from PyQt4 import QtGui
 from PyQt4.QtGui import QImage,QPixmap
 import pyqtgraph as pg
 import PyQt4.QtCore as QtCore
-import re
+# import re
 import subprocess
-import os
+# import os
 import numpy as np
 from matplotlib import pyplot as plt
-from PIL import Image, ImageStat
+# from PIL import Image, ImageStat
 from matplotlib import style
 from collections import deque
 # import pylabacsca
-import collections
+# import collections
 import random
 import math
 import callibration
@@ -33,7 +33,7 @@ import audio_controller as actrl
 import audio_theme as atheme
 from pyo import pa_get_output_devices,pa_get_output_max_channels
 import usb
-from thread import start_new_thread
+# from thread import start_new_thread
 from random import randint
 
 class Controller():
@@ -52,7 +52,7 @@ class Controller():
         self.path_finder_max = 5
         for i in range(0,self.path_finder_max):
             self.path_finder.append(pfc.PathFinder())
-            self.path_finder[i].set_current_point(randint(10,500),randint(10,400))
+            self.path_finder[i].set_current_point(randint(10,300),randint(10,400))
             # print self.path_finder[i].current_point
 
         view.setSliderDefault()
@@ -80,6 +80,7 @@ class Controller():
         self.setDefaultSoundDevice()
         try:
             self.view.set_enabled_selection(stop=False,play=False)
+            # Camera index -> default to 1 (left macbook pro usb port)
             self.cap = cv2.VideoCapture(1)
             self.cap.set(cv2.CAP_PROP_FRAME_HEIGHT,480)
             self.cap.set(cv2.CAP_PROP_FRAME_WIDTH,640)
@@ -103,6 +104,7 @@ class Controller():
             self.view.setListInfo('Camera Activation failed')
 
     def start_default_image(self):
+        self.cap.release()
         self.view.set_enabled_selection(start=False,cnt_sl=True,audio_out_chn=False,theme=False,new_cal=False,load_cal=False,start_default=False)
         # self.view.set_enabled_selection(new_cal=False,load_cal=False,stop=True,play=True)
         self.path_timer = QtCore.QTimer()
@@ -123,29 +125,34 @@ class Controller():
             self.path_timer.stop()
             self.audio_controller.stop_all()
         else:
+            # print self.path_finder[0].speed
             self.path_timer.start(self.path_finder[0].speed)
             self.audio_controller.restart_all()
 
     def play(self):
         n_out_channel = pa_get_output_max_channels(self.output_device_index+1)
-        self.audio_controller = actrl.AudioController(n_out_channel, self.theme,self.output_device_index)
-        # self.audio_controller.playAmbient()
+        self.audio_controller = actrl.AudioController(n_out_channel, self.theme,self.output_device_index, self.view.im_show.shape[0],self.view.im_show.shape[1])
         self.audio_controller.init_stone_feat(self.stone_feat)
+        self.audio_controller.playAmbient()
         self.path_timer.timeout.connect(self.follow_garden)
-        self.path_timer.start(1./self.camera.fps)
-        self.view.set_enabled_selection_n(stop=True,reset=True,sl1=True,sl2=True,sl3=True)
+        self.path_timer.start(1000./(float(self.view.slider2.value())))
+        self.view.set_enabled_selection_n(stop=True,cnt_sl=True,reset=True,sl1=True,sl2=True,sl3=True)
+        self.view.button_reset.setEnabled(True)
 
 
     def reset(self):
         self.path_timer.stop()
+        self.audio_controller.shutdown()
         self.start()
+        self.view.button_reset.setEnabled(False)
 
     def new_calibration(self):
         #self.edgeDetectionApproach()
         self.timer.stop()
         self.cap.release()
 
-        self.img = self.camera.frame.copy()
+        # self.img = self.camera.frame.copy()
+        self.img = self.camera.frame
         print self.img.shape
         cv2.namedWindow('image')
         cv2.imshow('image',self.img)
@@ -159,7 +166,7 @@ class Controller():
         # cv2.imshow('image',self.img)
         # cv2.waitKey(0)
         if event == cv2.EVENT_LBUTTONUP:
-            cv2.circle(self.img,(x,y),6,(255,255,255),2)
+            cv2.circle(self.img,(x,y),2,(255,255,255),2)
             print x,' , ',y
             mouseX,mouseY = x,y
             temparr = [x,y]
@@ -172,27 +179,28 @@ class Controller():
                 self.calibration_pts = self.calibration_pts.astype(int)
                 warped = callibration.four_point_transform(self.img,self.calibration_pts)
                 np.save('caldata.npy', self.calibration_pts)
-                self.load_calibration()
+                # self.load_calibration()
 
     def load_calibration(self):
-
         try:
             self.timer.stop()
             self.cap.release()
             self.cal_pts = np.load('caldata.npy')
             print self.cal_pts
             warped = callibration.four_point_transform(self.camera.frame,self.cal_pts)
-            self.camera.frame = warped
+
+            # print warped.shape
+            self.camera.frame = warped.copy()
             self.path_timer = QtCore.QTimer()
             # self.camera.frame = cv2.flip(self.camera.frame,0)
             # self.camera.frame = cv2.flip(self.camera.frame,1)
             self.feat,self.stone_feat,self.view.im_show = ds.getFeatures(warped,self.contour_config_v)
             self.view.qImage_show(self.view.im_show)
             self.view.setListInfo('Calibration Loaded')
-            self.view.set_enabled_selection(start=False,stop=False,audio_out_chn=False,theme=False,new_cal=False,load_cal=False,start_default=False)
+            self.view.set_enabled_selection(start=False,stop=False,audio_out_chn=False,theme=False,new_cal=False,load_cal=False,start_default=False,reset=False)
 
         except Exception, e:
-            self.new_calibration()
+            # self.new_calibration()
             self.view.setListInfo('Calibration Loading failed')
 
         # finally:
@@ -203,7 +211,21 @@ class Controller():
         #     # self.path_timer.timeout.connect(self.follow_garden)
         #     # self.path_timer.start(1./self.camera.fps)
         #     self.view.button_reset.setEnabled(True)
-
+    def auto_slider(self):
+        if self.view.auto_checkbox.isChecked():
+            for i in range(0,self.path_finder_max):
+                self.path_finder[i].auto_slider = True
+            self.view.contour_slider.setEnabled(False)
+            self.view.slider1.setEnabled(False)
+            self.view.slider2.setEnabled(False)
+            self.view.slider3.setEnabled(False)
+        else:
+            for i in range(0,self.path_finder_max):
+                self.path_finder[i].auto_slider = False
+            self.view.contour_slider.setEnabled(True)
+            self.view.slider1.setEnabled(True)
+            self.view.slider2.setEnabled(True)
+            self.view.slider3.setEnabled(True)
     def threshold_slider1(self):
         for i in range(0,self.view.detector_amount.value()):
             self.path_finder[i].radius  = self.view.slider1.value()
@@ -217,9 +239,9 @@ class Controller():
         self.path_timer.stop()
         for i in range(0,self.view.detector_amount.value()):
             # self.path_finder[i].mov_step =self.view.slider2.value()
-            self.path_finder[i].speed = 1000./(float(self.view.slider2.value()*10))
+            self.path_finder[i].speed = 1000./(float(self.view.slider2.value()))
+            # print self.path_finder[0].speed
         self.path_timer.start(self.path_finder[0].speed)
-        print self.path_finder[0].speed
         # self.path_timer.setInterval(self.slider2.value())
 
     def threshold_slider3(self):
@@ -230,13 +252,17 @@ class Controller():
 
     def contour_config(self):
         self.contour_config_v = int(self.view.contour_slider.value()/10.)
+        # print type(self.camera.frame)
+        # self.camera.frame = np.array(self.camera.frame, dtype=np.ndarray)
+        # self.camera.frame.astype(np.ndarray)
+        # print type(self.camera.frame)
         try:
             self.feat,self.stone_feat,self.view.im_show  = ds.getFeatures(self.camera.frame,self.contour_config_v)
             self.view.qImage_show(self.view.im_show)
-            # print 'try'
         except:
-            self.feat,self.stone_feat,self.view.im_show = ds.getFeatures(self.view.im,self.contour_config_v)
-            self.view.qImage_show(self.view.im_show)
+            print 'no contour image'
+            # self.feat,self.stone_feat,self.view.im_show = ds.getFeatures(self.view.im,self.contour_config_v)
+            # self.view.qImage_show(self.view.im_show)
             # print 'except'
         # self.view.qImage_show(self.view.im_show)
 
@@ -250,11 +276,13 @@ class Controller():
             # mean_brightness_div = 0
             # max_brightness = 4
             _ , self.camera.frame = self.cap.read()
+            self.camera.frame = cv2.flip(self.camera.frame,0)
+            self.camera.frame = cv2.flip(self.camera.frame,1)
             # self.snap_delay_time = time.time()
             self.view.qImage_show(self.camera.frame)
 
         except Exception, e:
-            self.view.setListInfo('Camera Activation failed')
+            # self.view.setListInfo('Camera Activation failed')
             self.timer.stop()
             self.cap.release()
 
@@ -301,11 +329,11 @@ class Controller():
             # img_garden_copy = self.camera.frame.copy()
             img_garden_copy = self.view.im_show.copy()
         except:
-            self.reset()
+            self.audio_controller.stop()
         finally:
-            garden_update_img = self.path_finder[0].finder(img_garden_copy)
+            garden_update_img = self.path_finder[0].finder(img_garden_copy,self.stone_feat)
             for i in range(1,self.view.detector_amount.value()):
-                garden_update_img = self.path_finder[i].finder(garden_update_img)
+                garden_update_img = self.path_finder[i].finder(garden_update_img,self.stone_feat)
                 self.audio_controller.interact(self.path_finder[i].current_point)
             self.audio_controller.interact(self.path_finder[0].current_point)
 
