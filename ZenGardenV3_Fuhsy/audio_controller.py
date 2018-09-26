@@ -43,6 +43,8 @@ class AudioController():
         self.stone_feat = None
 
         self.n_out_channel = 4
+    # def __del__(self):
+    #     self.s.close()
     def setAmplitude(self,mixkey,panning):
         for i in range(0,self.n_out_channel):
             self.mixer[mixkey].setAmp(0,i,panning[i])
@@ -95,6 +97,12 @@ class AudioController():
                 t = Timer(self.offset_hit_stone, self.hit_delay)
                 t.start()
                 break
+
+    def fadeout(self):
+        for i in range (100):
+            self.panning = self.panning - 0.01
+            self.mixer[1].setAmplitude(1,self.panning)
+
 
     def init_sfplayers(self):
         self.s_background_theme = SfPlayer(self.SNDS_PATH+self.theme.getSoundFile(0),loop= True)

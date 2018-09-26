@@ -6,7 +6,7 @@ class Camera():
         self.mean_brightness_div = 0
         self.max_brightness = 4
         self.frame = None
-        self.fps = 50
+        self.fps = 1
     def setFPS(self,n):
         self.fps = n
         # self.snap_delay_time = time.time()

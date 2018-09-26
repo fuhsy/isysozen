@@ -16,5 +16,5 @@ class AudioEngine():
         self.client.send(bundle)
 
 
-audio = AudioEngine()
-audio.playOSC(0, [0.2, 0.3, 0.4, 0.5], 1.)
+# audio = AudioEngine()
+# audio.playOSC(0, [0.2, 0.3, 0.4, 0.5], 1.)

@@ -54,9 +54,9 @@ def getFeatures(img,contour_value):
 
     blob_im = cv2.erode(blob_im,kernel,iterations = 15)
     blob_im = cv2.dilate(blob_im,kernel,iterations = 15)
-
-
-    stone_features = dstones.blob_detection(blob_im)
+    hsv2rgb = cv2.cvtColor(hsv, cv2.COLOR_HSV2RGB)
+    # hsvim = cv2.merge((h,s,blob_im))
+    stone_features = dstones.blob_detection(blob_im,img,hsv)
     # cv2.imshow("stones",blob_im)
     # coordinates = dstones.getCoordinates(keypoints)
 

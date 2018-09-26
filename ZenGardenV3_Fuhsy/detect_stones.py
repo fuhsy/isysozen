@@ -1,13 +1,34 @@
 import cv2
 import numpy as np
+import copy
 
 class StoneFeatures():
-    def __init__(self,center,radius):
+    def __init__(self,center,radius,theme):
         self.center = center
         self.radius = radius
+        self.theme = theme
 
 
-def blob_detection(img):
+
+
+def blob_detection(img,img_col,hsv):
+    color_img = copy.copy(img_col)
+    # boundaries = [
+    # 	([17, 15, 100], [50, 56, 200]),
+    # 	([86, 31, 4], [220, 88, 50]),
+    # 	([25, 146, 190], [62, 174, 250]),
+    # 	([103, 86, 65], [145, 133, 128])
+    # ]
+    lower_blue = np.array([0, 100, 100])
+    upper_blue = np.array([80, 255, 255])
+    # for (lower,upper) in boundaries:
+    # lower_blue = np.array(lower_blue, dtype = "uint8")
+    # upper_blue = np.array(upper_blue, dtype = "uint8")
+    mask = cv2.inRange(hsv, lower_blue, upper_blue)
+    output = cv2.bitwise_and(color_img, color_img, mask = mask)
+    cv2.imshow("2", output)
+    cv2.waitKey(0)
+    # h,s,img = cv2.split(img)
     print 'blob detection'
     kernel = np.ones((3,3),np.uint8)
     # img = cv2.dilate(img,kernel,iterations = 30)
@@ -45,17 +66,33 @@ def blob_detection(img):
     keypoints = detector.detect(255-img)
     coordinates = getCoordinates(keypoints)
     stone_features = []
+    pixelc = []
+    r=0
+    b=0
+    g=0
     for i in range(len(coordinates)):
         print "stone ",i,"detected"
         center = (coordinates[i,0],coordinates[i,1])
-        # print keypoints[i].size
         radius = int(keypoints[i].size/2)
-        stone_object = StoneFeatures(center,radius)
+        pixelc = output[center[0]:center[0]+radius,center[1]:center[1]+radius]
+        # r += pixelc[i,:,:,0]
+        r = pixelc[:,:,0]
+        g = pixelc[:,:,1]
+        b = pixelc[:,:,2]
+        # print r.size
+        print sum_ret(r)
+        # print sum(g))
+        # print sum(sum(b))
+        stone_object = StoneFeatures(center,radius,'RED')
         stone_features.append(stone_object)
     #     cv2.circle(img,(coordinates[i,0],coordinates[i,1]),int(keypoints[i].size),(255,0,255),1)
     #     print "Keypoint %i P1:%i, P2:%i"%(i,coordinates[i,0],coordinates[i,1])
+    # print sum(sum(r[:,:]))
     return stone_features
 
+def sum_ret(input):
+    return sum([sum(x) for x in input])
+    
 def getCoordinates(keypoints):
 	amount = len(keypoints)
 	# Find out the coordinate
