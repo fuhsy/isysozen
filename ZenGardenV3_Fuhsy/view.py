@@ -32,7 +32,7 @@ import usb
 
 class View(QtGui.QWidget):
     def __del__(self):
-        self.cap.release()
+    #     self.cap.release()
         super(QtGui.QWidget, self).deleteLater()
 
     def __init__(self, *args):
@@ -334,7 +334,7 @@ class View(QtGui.QWidget):
 
     def deleteLater(self):
         print('closed')
-        self.cap.release()
+        # self.cap.release()
         super(QtGui.QWidget, self).deleteLater()
 
     def set_enabled_selection(self,start=True,det_am=True,audio_out_chn=True,cnt_sl=True,theme=True,new_cal=True,load_cal=True,start_default=True,stop=True,play=True,reset=True,sl1=True,sl2=True,sl3=True):

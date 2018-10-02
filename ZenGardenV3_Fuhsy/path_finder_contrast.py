@@ -7,11 +7,11 @@ from math import atan2,degrees
 
 class PathFinder():
     def __init__(self):
-        self.auto_slider = False
+        self.auto_slider = True
         self.radius = 20
         self.radius_slider = 20
         self.radius_temp = self.radius_slider
-        self.detecting_angle = 60
+        self.detecting_angle = 70
         self.detecting_angle_slider = 60
         self.px_thresh = 100
         self.average_direction  = 0
@@ -21,22 +21,17 @@ class PathFinder():
         self.current_point = [100,200]
         self.previous_angle = 0
         self.speed = 20
+        self.start_radius = 20
+        self.start_radius_2 = 20
+        self.start_radius_3 = 20
 
     # This func is called every Frame and realizes the movement through the sand lines
-    def finder(self,img,stone_features):
+    def finder(self,img,stone_features,color_im):
 
         self.average_direction  = 0
 
         current_point_tuple = (self.current_point[0],self.current_point[1])
         current_point_t = Point(self.current_point[0],self.current_point[1])
-        # stone_distance_thresh = 200
-        # stone_gravity_angle = 0
-        # for stone in stone_features:
-        #     stone_pos = (stone[0],stone[1])
-        #     stone_distance = distance(current_point_tuple,stone_pos)
-        #     if stone_distance < stone_distance_thresh:
-        #         stone_point_t = Point(stone[0],stone[1])
-        #         stone_gravity_angle = GetAngleOfLineBetweenTwoPoints(current_point_t,stone_point_t)
 
         median_list = []
         width = img.shape[1]
@@ -85,9 +80,9 @@ class PathFinder():
         self.current_point[1] = np.int0(self.current_point[1]+(self.radius*dir_path_y_norm/(self.radius/self.mov_step)))
         path_len_x = np.int0(self.current_point[0]+(self.radius*dir_path_x_norm))
         path_len_y = np.int0(self.current_point[1]+(self.radius*dir_path_y_norm))
-        img = cv2.line(img, current_point_tuple, (path_len_x,path_len_y), (0,200,0),3)
-        img = cv2.circle(img, current_point_tuple, self.radius+2, (0,0,255), 2)
-        return img
+        color_im = cv2.line(color_im, current_point_tuple, (path_len_x,path_len_y), (0,200,0),3)
+        color_im = cv2.circle(color_im, current_point_tuple, self.radius+2, (0,0,255), 2)
+        return img, color_im
 
     def check_angle(self,j):
         iter_angle = (self.previous_angle-(self.detecting_angle/2))+j
@@ -97,6 +92,30 @@ class PathFinder():
             iter_angle = 360 + iter_angle
             # iter_angle = (-1*self.detecting_angle-(self.detecting_angle/2))+j
         return iter_angle
+
+    def stone_interact_view(self,img,feat):
+        if self.start_radius <= feat.radius:
+            cv2.circle(img,(feat.center),(self.start_radius),(200,200,200),2)
+            self.start_radius += 2
+        if self.start_radius > 50 and self.start_radius_2 < feat.radius:
+            cv2.circle(img,(feat.center),(self.start_radius_2),(200,200,200),2)
+            self.start_radius_2 += 2
+        if self.start_radius_2 > 50 and self.start_radius_3 < feat.radius:
+            cv2.circle(img,(feat.center),(self.start_radius_3),(200,200,200),2)
+            self.start_radius_3 += 2
+        if self.start_radius_3 >= feat.radius:
+            self.start_radius = 20
+            self.start_radius_2 = 20
+            self.start_radius_3 = 20
+            stone_trigger = True
+        else:
+            stone_trigger = False
+        return img,stone_trigger
+
+    def setStart_radius(self):
+        self.start_radius = 20
+        self.start_radius_2 = 20
+        self.start_radius_3 = 20
 
     def path_direction(self,angle):
         cos =  math.cos(math.radians(angle))
