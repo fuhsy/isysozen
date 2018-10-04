@@ -13,11 +13,8 @@ import subprocess
 # import os
 import numpy as np
 from matplotlib import pyplot as plt
-# from PIL import Image, ImageStat
 from matplotlib import style
 from collections import deque
-# import pylabacsca
-# import collections
 import random
 import math
 import callibration
@@ -36,6 +33,7 @@ import usb
 # from thread import start_new_thread
 import time
 from random import randint
+import sys
 
 class Controller():
     def __init__(self, view):
@@ -59,6 +57,8 @@ class Controller():
         self.time_stamp_activation = time.time()
         self.stop_time = time.time()
         self.start_time = time.time()
+        self.audio_controller = None
+
         for i in range(0,self.path_finder_max):
             self.path_finder.append(pfc.PathFinder())
             self.path_finder[i].set_current_point(randint(10,300),randint(10,400))
@@ -75,10 +75,24 @@ class Controller():
         self.view.set_theme_box(self.theme)
         #TODO also in main
     def __del__(self):
-        self.path_timer.stop()
-        self.timer.stop()
-        self.cap.release()
+        try:
+            self.path_timer.stop()
+        except Exception, e:
+            print 'Path Timer blocks'
+        try:
+            self.timer.stop()
+        except Exception, e:
+            print 'Flow Timer blocks'
+        try:
+            self.cap.release()
+        except Exception, e:
+            print 'Video Cap blocks'
+        sys.exit()
 
+        # from collections import namedtuple
+        # Color = namedtuple('Color',['hue','saturation','luminosity'])
+        # p = Color(170,0.1,0.6)
+        # p.saturation
 
     def setTheme(self):
         theme_index = self.view.select_theme.currentIndex()
@@ -107,7 +121,7 @@ class Controller():
 
             self.detect_delay_count = 0
             ret, self.camera.frame = self.cap.read()
-            self.timer.timeout.connect(self.view.updateplot)
+            # self.timer.timeout.connect(self.view.updateplot)
             # self.timer.start(self._interval)
             self.timer.timeout.connect(self.nextFrameSlot)
             self.timer.start(1./self.camera.fps)
@@ -150,6 +164,8 @@ class Controller():
             self.stop_flag = False
 
     def play(self):
+        if self.audio_controller:
+            self.audio_controller.fade_out_background()
         n_out_channel = pa_get_output_max_channels(self.output_device_index+1)
         self.audio_controller = actrl.AudioController(n_out_channel,self.output_device_index, self.view.im_show.shape[0],self.view.im_show.shape[1])
         self.audio_controller.init_stone_feat(self.stone_feat)

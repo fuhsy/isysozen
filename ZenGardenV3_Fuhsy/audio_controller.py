@@ -36,10 +36,11 @@ class AudioController():
         self.offset_hit_stone = 5 #in Seconds
         self.radius_thresh = 5
         self.panning_main = [0.5,0.5,0.5,0.5]
+        self.panning = [0.5,0.5,0.5,0.5]
         # for i in range(0,self.n_sound):
-        self.mixer.append(Mixer(outs=n_out_channel))
+        self.mixer.append(Mixer(outs=n_out_channel,time=1))
         for i in range(0,self.n_sound):
-            self.background_mixer.append(Mixer(outs=n_out_channel))
+            self.background_mixer.append(Mixer(outs=n_out_channel, time=2))
         # self.init_sfplayers()
         # add a mixer for each soundfile in a thome e.g. ("forest")
 
@@ -47,7 +48,7 @@ class AudioController():
         self.hit_stone = SfPlayer(random.choice(self.soundfiles_forest))
         self.mixer[0].addInput(0,self.hit_stone)
         p = pa_get_output_devices()
-        self.panning = None
+
         # Just Test Image
         # real image should have 600x400
         self.img_width = float(width)
@@ -56,9 +57,13 @@ class AudioController():
 
         self.n_out_channel = 4
         self.stone_feature = None
+        self.one_fire = True
+        self.one_forest = True
+        self.one_sea = True
 
     def __del__(self):
         self.shutdown()
+        self.s.__del__()
     # def __del__(self):
     #     self.s.close()
     #TODO
@@ -67,6 +72,7 @@ class AudioController():
             self.background_mixer[mixkey].setAmp(0,i,panning[i])
     def setAmplitude(self,mixkey,panning):
         for i in range(0,self.n_out_channel):
+            # with fading in panning
             self.mixer[mixkey].setAmp(0,i,panning[i])
     #TODO
     def stop_all(self):
@@ -158,27 +164,38 @@ class AudioController():
         self.stone_feat = stone_feat
         self.stone_feature = self.stone_feat[0]
         # self.theme = self.stone_feat.theme
-        self.mixer.append(Mixer(outs=self.n_out_channel))
+        self.mixer.append(Mixer(outs=self.n_out_channel, time=2))
         for i in range(0,len(self.stone_feat)):
             self.background_mixer.append(Mixer(outs=self.n_out_channel))
         self.hit_stone = SfPlayer(random.choice(self.soundfiles_forest))
         self.mixer[0].addInput(0,self.hit_stone)
 
         for i in range(0,len(stone_feat)):
-            if self.stone_feat[i].theme == 'RED':
+            if self.stone_feat[i].theme == 'RED' and self.one_fire:
                 self.s_background_theme = SfPlayer(self.sf_background_forest,loop= True)
                 self.hit_stone = SfPlayer(random.choice(self.soundfiles_forest),interp=3)
-            elif self.stone_feat[i].theme == 'GREEN':
+                self.one_fire = False
+            elif self.stone_feat[i].theme == 'GREEN' and self.one_forest:
                 self.s_background_theme = SfPlayer(random.choice(self.sf_background_forest),loop= True)
                 self.hit_stone = SfPlayer(random.choice(self.soundfiles_forest),interp=3)
-            elif self.stone_feat[i].theme == 'BLUE':
+                self.one_forest = False
+            elif self.stone_feat[i].theme == 'BLUE' and self.one_sea:
                 self.s_background_theme = SfPlayer(random.choice(self.sf_background_sea),loop= True)
                 self.hit_stone = SfPlayer(random.choice(self.soundfiles_forest),interp=3)
+                self.one_sea = False
             else:
                 self.s_background_theme = SfPlayer(random.choice(self.sf_background_sea),loop= True)
                 self.hit_stone = SfPlayer(random.choice(self.soundfiles_forest),interp=3)
             self.background_mixer[i].addInput(0,self.s_background_theme)
-
+        self.one_fire = True
+        self.one_forest = True
+        self.one_sea = True
+    def fade_out_background(self):
+        for mixer in self.background_mixer:
+            for i in range(0,self.n_out_channel):
+                for item in self.panning: item -= 0.05
+                mixer.setAmp(0,i,self.panning[i])
+                time.sleep(.01)
     def shutdown(self):
         self.s.stop()
         self.s.shutdown()
