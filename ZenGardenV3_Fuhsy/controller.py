@@ -34,6 +34,7 @@ import usb
 import time
 from random import randint
 import sys
+import glob
 
 class Controller():
     def __init__(self, view):
@@ -58,10 +59,11 @@ class Controller():
         self.stop_time = time.time()
         self.start_time = time.time()
         self.audio_controller = None
+        self.cap = None
 
         for i in range(0,self.path_finder_max):
             self.path_finder.append(pfc.PathFinder())
-            self.path_finder[i].set_current_point(randint(10,300),randint(10,400))
+            self.path_finder[i].set_current_point(randint(50,300),randint(50,400))
             # print self.path_finder[i].current_point
         self.snapshot_trigger = False
         view.setSliderDefault()
@@ -73,6 +75,7 @@ class Controller():
             audio_index_count = audio_index_count+1
         self.theme = audio_theme.AudioTheme('water')
         self.view.set_theme_box(self.theme)
+
         #TODO also in main
     def __del__(self):
         try:
@@ -136,21 +139,25 @@ class Controller():
 
 
     def start_default_image(self):
-        self.cap.release()
+        try:
+            self.cap.release()
+        except Exception,e:
+            print 'No Camera connected'
         self.view.set_enabled_selection(start=False,cnt_sl=True,audio_out_chn=False,theme=False,new_cal=False,load_cal=False,start_default=False)
         # self.view.set_enabled_selection(new_cal=False,load_cal=False,stop=True,play=True)
         self.path_timer = QtCore.QTimer()
+
         self.stone_feat,self.view.im_show = ds.getFeatures(self.view.im,self.contour_config_v)
         self.view.qImage_show(self.view.im_show)
         # cv2.imshow("coor",self.im)
         # n_out_channel = pa_get_output_max_channels(self.output_device_index+1)
-        # self.audio_controller = actrl.AudioController(n_out_channel, self.theme,self.output_device_index)
+        # self.audio_controller = actrl.AudioController(n_out_channel, self.output_device_index, self.view.im.shape[0],self.view.im.shape[1])
         # self.audio_controller.playAmbient()
         # self.audio_controller.init_stone_feat(self.stone_feat)
         # self.path_timer.timeout.connect(self.follow_garden)
         # self.path_timer.start(1./self.camera.fps)
-        self.view.button_reset.setEnabled(True)
-        self.view.setListInfo('Start Default Image')
+        # self.view.button_reset.setEnabled(True)
+        # self.view.setListInfo('Start Default Image')
 
     def stop_n_play(self):
         if self.path_timer.isActive():
@@ -171,16 +178,19 @@ class Controller():
         self.audio_controller.init_stone_feat(self.stone_feat)
         self.audio_controller.playAmbient()
         self.path_timer.timeout.connect(self.follow_garden)
-        self.path_timer.start(1000./(float(self.view.slider2.value())))
+        self.path_timer.start(self.path_finder[0].speed)
         self.view.set_enabled_selection_n(stop=True,cnt_sl=True,reset=True,sl1=True,sl2=True,sl3=True)
         self.view.button_reset.setEnabled(True)
         self.stop_flag_init = False
 
     def reset(self):
-        self.show_camera_image = True
         self.path_timer.stop()
         self.audio_controller.shutdown()
-        self.start()
+        if self.cap:
+            self.show_camera_image = True
+            self.start()
+        else:
+            self.view.set_enabled_selection_n(start=False,start_default=True)
         self.stop_flag_init = True
         self.view.button_reset.setEnabled(False)
 
@@ -371,7 +381,7 @@ class Controller():
             # self.path_finder[i].mov_step =self.view.slider2.value()
             self.path_finder[i].speed = 1000./(float(self.view.slider2.value()))
             # print self.path_finder[0].speed
-        self.path_timer.start(self.path_finder[0].speed)
+        self.path_timer.start()
         # self.path_timer.setInterval(self.slider2.value())
 
     def threshold_slider3(self):

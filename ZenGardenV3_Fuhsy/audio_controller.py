@@ -22,8 +22,8 @@ class AudioController():
         self.soundfiles_forest = glob.glob("soundfiles/forest/*.wav")
         self.soundfiles_sea = glob.glob("soundfiles/sea/*.wav")
         self.soundfiles_fire = glob.glob("soundfiles/fire/*.wav")
-        self.sf_background_forest = glob.glob("soundfiles/forest/forest2.wav")
-        self.sf_background_sea = glob.glob("soundfiles/sea/seaA1.wav")
+        self.sf_background_forest = glob.glob("soundfiles/forest/background/Leaf2.wav")
+        self.sf_background_sea = glob.glob("soundfiles/sea/background/Water2.wav")
         self.s.boot()
         print 'Number of Output Channels',self.s.getNchnls()
         # self.s.verbosity = 15
@@ -33,14 +33,14 @@ class AudioController():
         self.mixer = []
         self.background_mixer = []
         self.n_sound = 5
-        self.offset_hit_stone = 5 #in Seconds
+        self.offset_hit_stone = 2 #in Seconds
         self.radius_thresh = 5
         self.panning_main = [0.5,0.5,0.5,0.5]
         self.panning = [0.5,0.5,0.5,0.5]
         # for i in range(0,self.n_sound):
         self.mixer.append(Mixer(outs=n_out_channel,time=1))
         for i in range(0,self.n_sound):
-            self.background_mixer.append(Mixer(outs=n_out_channel, time=2))
+            self.background_mixer.append(Mixer(outs=n_out_channel, time=1))
         # self.init_sfplayers()
         # add a mixer for each soundfile in a thome e.g. ("forest")
 
@@ -125,6 +125,7 @@ class AudioController():
                     self.hit_stone = SfPlayer(random.choice(self.soundfiles_forest))
                 else:
                     self.hit_stone = SfPlayer(random.choice(self.soundfiles_forest))
+                print self.hit_stone.sound
                 # print 'cur_posx',float_x,' cur_posy: ', float_y
                 # print self.panning,' posx:',pos_x ,' posy: ',pos_y
                 self.mixer[0].addInput(0,self.hit_stone)

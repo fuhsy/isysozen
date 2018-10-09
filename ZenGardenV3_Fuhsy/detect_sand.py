@@ -70,13 +70,13 @@ def color_stones(color_im,stone_features):
         cv2.circle(color_im,(feat.center),(feat.radius+noisy_area),(0,0,0),-1)
         if feat.theme == 'RED':
             cv2.circle(color_im,(feat.center),(feat.radius),(41,41,150),-1)
-            cv2.putText(color_im,'FIRE',(feat.center[0]-40,feat.center[1]+10), font, 1,(255,255,255),1,cv2.LINE_AA)
+            cv2.putText(color_im,'FIRE',(feat.center[0]-20,feat.center[1]), font, 0.5,(255,255,255),1,cv2.LINE_AA)
         elif feat.theme == 'BLUE':
             cv2.circle(color_im,(feat.center),(feat.radius),(150,41,20),-1)
-            cv2.putText(color_im,'SEA',(feat.center[0]-40,feat.center[1]+10), font, 1,(255,255,255),1,cv2.LINE_AA)
+            cv2.putText(color_im,'SEA',(feat.center[0]-20,feat.center[1]), font, 0.5,(255,255,255),1,cv2.LINE_AA)
         elif feat.theme == 'GREEN':
             cv2.circle(color_im,(feat.center),(feat.radius),(41,100,41),-1)
-            cv2.putText(color_im,'FOREST',(feat.center[0]-60,feat.center[1]+10), font, 1,(255,255,255),1,cv2.LINE_AA)
+            cv2.putText(color_im,'FOREST',(feat.center[0]-30,feat.center[1]), font, 0.5,(255,255,255),1,cv2.LINE_AA)
     return color_im
 def distance(p1,p2):
     distance = math.sqrt( ((p1[0]-p2[0])**2)+((p1[1]-p2[1])**2) )

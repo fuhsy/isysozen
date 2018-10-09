@@ -75,7 +75,7 @@ class View(QtGui.QWidget):
 
         #self.pic.setPixmap(QtGui.QPixmap('sand_lines.png').scaled(600, 400, QtCore.Qt.KeepAspectRatio))
         self.button_start = QtGui.QPushButton('Camera Connect')
-        # self.button_start_default = QtGui.QPushButton('Start Default Image')
+        self.button_start_default = QtGui.QPushButton('Start Default Image')
         self.button_load_cal = QtGui.QPushButton('Load Calibration')
         self.button_stop = QtGui.QPushButton('Pause/Play')
         self.button_play = QtGui.QPushButton('Start')
@@ -112,7 +112,7 @@ class View(QtGui.QWidget):
         self.contour_slider_txt.setFixedWidth(300)
         self.detector_amount_txt.setFixedWidth(300)
 
-        # self.button_start_default.setFixedWidth(300)
+        self.button_start_default.setFixedWidth(300)
         self.button_stop.setFixedWidth(300)
         self.button_play.setFixedWidth(300)
         self.button_reset.setFixedWidth(300)
@@ -130,6 +130,8 @@ class View(QtGui.QWidget):
         self.widget_pos = 0
         self.layout.addWidget(self.button_start, self.widget_pos, 0)
         self.widget_pos+=1
+        self.layout.addWidget(self.button_start_default,self.widget_pos,0)
+        self.widget_pos+=1
         self.layout.addWidget(self.select_audio_output,self.widget_pos,0)
         self.widget_pos+=1
         self.layout.addWidget(self.select_theme,self.widget_pos,0)
@@ -141,8 +143,6 @@ class View(QtGui.QWidget):
         self.layout.addWidget(self.button_new_cal, self.widget_pos, 0)
         self.widget_pos+=1
         self.layout.addWidget(self.button_load_cal, self.widget_pos, 0)
-        # self.widget_pos+=1
-        # self.layout.addWidget(self.button_start_default,self.widget_pos,0)
         self.widget_pos+=1
         self.layout.addWidget(self.button_stop,self.widget_pos,0)
         self.widget_pos+=1
@@ -198,10 +198,10 @@ class View(QtGui.QWidget):
         # self.curve = self.plt.plot(self.x_brightness, self.y_brightness, pen=(255,0,0))
         # self.brightness_threshold_plot_min = self.plt.plot(self.x_brightness,self.y_brightness_threshold_v_min,"x", pen=(0,255,0))
         # self.brightness_threshold_plot_max = self.plt.plot(self.x_brightness,self.y_brightness_threshold_v_max,"x", pen=(0,255,0))
-        #TEST
-        self.im = cv2.imread('images/test2.png')
+        # self.default_img_path = glob.glob("images/default/*")
+        self.im = cv2.imread("images/default/test3.png")
         self.im_show = None
-        self.im_standard = cv2.imread('images/test2.png')
+        # self.im_standard = cv2.imread('images/test2.png')
 
         # n_out_channel = pa_get_output_max_channels(self.output_device_index+1)
         # n_out_channel = 4
@@ -236,7 +236,7 @@ class View(QtGui.QWidget):
         self.select_theme.currentIndexChanged.connect(lambda: self.controller.setTheme())
         self.button_load_cal.clicked.connect(lambda: self.controller.load_calibration())
         self.button_new_cal.clicked.connect(lambda: self.controller.new_calibration())
-        # self.button_start_default.clicked.connect(lambda: self.controller.start_default_image())
+        self.button_start_default.clicked.connect(lambda: self.controller.start_default_image())
         self.slider1.sliderReleased.connect(lambda: self.controller.threshold_slider1())
         self.slider2.sliderReleased.connect(lambda: self.controller.threshold_slider2())
         self.slider3.sliderReleased.connect(lambda: self.controller.threshold_slider3())
@@ -250,6 +250,7 @@ class View(QtGui.QWidget):
         self.slider2.setValue(50)
         self.slider3.setValue(angle)
         self.contour_slider.setValue(20)
+        self.select_audio_output.setEnabled(True)
 
 
     # def getBrightness(self):
@@ -345,7 +346,7 @@ class View(QtGui.QWidget):
         self.detector_amount.setEnabled(det_am)
         self.button_new_cal.setEnabled(new_cal)
         self.button_load_cal.setEnabled(load_cal)
-        # self.button_start_default.setEnabled(start_default)
+        self.button_start_default.setEnabled(start_default)
         self.button_stop.setEnabled(stop)
         self.button_play.setEnabled(play)
         self.button_reset.setEnabled(reset)
@@ -360,7 +361,7 @@ class View(QtGui.QWidget):
         self.detector_amount.setEnabled(det_am)
         self.button_new_cal.setEnabled(new_cal)
         self.button_load_cal.setEnabled(load_cal)
-        # self.button_start_default.setEnabled(start_default)
+        self.button_start_default.setEnabled(start_default)
         self.button_stop.setEnabled(stop)
         self.button_play.setEnabled(play)
         self.button_reset.setEnabled(reset)

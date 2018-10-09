@@ -15,11 +15,11 @@ def blob_detection(img,img_col,hsv):
     color_img = copy.copy(img_col)
 
     # HSV-space
-    lower_blue = np.array([0,100,50])
-    upper_blue = np.array([40,255,150])
+    lower_blue = np.array([0,50,50])
+    upper_blue = np.array([50,255,255])
     lower_green = np.array([40,100,20])
     upper_green = np.array([90,255,150])
-    lower_red = np.array([115,70,100])
+    lower_red = np.array([100,70,70])
     upper_red = np.array([180,255,255])
     # for (lower,upper) in boundaries:
     # lower_blue = np.array(lower_blue, dtype = "uint8")
@@ -31,8 +31,7 @@ def blob_detection(img,img_col,hsv):
     output_g = cv2.bitwise_and(color_img, color_img, mask = mask_g)
     output_r = cv2.bitwise_and(color_img, color_img, mask = mask_r)
     img_seg = output_b+output_g+output_r
-    # cv2.imshow("img_seg", img_seg)
-    # cv2.waitKey(0)
+
     # h,s,img = cv2.split(img)
     # print 'blob detection'
     # kernel = np.ones((3,3),np.uint8)
@@ -82,9 +81,6 @@ def blob_detection(img,img_col,hsv):
     img_seg_gray = cv2.dilate(img_seg_gray, kernel, iterations = 2)
 
     image_COL, contours_COL, _ = cv2.findContours(img_seg_gray,cv2.RETR_EXTERNAL,cv2.CHAIN_APPROX_SIMPLE)
-    # cv2.imshow("img_seg", image_COL)
-    # cv2.waitKey(0)
-    # cv2.destroyAllWindows()
     for cnt in contours_COL:
             if cv2.contourArea(cnt) > 3000 and cv2.contourArea(cnt) < 200000:
                 hull = cv2.convexHull(cnt)
@@ -102,7 +98,8 @@ def blob_detection(img,img_col,hsv):
                 right = center[0]+(radius/2)
                 top = center[1]-(radius/2)
                 down = center[1]+(radius/2)
-                max_right, max_down = image_COL.shape
+                max_down, max_right = image_COL.shape
+                print 'imagecolshape: 0:%i 1:%i ' %(image_COL.shape[0],image_COL.shape[1])
                 if left<0:
                     left=0
                 if right>max_right:
