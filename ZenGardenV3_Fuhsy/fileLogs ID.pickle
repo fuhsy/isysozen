@@ -1,0 +1,37 @@
+(lp0
+(lp1
+(dp2
+S'Stone0 '
+p3
+(dp4
+S'theme'
+p5
+S'RED'
+p6
+sS'radius'
+p7
+I65
+sS'center'
+p8
+(I775
+I868
+tp9
+ssa(dp10
+S'Stone1 '
+p11
+(dp12
+g5
+S'BLUE'
+p13
+sg7
+I64
+sg8
+(I126
+I167
+tp14
+ssa(dp15
+S'Camera Start'
+p16
+S'Thu, 22 Nov 2018 13:00:20 +0000'
+p17
+saa.

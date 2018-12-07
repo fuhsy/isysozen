@@ -1,0 +1,503 @@
+(lp0
+(lp1
+(dp2
+S'Camera Start'
+p3
+S'Mon, 03 Dec 2018 12:51:57 +0000'
+p4
+sa(dp5
+S'Stone0 '
+p6
+(dp7
+S'theme'
+p8
+S'RED'
+p9
+sS'radius'
+p10
+I56
+sS'center'
+p11
+(I111
+I327
+tp12
+ssa(dp13
+S'Stone1 '
+p14
+(dp15
+g8
+S'GREEN'
+p16
+sg10
+I55
+sg11
+(I384
+I68
+tp17
+ssa(dp18
+S'load_callibration '
+p19
+S'Mon, 03 Dec 2018 12:52:35 +0000'
+p20
+sa(dp21
+S'Stone0 '
+p22
+(dp23
+g8
+g9
+sg10
+I56
+sg11
+(I112
+I325
+tp24
+ssa(dp25
+S'Stone1 '
+p26
+(dp27
+g8
+g16
+sg10
+I55
+sg11
+(I385
+I69
+tp28
+ssa(dp29
+g19
+S'Mon, 03 Dec 2018 12:53:26 +0000'
+p30
+sag29
+a(dp31
+g3
+S'Mon, 03 Dec 2018 12:54:22 +0000'
+p32
+sa(dp33
+S'reset '
+p34
+S'Mon, 03 Dec 2018 12:54:22 +0000'
+p35
+sa(dp36
+S'Stone0 '
+p37
+(dp38
+g8
+S'BLUE'
+p39
+sg10
+I51
+sg11
+(I54
+I357
+tp40
+ssa(dp41
+g19
+S'Mon, 03 Dec 2018 12:54:25 +0000'
+p42
+sa(dp43
+g3
+S'Mon, 03 Dec 2018 12:54:32 +0000'
+p44
+sa(dp45
+g34
+S'Mon, 03 Dec 2018 12:54:32 +0000'
+p46
+sa(dp47
+S'Stone0 '
+p48
+(dp49
+g8
+g39
+sg10
+I52
+sg11
+(I54
+I357
+tp50
+ssa(dp51
+S'Stone1 '
+p52
+(dp53
+g8
+g16
+sg10
+I46
+sg11
+(I377
+I85
+tp54
+ssa(dp55
+g19
+S'Mon, 03 Dec 2018 12:54:36 +0000'
+p56
+sa(dp57
+g3
+S'Mon, 03 Dec 2018 12:57:32 +0000'
+p58
+sa(dp59
+g34
+S'Mon, 03 Dec 2018 12:57:32 +0000'
+p60
+sa(dp61
+S'Stone0 '
+p62
+(dp63
+g8
+g9
+sg10
+I61
+sg11
+(I65
+I361
+tp64
+ssa(dp65
+S'Stone1 '
+p66
+(dp67
+g8
+g39
+sg10
+I52
+sg11
+(I216
+I206
+tp68
+ssa(dp69
+g19
+S'Mon, 03 Dec 2018 12:58:03 +0000'
+p70
+sa(dp71
+g3
+S'Mon, 03 Dec 2018 13:00:14 +0000'
+p72
+sa(dp73
+g34
+S'Mon, 03 Dec 2018 13:00:14 +0000'
+p74
+sa(dp75
+S'Stone0 '
+p76
+(dp77
+g8
+g39
+sg10
+I49
+sg11
+(I133
+I293
+tp78
+ssa(dp79
+S'Stone1 '
+p80
+(dp81
+g8
+g16
+sg10
+I58
+sg11
+(I273
+I54
+tp82
+ssa(dp83
+g19
+S'Mon, 03 Dec 2018 13:00:15 +0000'
+p84
+sa(dp85
+g3
+S'Mon, 03 Dec 2018 13:01:54 +0000'
+p86
+sa(dp87
+g34
+S'Mon, 03 Dec 2018 13:01:54 +0000'
+p88
+sa(dp89
+S'Stone0'
+p90
+(dp91
+g8
+g16
+sg10
+I59
+sg11
+(I140
+I495
+tp92
+ssa(dp93
+S'Stone1'
+p94
+(dp95
+g8
+g39
+sg10
+I51
+sg11
+(I827
+I109
+tp96
+ssa(dp97
+S'Default Loaded'
+p98
+S'Mon, 03 Dec 2018 13:01:59 +0000'
+p99
+sa(dp100
+g3
+S'Mon, 03 Dec 2018 13:04:03 +0000'
+p101
+sa(dp102
+g34
+S'Mon, 03 Dec 2018 13:04:03 +0000'
+p103
+sa(dp104
+g3
+S'Mon, 03 Dec 2018 13:04:05 +0000'
+p105
+sa(dp106
+S'Stone0 '
+p107
+(dp108
+g8
+g39
+sg10
+I50
+sg11
+(I380
+I63
+tp109
+ssa(dp110
+g19
+S'Mon, 03 Dec 2018 13:04:07 +0000'
+p111
+sa(dp112
+g3
+S'Mon, 03 Dec 2018 13:04:10 +0000'
+p113
+sa(dp114
+g34
+S'Mon, 03 Dec 2018 13:04:10 +0000'
+p115
+sa(dp116
+S'Stone0'
+p117
+(dp118
+g8
+g9
+sg10
+I60
+sg11
+(I908
+I578
+tp119
+ssa(dp120
+S'Stone1'
+p121
+(dp122
+g8
+g39
+sg10
+I52
+sg11
+(I175
+I162
+tp123
+ssa(dp124
+S'Default Loaded'
+p125
+S'Mon, 03 Dec 2018 13:08:05 +0000'
+p126
+sa(dp127
+g3
+S'Mon, 03 Dec 2018 13:09:37 +0000'
+p128
+sa(dp129
+g34
+S'Mon, 03 Dec 2018 13:09:37 +0000'
+p130
+sa(dp131
+S'Stone0'
+p132
+(dp133
+g8
+g39
+sg10
+I52
+sg11
+(I88
+I636
+tp134
+ssa(dp135
+S'Stone1'
+p136
+(dp137
+g8
+g9
+sg10
+I60
+sg11
+(I932
+I313
+tp138
+ssa(dp139
+S'Stone2'
+p140
+(dp141
+g8
+g16
+sg10
+I58
+sg11
+(I86
+I82
+tp142
+ssa(dp143
+g125
+S'Mon, 03 Dec 2018 13:09:39 +0000'
+p144
+sa(dp145
+g3
+S'Mon, 03 Dec 2018 13:13:36 +0000'
+p146
+sa(dp147
+g34
+S'Mon, 03 Dec 2018 13:13:36 +0000'
+p148
+sa(dp149
+S'Stone0'
+p150
+(dp151
+g8
+g9
+sg10
+I60
+sg11
+(I956
+I634
+tp152
+ssa(dp153
+S'Stone1'
+p154
+(dp155
+g8
+g16
+sg10
+I58
+sg11
+(I88
+I590
+tp156
+ssa(dp157
+S'Stone2'
+p158
+(dp159
+g8
+g16
+sg10
+I52
+sg11
+(I96
+I75
+tp160
+ssa(dp161
+g125
+S'Mon, 03 Dec 2018 13:13:37 +0000'
+p162
+sa(dp163
+g3
+S'Mon, 03 Dec 2018 13:15:38 +0000'
+p164
+sa(dp165
+g34
+S'Mon, 03 Dec 2018 13:15:38 +0000'
+p166
+sa(dp167
+S'Stone0'
+p168
+(dp169
+g8
+g16
+sg10
+I57
+sg11
+(I489
+I547
+tp170
+ssa(dp171
+S'Stone1'
+p172
+(dp173
+g8
+g9
+sg10
+I60
+sg11
+(I474
+I314
+tp174
+ssa(dp175
+S'Stone2'
+p176
+(dp177
+g8
+g39
+sg10
+I52
+sg11
+(I140
+I233
+tp178
+ssa(dp179
+g125
+S'Mon, 03 Dec 2018 13:15:41 +0000'
+p180
+sa(dp181
+g3
+S'Mon, 03 Dec 2018 13:16:12 +0000'
+p182
+sa(dp183
+g34
+S'Mon, 03 Dec 2018 13:16:12 +0000'
+p184
+sa(dp185
+g19
+S'Mon, 03 Dec 2018 13:16:14 +0000'
+p186
+sa(dp187
+S'Stone0'
+p188
+(dp189
+g8
+g16
+sg10
+I57
+sg11
+(I489
+I547
+tp190
+ssa(dp191
+S'Stone1'
+p192
+(dp193
+g8
+g9
+sg10
+I60
+sg11
+(I474
+I314
+tp194
+ssa(dp195
+S'Stone2'
+p196
+(dp197
+g8
+g39
+sg10
+I52
+sg11
+(I140
+I233
+tp198
+ssa(dp199
+g125
+S'Mon, 03 Dec 2018 13:16:17 +0000'
+p200
+saa.

@@ -1,6 +1,5 @@
 import cv2,sys, time
 from PyQt4 import QtGui
-
 from PyQt4.QtGui import QImage,QPixmap
 import pyqtgraph as pg
 import PyQt4.QtCore as QtCore
@@ -42,7 +41,6 @@ class View(QtGui.QWidget):
         self.fps = 50
         # print pa_get_output_max_channels(4)
         #Lowest snapshot threshold for starting detection
-
         self.brightness_value_min = 1.2
         self.brightness_value_max = 1.45
         self.smooth_mean_dif = []
@@ -56,7 +54,6 @@ class View(QtGui.QWidget):
         self.w = QtGui.QWidget()
         self.w.setMinimumHeight(480)
         self.pic = QtGui.QLabel()
-
         self.video_frame = QtGui.QLabel()
         self.select_audio_output = QtGui.QComboBox()
         self.detector_amount = QtGui.QSpinBox()
@@ -199,7 +196,7 @@ class View(QtGui.QWidget):
         # self.brightness_threshold_plot_min = self.plt.plot(self.x_brightness,self.y_brightness_threshold_v_min,"x", pen=(0,255,0))
         # self.brightness_threshold_plot_max = self.plt.plot(self.x_brightness,self.y_brightness_threshold_v_max,"x", pen=(0,255,0))
         # self.default_img_path = glob.glob("images/default/*")
-        self.im = cv2.imread("images/default/test3.png")
+        self.im = cv2.imread("images/default/export.jpg")
         self.im_show = None
         # self.im_standard = cv2.imread('images/test2.png')
 

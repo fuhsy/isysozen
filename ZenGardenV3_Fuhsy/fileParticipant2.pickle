@@ -1,0 +1,23 @@
+(lp0
+(lp1
+(dp2
+S'Camera Start'
+p3
+F1542877941.89434
+sa(dp4
+S'Stone0 '
+p5
+(dp6
+S'theme'
+p7
+S'BLUE'
+p8
+sS'radius'
+p9
+I70
+sS'center'
+p10
+(I419
+I58
+tp11
+ssaa.
