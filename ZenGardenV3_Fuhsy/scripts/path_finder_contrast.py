@@ -21,7 +21,7 @@ class PathFinder():
         self.img_mid_point = Point(442/2,393/2)
         self.current_point = [150,150]
         self.previous_angle = 0
-        self.speed = 150
+        self.speed = 200
         self.start_radius = 20
         self.start_radius_2 = 20
         self.start_radius_3 = 20

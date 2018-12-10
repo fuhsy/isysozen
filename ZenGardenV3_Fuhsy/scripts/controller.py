@@ -421,12 +421,13 @@ class Controller():
         self.view.txtslider1.setText(txt1)
 
     def threshold_slider2(self):
-        txt1 = "Speed " + str(float(self.view.slider2.value())/100.*float(self.view.fps))+" fps"
+        txt1 = "Speed " + str(float(self.view.slider2.value())/100.*float(self.view.fps))
         self.view.txtslider2.setText(txt1)
         self.path_timer.stop()
         for i in range(0,self.view.detector_amount.value()):
-            self.path_finder[i].speed = 1000./(float(self.view.slider2.value()))
-        self.path_timer.start()
+            self.path_finder[i].speed = self.linlin(float(self.view.slider2.value()),0,100,1000,10)
+        # Change for multiple virtual objects moving
+        self.path_timer.start(self.path_finder[0].speed)
         # self.path_timer.setInterval(self.slider2.value())
 
     def threshold_slider3(self):
@@ -439,7 +440,7 @@ class Controller():
         self.contour_config_v = int(self.view.contour_slider.value()/10.)
 
         try:
-            self.stone_feat,self.view.im_show  = ds.getFeatures(self.camera.frame,self.contour_config_v)
+            self.stone_feat,self.view.im_show  = ds.getFeatures(self.view.im_show, self.contour_config_v)
             self.view.qImage_show(self.view.im_show)
         except:
             print 'no contour image'
@@ -465,6 +466,8 @@ class Controller():
         with open("../imgges/file.pickle", "rb") as pfile:
             data = pickle.load(pfile)
         return data
+    def linlin(self,x, smi, sma, dmi, dma):
+        return (x-smi)/(sma-smi)*(dma-dmi) + dmi
 class Logs():
     def __init__(self):
         self.camera_start = {}
