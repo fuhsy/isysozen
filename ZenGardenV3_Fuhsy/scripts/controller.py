@@ -33,12 +33,26 @@ import audio_theme as atheme
 from pyo import pa_get_output_devices,pa_get_output_max_channels
 import usb
 import pyscreenshot as ImageGrab
-
-# from thread import start_new_thread
 import time
 from random import randint
 import sys
 import glob
+
+# This class controlls all actions and timersself.
+# def start():                      will activate the camera based system with an automatical start and stop integration
+# def start_default_image() :       will start the system with a defualt image at ()/images/default/export.jpg)
+# def listen_task():                is used for experiment and getting quickly access to an specific defualt images
+
+# def new_callibration:             click at the 4 corners of the zen garden to get the right image garden_update_img
+# def load_calibration:             will load the callibration file. if not set, this will use the latest setup
+# def serialize:                    dump function for saving dataset
+
+# var path_timer                    Thread is set up for getting controll of moving virtual objects, which controls the audio system
+# audio_controller                  Is created just one time and will change if you reset the camera or do another actions
+# auto_snapshot                     will update the interaction image if you will change something in the image and lean back for 5 Seconds
+#                                   You can also hide the caerma with your hand or an dark objet to stop/play the system
+
+# def follow_garden:                Loop for moving through sand and creating sound.
 
 class Controller():
     def __init__(self, view):

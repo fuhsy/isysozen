@@ -29,6 +29,8 @@ import audio_theme as atheme
 from pyo import pa_get_output_devices,pa_get_output_max_channels
 import usb
 
+# Gui elements
+
 class View(QtGui.QWidget):
     def __del__(self):
         # self.cap.release()
@@ -53,12 +55,6 @@ class View(QtGui.QWidget):
         self.size = (1920,1080)
         self.layout = QtGui.QGridLayout()
         self.w = QtGui.QWidget()
-        # self.w.setMinimumHeight(800)
-        # self.wpolicy = QtGui.QSizePolicy()
-        # # self.wpolicy.setWidthForHeight(True)
-        # self.wpolicy.setHeightForWidth(True)
-        # self.w.setSizePolicy(self.wpolicy)
-        # self.w.setHeightForWidth(True)
         self.pic = QtGui.QLabel()
         self.video_frame = QtGui.QLabel()
         self.select_audio_output = QtGui.QComboBox()
@@ -69,8 +65,6 @@ class View(QtGui.QWidget):
         self.detector_amount.setMinimum(self.min_detectors)
         self.detector_amount.setMaximum(self.max_detectors)
         self.detector_amount.setAlignment(QtCore.Qt.AlignRight)
-
-        #self.pic.setPixmap(QtGui.QPixmap('sand_lines.png').scaled(600, 400, QtCore.Qt.KeepAspectRatio))
         self.button_start = QtGui.QPushButton('Camera Connect')
         self.button_start_default = QtGui.QPushButton('Start Computer GUI')
         self.button_listen_task = QtGui.QPushButton('Listening Task')
