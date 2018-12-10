@@ -38,6 +38,10 @@ from random import randint
 import sys
 import glob
 
+# PyQt4 version '4.8.6'
+# pyo version '4.0.23'
+
+
 # This class controlls all actions and timersself.
 # def start():                      will activate the camera based system with an automatical start and stop integration
 # def start_default_image() :       will start the system with a defualt image at ()/images/default/export.jpg)
