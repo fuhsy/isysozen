@@ -62,22 +62,35 @@ def getFeatures(img,contour_value):
     for feat in stone_features:
         cv2.circle(color_im,(feat.center),(feat.radius+noisy_area),(0,0,0),-1)
 
-    
+
     return stone_features,color_im
 def color_stones(color_im,stone_features):
     noisy_area = 5
     font = cv2.FONT_HERSHEY_SIMPLEX
+    # campfire = cv2.imread("../images/objects/fire.png")
+    # campfire = cv2.resize(campfire, None, fx = 2, fy = 2, interpolation = cv2.INTER_CUBIC)
+    # cy,cx = campfire.shape[:2]
+    # forest = cv2.imread("../images/objects/forest.png")
+    # forest = cv2.resize(forest, None, fx = 2, fy = 2, interpolation = cv2.INTER_CUBIC)
+    # fy,fx = forest.shape[:2]
+    # river = cv2.imread("../images/objects/shell.png")
+    # river = cv2.resize(river, None, fx = 0.2, fy = 0.2, interpolation = cv2.INTER_CUBIC)
+    # ry,rx = river.shape[:2]
+
     for feat in stone_features:
         cv2.circle(color_im,(feat.center),(feat.radius+noisy_area),(0,0,0),-1)
         if feat.theme == 'RED':
             cv2.circle(color_im,(feat.center),(feat.radius),(41,41,150),-1)
             cv2.putText(color_im,'FIRE',(feat.center[0]-20,feat.center[1]), font, 0.5,(255,255,255),1,cv2.LINE_AA)
+            # color_im[feat.center[0]:feat.center[0]+cy,feat.center[1]:feat.center[1]+cx] = campfire
         elif feat.theme == 'BLUE':
             cv2.circle(color_im,(feat.center),(feat.radius),(150,41,20),-1)
             cv2.putText(color_im,'SEA',(feat.center[0]-20,feat.center[1]), font, 0.5,(255,255,255),1,cv2.LINE_AA)
+            # color_im[feat.center[0]:feat.center[0]+ry,feat.center[1]:feat.center[1]+rx] = river
         elif feat.theme == 'GREEN':
             cv2.circle(color_im,(feat.center),(feat.radius),(41,100,41),-1)
             cv2.putText(color_im,'FOREST',(feat.center[0]-30,feat.center[1]), font, 0.5,(255,255,255),1,cv2.LINE_AA)
+            # color_im[feat.center[0]:feat.center[0]+fy,feat.center[1]:feat.center[1]+fx] = forest
     return color_im
 def distance(p1,p2):
     distance = math.sqrt( ((p1[0]-p2[0])**2)+((p1[1]-p2[1])**2) )

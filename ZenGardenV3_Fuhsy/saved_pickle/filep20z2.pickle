@@ -1,0 +1,249 @@
+(lp0
+(lp1
+(dp2
+S'Camera Start'
+p3
+S'Thu, 13 Dec 2018 15:06:26 +0000'
+p4
+sa(dp5
+S'Stone0 '
+p6
+(dp7
+S'theme'
+p8
+S'GREEN'
+p9
+sS'radius'
+p10
+I47
+sS'center'
+p11
+(I229
+I335
+tp12
+ssa(dp13
+S'Stone1 '
+p14
+(dp15
+g8
+g9
+sg10
+I53
+sg11
+(I54
+I63
+tp16
+ssa(dp17
+S'Stone2 '
+p18
+(dp19
+g8
+S'BLUE'
+p20
+sg10
+I49
+sg11
+(I416
+I61
+tp21
+ssa(dp22
+S'load_callibration '
+p23
+S'Thu, 13 Dec 2018 15:06:38 +0000'
+p24
+sa(dp25
+g3
+S'Thu, 13 Dec 2018 15:11:47 +0000'
+p26
+sa(dp27
+S'reset '
+p28
+S'Thu, 13 Dec 2018 15:11:47 +0000'
+p29
+sa(dp30
+S'Stone0 '
+p31
+(dp32
+g8
+S'RED'
+p33
+sg10
+I52
+sg11
+(I139
+I376
+tp34
+ssa(dp35
+S'Stone1 '
+p36
+(dp37
+g8
+g9
+sg10
+I53
+sg11
+(I219
+I209
+tp38
+ssa(dp39
+S'Stone2 '
+p40
+(dp41
+g8
+g20
+sg10
+I54
+sg11
+(I418
+I69
+tp42
+ssa(dp43
+g23
+S'Thu, 13 Dec 2018 15:11:58 +0000'
+p44
+sa(dp45
+g3
+S'Thu, 13 Dec 2018 15:15:07 +0000'
+p46
+sa(dp47
+g28
+S'Thu, 13 Dec 2018 15:15:07 +0000'
+p48
+sa(dp49
+S'Stone0 '
+p50
+(dp51
+g8
+g20
+sg10
+I53
+sg11
+(I47
+I388
+tp52
+ssa(dp53
+S'Stone1 '
+p54
+(dp55
+g8
+g33
+sg10
+I55
+sg11
+(I413
+I371
+tp56
+ssa(dp57
+S'Stone2 '
+p58
+(dp59
+g8
+g9
+sg10
+I53
+sg11
+(I177
+I167
+tp60
+ssa(dp61
+S'Stone3 '
+p62
+(dp63
+g8
+g9
+sg10
+I45
+sg11
+(I39
+I45
+tp64
+ssa(dp65
+S'Stone4 '
+p66
+(dp67
+g8
+g33
+sg10
+I55
+sg11
+(I423
+I47
+tp68
+ssa(dp69
+g23
+S'Thu, 13 Dec 2018 15:15:08 +0000'
+p70
+sa(dp71
+g3
+S'Thu, 13 Dec 2018 15:17:45 +0000'
+p72
+sa(dp73
+g28
+S'Thu, 13 Dec 2018 15:17:45 +0000'
+p74
+sa(dp75
+S'Stone0'
+p76
+(dp77
+g8
+g9
+sg10
+I59
+sg11
+(I140
+I495
+tp78
+ssa(dp79
+S'Stone1'
+p80
+(dp81
+g8
+g20
+sg10
+I51
+sg11
+(I827
+I109
+tp82
+ssa(dp83
+S'Default Loaded'
+p84
+S'Thu, 13 Dec 2018 15:17:47 +0000'
+p85
+sa(dp86
+g3
+S'Thu, 13 Dec 2018 15:20:26 +0000'
+p87
+sa(dp88
+g28
+S'Thu, 13 Dec 2018 15:20:26 +0000'
+p89
+sa(dp90
+S'Stone0 '
+p91
+(dp92
+g8
+g20
+sg10
+I49
+sg11
+(I385
+I342
+tp93
+ssa(dp94
+S'Stone1 '
+p95
+(dp96
+g8
+g9
+sg10
+I61
+sg11
+(I51
+I348
+tp97
+ssa(dp98
+g23
+S'Thu, 13 Dec 2018 15:20:29 +0000'
+p99
+saa.

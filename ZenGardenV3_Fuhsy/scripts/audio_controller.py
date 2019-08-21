@@ -111,9 +111,6 @@ class AudioController():
         #can be replaced by "quad_square" , "quad_circle" or "stereo"
 
         #Main Ambient Music for index 0
-        # self.setAmplitude(0,self.panning)
-        # print self.mixer[1].isOutputting(all=False)
-        # print stone_feat
         for i in range(0,len(self.stone_feat)):
             self.setAmplitude_background(i,self.panning,cur_position,self.stone_feat[i].center)
         for i in range(0,len(self.stone_feat)):
@@ -121,7 +118,6 @@ class AudioController():
                 self.inStone = True
                 self.stone_feature = self.stone_feat[i]
                 self.panning = p.panner("quad_square",pos_x,pos_y)
-                # self.hit_stone = SfPlayer(self.SNDS_PATH+self.stone_feat[i].getSoundFile(1),interp=3)
                 self.mixer[0].delInput(0)
                 if self.stone_feat[i].theme == 'GREEN':
                     self.hit_stone = SfPlayer(random.choice(self.soundfiles_forest))
@@ -138,7 +134,6 @@ class AudioController():
                 # print self.panning
 
                 self.setAmplitude(0,self.panning)
-                # print 'Black Stone Detected'
                 t = Timer(self.offset_hit_stone, self.hit_delay)
                 t.start()
                 break

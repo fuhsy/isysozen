@@ -1,0 +1,1091 @@
+[Command: python2 -u /Users/fuhsy/sozen/ZenGardenV3_Fuhsy/scripts/pickle_show.py]
+['../saved_pickle/filep10z3.pickle', '../saved_pickle/filep18z.pickle', '../saved_pickle/filep12g2.pickle', '../saved_pickle/filep14g.pickle', '../saved_pickle/filep11g1.pickle', '../saved_pickle/filep7g.pickle', '../saved_pickle/filep11g3.pickle', '../saved_pickle/filep11z1.pickle', '../saved_pickle/fileP19Z2.pickle', '../saved_pickle/filep15z2.pickle', '../saved_pickle/filep14z2.pickle', '../saved_pickle/filep12g4.pickle', '../saved_pickle/filep17z1.pickle', '../saved_pickle/filep16z1.pickle', '../saved_pickle/filep20z2.pickle', '../saved_pickle/fileP8Z.pickle', '../saved_pickle/fileP6G1.pickle', '../saved_pickle/filep20g2.pickle', '../saved_pickle/filep17g1.pickle', '../saved_pickle/filep16g.pickle', '../saved_pickle/fileP6Z1.pickle', '../saved_pickle/fileP7Z1.pickle', '../saved_pickle/filep18g3.pickle', '../saved_pickle/filep19g3.pickle', '../saved_pickle/filep13z1.pickle', '../saved_pickle/fileP19Z1.pickle', '../saved_pickle/filep13g3.pickle', '../saved_pickle/filep9g1.pickle', '../saved_pickle/filep11z2.pickle', '../saved_pickle/filep10z2.pickle', '../saved_pickle/filep8g.pickle', '../saved_pickle/filep13g1.pickle', '../saved_pickle/filep19z3.pickle', '../saved_pickle/filep9g3.pickle', '../saved_pickle/filep12z3.pickle', '../saved_pickle/filep19g1.pickle', '../saved_pickle/fileP9Z1.pickle', '../saved_pickle/filep10g2.pickle', '../saved_pickle/filep12g.pickle', '../saved_pickle/filepickletest.pickle', '../saved_pickle/filep10z4.pickle', '../saved_pickle/filep15g1.pickle', '../saved_pickle/filep10g.pickle', '../saved_pickle/filep15z.pickle', '../saved_pickle/filep14z1.pickle', '../saved_pickle/filep17z2.pickle', '../saved_pickle/filep20z1.pickle', '../saved_pickle/filep18g.pickle']
+-----../saved_pickle/filep10z3.pickle------
+{'Camera Start': 'Tue, 04 Dec 2018 09:38:15 +0000'}
+{'Stone0 ': {'theme': 'RED', 'radius': 56, 'center': (253, 266)}}
+{'Stone1 ': {'theme': 'RED', 'radius': 53, 'center': (147, 261)}}
+{'Stone2 ': {'theme': 'RED', 'radius': 53, 'center': (253, 182)}}
+{'Stone3 ': {'theme': 'GREEN', 'radius': 50, 'center': (141, 55)}}
+{'Stone4 ': {'theme': 'GREEN', 'radius': 59, 'center': (288, 47)}}
+{'load_callibration ': 'Tue, 04 Dec 2018 09:38:17 +0000'}
+-----../saved_pickle/filep18z.pickle------
+{'Camera Start': 'Fri, 07 Dec 2018 13:56:07 +0000'}
+{'Stone0 ': {'theme': 'BLUE', 'radius': 51, 'center': (272, 348)}}
+{'Stone1 ': {'theme': 'GREEN', 'radius': 57, 'center': (384, 315)}}
+{'Stone2 ': {'theme': 'RED', 'radius': 51, 'center': (156, 106)}}
+{'load_callibration ': 'Fri, 07 Dec 2018 13:56:09 +0000'}
+{'Camera Start': 'Fri, 07 Dec 2018 13:59:29 +0000'}
+{'reset ': 'Fri, 07 Dec 2018 13:59:29 +0000'}
+{'Stone0 ': {'theme': 'GREEN', 'radius': 44, 'center': (288, 319)}}
+{'Stone1 ': {'theme': 'RED', 'radius': 53, 'center': (342, 103)}}
+{'load_callibration ': 'Fri, 07 Dec 2018 14:00:26 +0000'}
+{'Camera Start': 'Fri, 07 Dec 2018 14:05:26 +0000'}
+{'reset ': 'Fri, 07 Dec 2018 14:05:26 +0000'}
+{'Stone0 ': {'theme': 'GREEN', 'radius': 52, 'center': (321, 196)}}
+{'Stone1 ': {'theme': 'BLUE', 'radius': 52, 'center': (149, 182)}}
+{'load_callibration ': 'Fri, 07 Dec 2018 14:05:30 +0000'}
+{'Camera Start': 'Fri, 07 Dec 2018 14:08:13 +0000'}
+{'reset ': 'Fri, 07 Dec 2018 14:08:13 +0000'}
+{'Stone0 ': {'theme': 'BLUE', 'radius': 52, 'center': (233, 203)}}
+{'load_callibration ': 'Fri, 07 Dec 2018 14:08:22 +0000'}
+{'Stone0': {'theme': 'GREEN', 'radius': 59, 'center': (140, 495)}}
+{'Stone1': {'theme': 'BLUE', 'radius': 51, 'center': (827, 109)}}
+{'Default Loaded': 'Fri, 07 Dec 2018 14:11:05 +0000'}
+{'Camera Start': 'Fri, 07 Dec 2018 14:13:48 +0000'}
+{'reset ': 'Fri, 07 Dec 2018 14:13:48 +0000'}
+{'Stone0 ': {'theme': 'BLUE', 'radius': 54, 'center': (345, 309)}}
+{'Stone1 ': {'theme': 'GREEN', 'radius': 47, 'center': (66, 92)}}
+{'load_callibration ': 'Fri, 07 Dec 2018 14:13:59 +0000'}
+-----../saved_pickle/filep12g2.pickle------
+{'Stone0': {'theme': 'GREEN', 'radius': 57, 'center': (575, 485)}}
+{'Stone1': {'theme': 'BLUE', 'radius': 52, 'center': (423, 131)}}
+{'Default Loaded': 'Tue, 04 Dec 2018 12:08:24 +0000'}
+{'reset ': 'Tue, 04 Dec 2018 12:10:01 +0000'}
+{'Stone0': {'theme': 'BLUE', 'radius': 52, 'center': (256, 480)}}
+{'Stone1': {'theme': 'GREEN', 'radius': 57, 'center': (682, 437)}}
+{'Stone2': {'theme': 'BLUE', 'radius': 52, 'center': (560, 318)}}
+{'Stone3': {'theme': 'GREEN', 'radius': 61, 'center': (249, 284)}}
+{'Stone4': {'theme': 'GREEN', 'radius': 58, 'center': (445, 196)}}
+{'Default Loaded': 'Tue, 04 Dec 2018 12:13:29 +0000'}
+{'reset ': 'Tue, 04 Dec 2018 12:14:59 +0000'}
+{'Camera Start': 'Tue, 04 Dec 2018 12:15:00 +0000'}
+-----../saved_pickle/filep14g.pickle------
+{'Stone0': {'theme': 'GREEN', 'radius': 58, 'center': (381, 418)}}
+{'Stone1': {'theme': 'RED', 'radius': 60, 'center': (771, 195)}}
+{'Default Loaded': 'Tue, 04 Dec 2018 14:24:20 +0000'}
+{'reset ': 'Tue, 04 Dec 2018 14:26:51 +0000'}
+{'Stone0': {'theme': 'GREEN', 'radius': 58, 'center': (80, 607)}}
+{'Stone1': {'theme': 'BLUE', 'radius': 52, 'center': (617, 393)}}
+{'Stone2': {'theme': 'RED', 'radius': 60, 'center': (891, 217)}}
+{'Stone3': {'theme': 'BLUE', 'radius': 52, 'center': (316, 54)}}
+{'Default Loaded': 'Tue, 04 Dec 2018 14:26:54 +0000'}
+{'reset ': 'Tue, 04 Dec 2018 14:32:21 +0000'}
+{'Stone0': {'theme': 'BLUE', 'radius': 52, 'center': (787, 458)}}
+{'Stone1': {'theme': 'RED', 'radius': 60, 'center': (230, 453)}}
+{'Stone2': {'theme': 'GREEN', 'radius': 59, 'center': (327, 230)}}
+{'Stone3': {'theme': 'BLUE', 'radius': 52, 'center': (608, 51)}}
+{'Default Loaded': 'Tue, 04 Dec 2018 14:32:24 +0000'}
+{'reset ': 'Tue, 04 Dec 2018 14:34:01 +0000'}
+{'Stone0': {'theme': 'RED', 'radius': 60, 'center': (727, 409)}}
+{'Stone1': {'theme': 'BLUE', 'radius': 52, 'center': (406, 366)}}
+{'Stone2': {'theme': 'BLUE', 'radius': 52, 'center': (764, 124)}}
+{'Stone3': {'theme': 'GREEN', 'radius': 59, 'center': (415, 116)}}
+{'Default Loaded': 'Tue, 04 Dec 2018 14:34:54 +0000'}
+{'Stone0': {'theme': 'BLUE', 'radius': 76, 'center': (524, 403)}}
+{'Default Loaded': 'Tue, 04 Dec 2018 14:36:21 +0000'}
+{'Stone0': {'theme': 'GREEN', 'radius': 59, 'center': (140, 495)}}
+{'Stone1': {'theme': 'BLUE', 'radius': 51, 'center': (827, 109)}}
+{'Default Loaded': 'Tue, 04 Dec 2018 14:36:24 +0000'}
+{'reset ': 'Tue, 04 Dec 2018 14:39:26 +0000'}
+{'Camera Start': 'Tue, 04 Dec 2018 14:39:29 +0000'}
+{'Stone0': {'theme': 'BLUE', 'radius': 52, 'center': (887, 550)}}
+{'Stone1': {'theme': 'GREEN', 'radius': 57, 'center': (148, 449)}}
+{'Stone2': {'theme': 'BLUE', 'radius': 52, 'center': (870, 196)}}
+{'Stone3': {'theme': 'GREEN', 'radius': 58, 'center': (213, 149)}}
+{'Default Loaded': 'Tue, 04 Dec 2018 14:39:37 +0000'}
+-----../saved_pickle/filep11g1.pickle------
+{'Stone0': {'theme': 'GREEN', 'radius': 59, 'center': (196, 272)}}
+{'Stone1': {'theme': 'RED', 'radius': 60, 'center': (772, 248)}}
+{'Default Loaded': 'Tue, 04 Dec 2018 10:07:01 +0000'}
+{'reset ': 'Tue, 04 Dec 2018 10:09:25 +0000'}
+{'Stone0': {'theme': 'BLUE', 'radius': 52, 'center': (815, 516)}}
+{'Stone1': {'theme': 'RED', 'radius': 60, 'center': (210, 506)}}
+{'Stone2': {'theme': 'BLUE', 'radius': 52, 'center': (254, 228)}}
+{'Stone3': {'theme': 'GREEN', 'radius': 59, 'center': (817, 224)}}
+{'Default Loaded': 'Tue, 04 Dec 2018 10:09:27 +0000'}
+{'reset ': 'Tue, 04 Dec 2018 10:12:35 +0000'}
+{'Stone0': {'theme': 'GREEN', 'radius': 57, 'center': (827, 577)}}
+{'Stone1': {'theme': 'RED', 'radius': 60, 'center': (175, 472)}}
+{'Stone2': {'theme': 'GREEN', 'radius': 52, 'center': (157, 151)}}
+{'Stone3': {'theme': 'RED', 'radius': 60, 'center': (855, 126)}}
+{'Default Loaded': 'Tue, 04 Dec 2018 10:12:37 +0000'}
+{'reset ': 'Tue, 04 Dec 2018 10:14:44 +0000'}
+{'Camera Start': 'Tue, 04 Dec 2018 10:14:49 +0000'}
+-----../saved_pickle/filep7g.pickle------
+{'Stone0': {'theme': 'GREEN', 'radius': 58, 'center': (946, 571)}}
+{'Stone1': {'theme': 'GREEN', 'radius': 58, 'center': (293, 464)}}
+{'Stone2': {'theme': 'RED', 'radius': 61, 'center': (669, 419)}}
+{'Stone3': {'theme': 'RED', 'radius': 61, 'center': (461, 190)}}
+{'Stone4': {'theme': 'BLUE', 'radius': 52, 'center': (102, 70)}}
+{'Default Loaded': 'Mon, 03 Dec 2018 16:12:53 +0000'}
+{'reset ': 'Mon, 03 Dec 2018 16:15:25 +0000'}
+{'Stone0': {'theme': 'GREEN', 'radius': 58, 'center': (594, 564)}}
+{'Stone1': {'theme': 'RED', 'radius': 61, 'center': (111, 510)}}
+{'Stone2': {'theme': 'BLUE', 'radius': 52, 'center': (823, 153)}}
+{'Default Loaded': 'Mon, 03 Dec 2018 16:15:28 +0000'}
+{'reset ': 'Mon, 03 Dec 2018 16:19:55 +0000'}
+{'Stone0': {'theme': 'RED', 'radius': 60, 'center': (906, 553)}}
+{'Stone1': {'theme': 'GREEN', 'radius': 57, 'center': (598, 478)}}
+{'Stone2': {'theme': 'RED', 'radius': 60, 'center': (223, 418)}}
+{'Stone3': {'theme': 'RED', 'radius': 60, 'center': (695, 168)}}
+{'Stone4': {'theme': 'GREEN', 'radius': 52, 'center': (896, 156)}}
+{'Stone5': {'theme': 'GREEN', 'radius': 59, 'center': (86, 100)}}
+{'Default Loaded': 'Mon, 03 Dec 2018 16:19:57 +0000'}
+{'reset ': 'Mon, 03 Dec 2018 16:21:49 +0000'}
+{'Stone0': {'theme': 'BLUE', 'radius': 77, 'center': (525, 402)}}
+{'Default Loaded': 'Mon, 03 Dec 2018 16:22:20 +0000'}
+{'Stone0': {'theme': 'GREEN', 'radius': 59, 'center': (140, 495)}}
+{'Stone1': {'theme': 'BLUE', 'radius': 51, 'center': (827, 109)}}
+{'Default Loaded': 'Mon, 03 Dec 2018 16:22:22 +0000'}
+{'reset ': 'Mon, 03 Dec 2018 16:29:51 +0000'}
+{'Camera Start': 'Mon, 03 Dec 2018 16:30:01 +0000'}
+-----../saved_pickle/filep11g3.pickle------
+{'Stone0': {'theme': 'GREEN', 'radius': 57, 'center': (411, 469)}}
+{'Stone1': {'theme': 'GREEN', 'radius': 58, 'center': (772, 379)}}
+{'Stone2': {'theme': 'RED', 'radius': 60, 'center': (490, 142)}}
+{'Default Loaded': 'Tue, 04 Dec 2018 10:15:15 +0000'}
+{'reset ': 'Tue, 04 Dec 2018 10:16:36 +0000'}
+{'Stone0': {'theme': 'GREEN', 'radius': 59, 'center': (140, 495)}}
+{'Stone1': {'theme': 'BLUE', 'radius': 51, 'center': (827, 109)}}
+{'Default Loaded': 'Tue, 04 Dec 2018 10:16:45 +0000'}
+{'reset ': 'Tue, 04 Dec 2018 10:20:53 +0000'}
+{'Camera Start': 'Tue, 04 Dec 2018 10:20:58 +0000'}
+-----../saved_pickle/filep11z1.pickle------
+{'Camera Start': 'Tue, 04 Dec 2018 09:52:56 +0000'}
+{'Stone0 ': {'theme': 'RED', 'radius': 58, 'center': (68, 365)}}
+{'Stone1 ': {'theme': 'BLUE', 'radius': 53, 'center': (401, 42)}}
+{'load_callibration ': 'Tue, 04 Dec 2018 09:52:58 +0000'}
+{'Camera Start': 'Tue, 04 Dec 2018 09:54:49 +0000'}
+{'reset ': 'Tue, 04 Dec 2018 09:54:49 +0000'}
+{'Stone0 ': {'theme': 'RED', 'radius': 53, 'center': (48, 347)}}
+{'Stone1 ': {'theme': 'GREEN', 'radius': 48, 'center': (364, 327)}}
+{'Stone2 ': {'theme': 'GREEN', 'radius': 55, 'center': (372, 32)}}
+{'load_callibration ': 'Tue, 04 Dec 2018 09:54:51 +0000'}
+{'Camera Start': 'Tue, 04 Dec 2018 09:55:00 +0000'}
+{'reset ': 'Tue, 04 Dec 2018 09:55:00 +0000'}
+{'Stone0 ': {'theme': 'RED', 'radius': 51, 'center': (44, 347)}}
+{'Stone1 ': {'theme': 'GREEN', 'radius': 47, 'center': (365, 327)}}
+{'Stone2 ': {'theme': 'GREEN', 'radius': 55, 'center': (361, 66)}}
+{'load_callibration ': 'Tue, 04 Dec 2018 09:55:02 +0000'}
+{'Camera Start': 'Tue, 04 Dec 2018 09:55:14 +0000'}
+{'reset ': 'Tue, 04 Dec 2018 09:55:14 +0000'}
+{'Stone0 ': {'theme': 'RED', 'radius': 53, 'center': (48, 348)}}
+{'Stone1 ': {'theme': 'GREEN', 'radius': 49, 'center': (365, 327)}}
+{'Stone2 ': {'theme': 'BLUE', 'radius': 52, 'center': (348, 60)}}
+{'load_callibration ': 'Tue, 04 Dec 2018 09:55:17 +0000'}
+-----../saved_pickle/fileP19Z2.pickle------
+{'Camera Start': 'Tue, 11 Dec 2018 12:51:56 +0000'}
+{'Stone0 ': {'theme': 'RED', 'radius': 55, 'center': (117, 305)}}
+{'Stone1 ': {'theme': 'GREEN', 'radius': 47, 'center': (362, 254)}}
+{'Stone2 ': {'theme': 'BLUE', 'radius': 59, 'center': (228, 117)}}
+{'load_callibration ': 'Tue, 11 Dec 2018 12:52:07 +0000'}
+{'Camera Start': 'Tue, 11 Dec 2018 12:54:26 +0000'}
+{'reset ': 'Tue, 11 Dec 2018 12:54:26 +0000'}
+{'Stone0 ': {'theme': 'GREEN', 'radius': 54, 'center': (379, 311)}}
+{'Stone1 ': {'theme': 'RED', 'radius': 50, 'center': (224, 203)}}
+{'Stone2 ': {'theme': 'BLUE', 'radius': 58, 'center': (105, 95)}}
+{'load_callibration ': 'Tue, 11 Dec 2018 12:54:28 +0000'}
+{'Camera Start': 'Tue, 11 Dec 2018 12:55:56 +0000'}
+{'reset ': 'Tue, 11 Dec 2018 12:55:56 +0000'}
+{'Camera Start': 'Tue, 11 Dec 2018 12:57:06 +0000'}
+{'reset ': 'Tue, 11 Dec 2018 12:57:06 +0000'}
+-----../saved_pickle/filep15z2.pickle------
+{'Camera Start': 'Tue, 04 Dec 2018 15:59:23 +0000'}
+{'load_callibration ': 'Tue, 04 Dec 2018 15:59:36 +0000'}
+{'load_callibration ': 'Tue, 04 Dec 2018 15:59:36 +0000'}
+{'Stone0 ': {'theme': 'RED', 'radius': 92, 'center': (73, 353)}}
+{'Stone1 ': {'theme': 'RED', 'radius': 51, 'center': (175, 169)}}
+{'load_callibration ': 'Tue, 04 Dec 2018 15:59:51 +0000'}
+{'load_callibration ': 'Tue, 04 Dec 2018 15:59:51 +0000'}
+{'Camera Start': 'Tue, 04 Dec 2018 15:59:54 +0000'}
+{'reset ': 'Tue, 04 Dec 2018 15:59:54 +0000'}
+{'Stone0 ': {'theme': 'GREEN', 'radius': 44, 'center': (357, 349)}}
+{'Stone1 ': {'theme': 'BLUE', 'radius': 54, 'center': (139, 253)}}
+{'Stone2 ': {'theme': 'RED', 'radius': 53, 'center': (177, 168)}}
+{'load_callibration ': 'Tue, 04 Dec 2018 16:00:06 +0000'}
+{'Camera Start': 'Tue, 04 Dec 2018 16:02:21 +0000'}
+{'reset ': 'Tue, 04 Dec 2018 16:02:21 +0000'}
+{'Stone0 ': {'theme': 'GREEN', 'radius': 42, 'center': (251, 355)}}
+{'Stone1 ': {'theme': 'RED', 'radius': 52, 'center': (161, 197)}}
+{'Stone2 ': {'theme': 'GREEN', 'radius': 57, 'center': (261, 68)}}
+{'load_callibration ': 'Tue, 04 Dec 2018 16:02:23 +0000'}
+{'Camera Start': 'Tue, 04 Dec 2018 16:03:27 +0000'}
+{'reset ': 'Tue, 04 Dec 2018 16:03:27 +0000'}
+{'Stone0': {'theme': 'BLUE', 'radius': 76, 'center': (524, 403)}}
+{'Default Loaded': 'Tue, 04 Dec 2018 16:04:04 +0000'}
+{'Camera Start': 'Tue, 04 Dec 2018 16:06:22 +0000'}
+{'reset ': 'Tue, 04 Dec 2018 16:06:22 +0000'}
+{'Camera Start': 'Tue, 04 Dec 2018 16:06:25 +0000'}
+{'Stone0 ': {'theme': 'BLUE', 'radius': 50, 'center': (83, 69)}}
+{'load_callibration ': 'Tue, 04 Dec 2018 16:06:26 +0000'}
+{'Camera Start': 'Tue, 04 Dec 2018 16:06:30 +0000'}
+{'reset ': 'Tue, 04 Dec 2018 16:06:30 +0000'}
+-----../saved_pickle/filep14z2.pickle------
+{'Camera Start': 'Tue, 04 Dec 2018 14:51:06 +0000'}
+{'Stone0 ': {'theme': 'GREEN', 'radius': 50, 'center': (233, 372)}}
+{'Stone1 ': {'theme': 'BLUE', 'radius': 47, 'center': (83, 104)}}
+{'Stone2 ': {'theme': 'RED', 'radius': 55, 'center': (383, 89)}}
+{'load_callibration ': 'Tue, 04 Dec 2018 14:51:09 +0000'}
+{'load_callibration ': 'Tue, 04 Dec 2018 14:53:04 +0000'}
+{'load_callibration ': 'Tue, 04 Dec 2018 14:53:04 +0000'}
+{'Camera Start': 'Tue, 04 Dec 2018 14:53:10 +0000'}
+{'reset ': 'Tue, 04 Dec 2018 14:53:10 +0000'}
+{'load_callibration ': 'Tue, 04 Dec 2018 14:53:48 +0000'}
+{'load_callibration ': 'Tue, 04 Dec 2018 14:53:48 +0000'}
+{'Camera Start': 'Tue, 04 Dec 2018 14:53:59 +0000'}
+{'Stone0 ': {'theme': 'BLUE', 'radius': 51, 'center': (282, 228)}}
+{'Stone1 ': {'theme': 'RED', 'radius': 84, 'center': (81, 144)}}
+{'Stone2 ': {'theme': 'RED', 'radius': 55, 'center': (42, 60)}}
+{'load_callibration ': 'Tue, 04 Dec 2018 14:54:05 +0000'}
+{'Camera Start': 'Tue, 04 Dec 2018 14:55:07 +0000'}
+{'reset ': 'Tue, 04 Dec 2018 14:55:07 +0000'}
+{'Stone0': {'theme': 'BLUE', 'radius': 76, 'center': (524, 403)}}
+{'Default Loaded': 'Tue, 04 Dec 2018 14:56:11 +0000'}
+{'Camera Start': 'Tue, 04 Dec 2018 14:59:08 +0000'}
+{'reset ': 'Tue, 04 Dec 2018 14:59:08 +0000'}
+{'Stone0 ': {'theme': 'BLUE', 'radius': 56, 'center': (147, 40)}}
+{'load_callibration ': 'Tue, 04 Dec 2018 14:59:10 +0000'}
+-----../saved_pickle/filep12g4.pickle------
+{'Stone0': {'theme': 'BLUE', 'radius': 52, 'center': (324, 505)}}
+{'Stone1': {'theme': 'GREEN', 'radius': 58, 'center': (587, 510)}}
+{'Stone2': {'theme': 'RED', 'radius': 60, 'center': (387, 349)}}
+{'Stone3': {'theme': 'RED', 'radius': 60, 'center': (684, 272)}}
+{'Stone4': {'theme': 'BLUE', 'radius': 52, 'center': (431, 229)}}
+{'Default Loaded': 'Tue, 04 Dec 2018 12:16:18 +0000'}
+{'reset ': 'Tue, 04 Dec 2018 12:17:40 +0000'}
+{'Stone0': {'theme': 'BLUE', 'radius': 77, 'center': (525, 402)}}
+{'Default Loaded': 'Tue, 04 Dec 2018 12:18:38 +0000'}
+{'reset ': 'Tue, 04 Dec 2018 12:22:46 +0000'}
+{'Camera Start': 'Tue, 04 Dec 2018 12:22:54 +0000'}
+-----../saved_pickle/filep17z1.pickle------
+{'Camera Start': 'Fri, 07 Dec 2018 12:14:48 +0000'}
+{'Stone0 ': {'theme': 'RED', 'radius': 57, 'center': (161, 272)}}
+{'Stone1 ': {'theme': 'BLUE', 'radius': 50, 'center': (206, 104)}}
+{'load_callibration ': 'Fri, 07 Dec 2018 12:14:53 +0000'}
+{'load_callibration ': 'Fri, 07 Dec 2018 12:16:31 +0000'}
+{'load_callibration ': 'Fri, 07 Dec 2018 12:16:31 +0000'}
+{'Camera Start': 'Fri, 07 Dec 2018 12:16:57 +0000'}
+{'reset ': 'Fri, 07 Dec 2018 12:16:57 +0000'}
+{'Stone0 ': {'theme': 'BLUE', 'radius': 53, 'center': (110, 298)}}
+{'Stone1 ': {'theme': 'RED', 'radius': 52, 'center': (360, 276)}}
+{'Stone2 ': {'theme': 'GREEN', 'radius': 44, 'center': (241, 107)}}
+{'load_callibration ': 'Fri, 07 Dec 2018 12:17:00 +0000'}
+-----../saved_pickle/filep16z1.pickle------
+{'Camera Start': 'Tue, 04 Dec 2018 17:01:42 +0000'}
+{'Stone0 ': {'theme': 'GREEN', 'radius': 62, 'center': (55, 335)}}
+{'Stone1 ': {'theme': 'BLUE', 'radius': 50, 'center': (400, 189)}}
+{'Stone2 ': {'theme': 'BLUE', 'radius': 54, 'center': (198, 176)}}
+{'Stone3 ': {'theme': 'RED', 'radius': 54, 'center': (54, 50)}}
+{'Stone4 ': {'theme': 'RED', 'radius': 52, 'center': (288, 29)}}
+{'load_callibration ': 'Tue, 04 Dec 2018 17:01:47 +0000'}
+{'load_callibration ': 'Tue, 04 Dec 2018 17:03:08 +0000'}
+{'load_callibration ': 'Tue, 04 Dec 2018 17:03:08 +0000'}
+{'Camera Start': 'Tue, 04 Dec 2018 17:03:33 +0000'}
+{'reset ': 'Tue, 04 Dec 2018 17:03:33 +0000'}
+{'Stone0 ': {'theme': 'RED', 'radius': 59, 'center': (59, 371)}}
+{'Stone1 ': {'theme': 'BLUE', 'radius': 50, 'center': (231, 343)}}
+{'Stone2 ': {'theme': 'GREEN', 'radius': 54, 'center': (318, 277)}}
+{'Stone3 ': {'theme': 'RED', 'radius': 52, 'center': (55, 232)}}
+{'Stone4 ': {'theme': 'GREEN', 'radius': 46, 'center': (280, 201)}}
+{'Stone5 ': {'theme': 'BLUE', 'radius': 50, 'center': (32, 152)}}
+{'Stone6 ': {'theme': 'GREEN', 'radius': 42, 'center': (378, 75)}}
+{'load_callibration ': 'Tue, 04 Dec 2018 17:04:13 +0000'}
+{'Camera Start': 'Tue, 04 Dec 2018 17:07:57 +0000'}
+{'reset ': 'Tue, 04 Dec 2018 17:07:57 +0000'}
+{'Stone0 ': {'theme': 'GREEN', 'radius': 56, 'center': (199, 356)}}
+{'Stone1 ': {'theme': 'BLUE', 'radius': 45, 'center': (400, 267)}}
+{'Stone2 ': {'theme': 'BLUE', 'radius': 44, 'center': (395, 165)}}
+{'Stone3 ': {'theme': 'BLUE', 'radius': 54, 'center': (102, 101)}}
+{'Stone4 ': {'theme': 'RED', 'radius': 53, 'center': (376, 40)}}
+{'Stone5 ': {'theme': 'GREEN', 'radius': 45, 'center': (253, 44)}}
+{'load_callibration ': 'Tue, 04 Dec 2018 17:07:58 +0000'}
+{'Camera Start': 'Tue, 04 Dec 2018 17:10:06 +0000'}
+{'reset ': 'Tue, 04 Dec 2018 17:10:06 +0000'}
+{'Stone0 ': {'theme': 'GREEN', 'radius': 58, 'center': (374, 339)}}
+{'Stone1 ': {'theme': 'RED', 'radius': 57, 'center': (76, 344)}}
+{'Stone2 ': {'theme': 'GREEN', 'radius': 43, 'center': (293, 279)}}
+{'Stone3 ': {'theme': 'RED', 'radius': 54, 'center': (379, 158)}}
+{'Stone4 ': {'theme': 'BLUE', 'radius': 94, 'center': (195, 171)}}
+{'Stone5 ': {'theme': 'RED', 'radius': 46, 'center': (80, 56)}}
+{'Stone6 ': {'theme': 'RED', 'radius': 54, 'center': (319, 55)}}
+{'load_callibration ': 'Tue, 04 Dec 2018 17:10:08 +0000'}
+{'Camera Start': 'Tue, 04 Dec 2018 17:11:17 +0000'}
+{'reset ': 'Tue, 04 Dec 2018 17:11:17 +0000'}
+{'Stone0': {'theme': 'GREEN', 'radius': 59, 'center': (140, 495)}}
+{'Stone1': {'theme': 'BLUE', 'radius': 51, 'center': (827, 109)}}
+{'Default Loaded': 'Tue, 04 Dec 2018 17:11:49 +0000'}
+{'Camera Start': 'Tue, 04 Dec 2018 17:14:47 +0000'}
+{'reset ': 'Tue, 04 Dec 2018 17:14:47 +0000'}
+{'Stone0 ': {'theme': 'BLUE', 'radius': 54, 'center': (249, 382)}}
+{'Stone1 ': {'theme': 'GREEN', 'radius': 46, 'center': (134, 240)}}
+{'Stone2 ': {'theme': 'GREEN', 'radius': 45, 'center': (40, 216)}}
+{'Stone3 ': {'theme': 'GREEN', 'radius': 55, 'center': (115, 150)}}
+{'Stone4 ': {'theme': 'BLUE', 'radius': 52, 'center': (391, 118)}}
+{'Stone5 ': {'theme': 'BLUE', 'radius': 52, 'center': (323, 41)}}
+{'load_callibration ': 'Tue, 04 Dec 2018 17:14:49 +0000'}
+-----../saved_pickle/filep20z2.pickle------
+{'Camera Start': 'Thu, 13 Dec 2018 15:06:26 +0000'}
+{'Stone0 ': {'theme': 'GREEN', 'radius': 47, 'center': (229, 335)}}
+{'Stone1 ': {'theme': 'GREEN', 'radius': 53, 'center': (54, 63)}}
+{'Stone2 ': {'theme': 'BLUE', 'radius': 49, 'center': (416, 61)}}
+{'load_callibration ': 'Thu, 13 Dec 2018 15:06:38 +0000'}
+{'Camera Start': 'Thu, 13 Dec 2018 15:11:47 +0000'}
+{'reset ': 'Thu, 13 Dec 2018 15:11:47 +0000'}
+{'Stone0 ': {'theme': 'RED', 'radius': 52, 'center': (139, 376)}}
+{'Stone1 ': {'theme': 'GREEN', 'radius': 53, 'center': (219, 209)}}
+{'Stone2 ': {'theme': 'BLUE', 'radius': 54, 'center': (418, 69)}}
+{'load_callibration ': 'Thu, 13 Dec 2018 15:11:58 +0000'}
+{'Camera Start': 'Thu, 13 Dec 2018 15:15:07 +0000'}
+{'reset ': 'Thu, 13 Dec 2018 15:15:07 +0000'}
+{'Stone0 ': {'theme': 'BLUE', 'radius': 53, 'center': (47, 388)}}
+{'Stone1 ': {'theme': 'RED', 'radius': 55, 'center': (413, 371)}}
+{'Stone2 ': {'theme': 'GREEN', 'radius': 53, 'center': (177, 167)}}
+{'Stone3 ': {'theme': 'GREEN', 'radius': 45, 'center': (39, 45)}}
+{'Stone4 ': {'theme': 'RED', 'radius': 55, 'center': (423, 47)}}
+{'load_callibration ': 'Thu, 13 Dec 2018 15:15:08 +0000'}
+{'Camera Start': 'Thu, 13 Dec 2018 15:17:45 +0000'}
+{'reset ': 'Thu, 13 Dec 2018 15:17:45 +0000'}
+{'Stone0': {'theme': 'GREEN', 'radius': 59, 'center': (140, 495)}}
+{'Stone1': {'theme': 'BLUE', 'radius': 51, 'center': (827, 109)}}
+{'Default Loaded': 'Thu, 13 Dec 2018 15:17:47 +0000'}
+{'Camera Start': 'Thu, 13 Dec 2018 15:20:26 +0000'}
+{'reset ': 'Thu, 13 Dec 2018 15:20:26 +0000'}
+{'Stone0 ': {'theme': 'BLUE', 'radius': 49, 'center': (385, 342)}}
+{'Stone1 ': {'theme': 'GREEN', 'radius': 61, 'center': (51, 348)}}
+{'load_callibration ': 'Thu, 13 Dec 2018 15:20:29 +0000'}
+-----../saved_pickle/fileP8Z.pickle------
+{'Camera Start': 'Mon, 03 Dec 2018 16:52:25 +0000'}
+{'load_callibration ': 'Mon, 03 Dec 2018 16:52:40 +0000'}
+{'load_callibration ': 'Mon, 03 Dec 2018 16:52:40 +0000'}
+{'Camera Start': 'Mon, 03 Dec 2018 16:52:55 +0000'}
+{'Stone0 ': {'theme': 'BLUE', 'radius': 48, 'center': (371, 271)}}
+{'Stone1 ': {'theme': 'RED', 'radius': 53, 'center': (201, 121)}}
+{'load_callibration ': 'Mon, 03 Dec 2018 16:52:57 +0000'}
+{'Camera Start': 'Mon, 03 Dec 2018 16:54:58 +0000'}
+{'reset ': 'Mon, 03 Dec 2018 16:54:58 +0000'}
+{'Camera Start': 'Mon, 03 Dec 2018 16:55:02 +0000'}
+{'Stone0 ': {'theme': 'GREEN', 'radius': 43, 'center': (108, 269)}}
+{'Stone1 ': {'theme': 'BLUE', 'radius': 55, 'center': (323, 134)}}
+{'load_callibration ': 'Mon, 03 Dec 2018 16:55:16 +0000'}
+{'Camera Start': 'Mon, 03 Dec 2018 16:57:15 +0000'}
+{'reset ': 'Mon, 03 Dec 2018 16:57:15 +0000'}
+{'Stone0 ': {'theme': 'RED', 'radius': 52, 'center': (402, 129)}}
+{'load_callibration ': 'Mon, 03 Dec 2018 16:58:59 +0000'}
+{'Camera Start': 'Mon, 03 Dec 2018 16:59:09 +0000'}
+{'reset ': 'Mon, 03 Dec 2018 16:59:09 +0000'}
+{'Stone0 ': {'theme': 'GREEN', 'radius': 47, 'center': (152, 334)}}
+{'Stone1 ': {'theme': 'RED', 'radius': 53, 'center': (399, 129)}}
+{'load_callibration ': 'Mon, 03 Dec 2018 16:59:11 +0000'}
+{'Camera Start': 'Mon, 03 Dec 2018 17:01:10 +0000'}
+{'reset ': 'Mon, 03 Dec 2018 17:01:10 +0000'}
+{'Stone0 ': {'theme': 'BLUE', 'radius': 51, 'center': (37, 45)}}
+{'load_callibration ': 'Mon, 03 Dec 2018 17:01:19 +0000'}
+{'Camera Start': 'Mon, 03 Dec 2018 17:01:31 +0000'}
+{'reset ': 'Mon, 03 Dec 2018 17:01:31 +0000'}
+{'Stone0 ': {'theme': 'GREEN', 'radius': 46, 'center': (397, 350)}}
+{'Stone1 ': {'theme': 'BLUE', 'radius': 52, 'center': (35, 42)}}
+{'load_callibration ': 'Mon, 03 Dec 2018 17:01:33 +0000'}
+{'Stone0': {'theme': 'GREEN', 'radius': 59, 'center': (140, 495)}}
+{'Stone1': {'theme': 'BLUE', 'radius': 51, 'center': (827, 109)}}
+{'Default Loaded': 'Mon, 03 Dec 2018 17:03:06 +0000'}
+{'Camera Start': 'Mon, 03 Dec 2018 17:05:26 +0000'}
+{'reset ': 'Mon, 03 Dec 2018 17:05:26 +0000'}
+{'Stone0 ': {'theme': 'GREEN', 'radius': 47, 'center': (75, 353)}}
+{'Stone1 ': {'theme': 'BLUE', 'radius': 52, 'center': (389, 339)}}
+{'Stone2 ': {'theme': 'BLUE', 'radius': 55, 'center': (391, 40)}}
+{'load_callibration ': 'Mon, 03 Dec 2018 17:05:29 +0000'}
+-----../saved_pickle/fileP6G1.pickle------
+{'Stone0': {'theme': 'GREEN', 'radius': 57, 'center': (665, 487)}}
+{'Stone1': {'theme': 'RED', 'radius': 60, 'center': (186, 261)}}
+{'Stone2': {'theme': 'BLUE', 'radius': 52, 'center': (812, 146)}}
+{'Default Loaded': 'Mon, 03 Dec 2018 15:02:28 +0000'}
+{'reset ': 'Mon, 03 Dec 2018 15:03:44 +0000'}
+{'Stone0': {'theme': 'RED', 'radius': 60, 'center': (94, 595)}}
+{'Stone1': {'theme': 'GREEN', 'radius': 57, 'center': (810, 565)}}
+{'Stone2': {'theme': 'RED', 'radius': 60, 'center': (491, 267)}}
+{'Stone3': {'theme': 'BLUE', 'radius': 52, 'center': (153, 111)}}
+{'Default Loaded': 'Mon, 03 Dec 2018 15:04:21 +0000'}
+{'reset ': 'Mon, 03 Dec 2018 15:05:08 +0000'}
+{'Stone0': {'theme': 'RED', 'radius': 60, 'center': (94, 595)}}
+{'Stone1': {'theme': 'GREEN', 'radius': 57, 'center': (810, 565)}}
+{'Stone2': {'theme': 'RED', 'radius': 60, 'center': (491, 267)}}
+{'Stone3': {'theme': 'BLUE', 'radius': 52, 'center': (153, 111)}}
+{'Default Loaded': 'Mon, 03 Dec 2018 15:05:09 +0000'}
+{'reset ': 'Mon, 03 Dec 2018 15:08:07 +0000'}
+{'Stone0': {'theme': 'BLUE', 'radius': 52, 'center': (169, 508)}}
+{'Stone1': {'theme': 'BLUE', 'radius': 52, 'center': (801, 507)}}
+{'Stone2': {'theme': 'GREEN', 'radius': 58, 'center': (420, 141)}}
+{'Stone3': {'theme': 'RED', 'radius': 60, 'center': (921, 121)}}
+{'Default Loaded': 'Mon, 03 Dec 2018 15:08:09 +0000'}
+{'reset ': 'Mon, 03 Dec 2018 15:10:01 +0000'}
+{'Stone0': {'theme': 'BLUE', 'radius': 52, 'center': (169, 508)}}
+{'Stone1': {'theme': 'RED', 'radius': 60, 'center': (808, 496)}}
+{'Stone2': {'theme': 'GREEN', 'radius': 52, 'center': (830, 91)}}
+{'Stone3': {'theme': 'RED', 'radius': 61, 'center': (295, 68)}}
+{'Default Loaded': 'Mon, 03 Dec 2018 15:10:02 +0000'}
+{'Stone0': {'theme': 'GREEN', 'radius': 59, 'center': (140, 495)}}
+{'Stone1': {'theme': 'BLUE', 'radius': 51, 'center': (827, 109)}}
+{'Default Loaded': 'Mon, 03 Dec 2018 15:12:16 +0000'}
+{'reset ': 'Mon, 03 Dec 2018 15:15:36 +0000'}
+{'Stone0': {'theme': 'BLUE', 'radius': 52, 'center': (800, 572)}}
+{'Stone1': {'theme': 'GREEN', 'radius': 58, 'center': (232, 520)}}
+{'Stone2': {'theme': 'BLUE', 'radius': 52, 'center': (682, 331)}}
+{'Stone3': {'theme': 'GREEN', 'radius': 58, 'center': (469, 230)}}
+{'Stone4': {'theme': 'BLUE', 'radius': 52, 'center': (788, 98)}}
+{'Stone5': {'theme': 'RED', 'radius': 60, 'center': (123, 96)}}
+{'Default Loaded': 'Mon, 03 Dec 2018 15:15:37 +0000'}
+{'reset ': 'Mon, 03 Dec 2018 15:16:13 +0000'}
+{'Camera Start': 'Mon, 03 Dec 2018 15:16:16 +0000'}
+-----../saved_pickle/filep20g2.pickle------
+{'Stone0': {'theme': 'GREEN', 'radius': 59, 'center': (914, 447)}}
+{'Stone1': {'theme': 'BLUE', 'radius': 52, 'center': (196, 397)}}
+{'Stone2': {'theme': 'RED', 'radius': 60, 'center': (539, 135)}}
+{'Default Loaded': 'Thu, 13 Dec 2018 14:48:31 +0000'}
+{'reset ': 'Thu, 13 Dec 2018 14:51:45 +0000'}
+{'Stone0': {'theme': 'RED', 'radius': 60, 'center': (907, 586)}}
+{'Stone1': {'theme': 'BLUE', 'radius': 52, 'center': (379, 305)}}
+{'Stone2': {'theme': 'RED', 'radius': 49, 'center': (900, 41)}}
+{'Stone3': {'theme': 'GREEN', 'radius': 39, 'center': (21, 33)}}
+{'Default Loaded': 'Thu, 13 Dec 2018 14:51:49 +0000'}
+{'reset ': 'Thu, 13 Dec 2018 14:53:01 +0000'}
+{'Stone0': {'theme': 'BLUE', 'radius': 76, 'center': (524, 403)}}
+{'Default Loaded': 'Thu, 13 Dec 2018 14:53:47 +0000'}
+{'reset ': 'Thu, 13 Dec 2018 14:57:58 +0000'}
+{'Stone0': {'theme': 'BLUE', 'radius': 52, 'center': (653, 556)}}
+{'Default Loaded': 'Thu, 13 Dec 2018 14:58:01 +0000'}
+-----../saved_pickle/filep17g1.pickle------
+{'Stone0': {'theme': 'BLUE', 'radius': 52, 'center': (108, 575)}}
+{'Stone1': {'theme': 'RED', 'radius': 60, 'center': (624, 421)}}
+{'Stone2': {'theme': 'GREEN', 'radius': 60, 'center': (292, 383)}}
+{'Stone3': {'theme': 'GREEN', 'radius': 59, 'center': (210, 118)}}
+{'Default Loaded': 'Fri, 07 Dec 2018 12:34:59 +0000'}
+{'reset ': 'Fri, 07 Dec 2018 12:37:50 +0000'}
+{'Stone0': {'theme': 'BLUE', 'radius': 52, 'center': (476, 358)}}
+{'Stone1': {'theme': 'RED', 'radius': 60, 'center': (107, 256)}}
+{'Stone2': {'theme': 'GREEN', 'radius': 57, 'center': (708, 181)}}
+{'Default Loaded': 'Fri, 07 Dec 2018 12:37:53 +0000'}
+{'reset ': 'Fri, 07 Dec 2018 12:41:45 +0000'}
+{'Stone0': {'theme': 'GREEN', 'radius': 58, 'center': (231, 318)}}
+{'Stone1': {'theme': 'BLUE', 'radius': 52, 'center': (650, 291)}}
+{'Default Loaded': 'Fri, 07 Dec 2018 12:41:47 +0000'}
+{'reset ': 'Fri, 07 Dec 2018 12:43:24 +0000'}
+{'Stone0': {'theme': 'GREEN', 'radius': 58, 'center': (568, 494)}}
+{'Stone1': {'theme': 'RED', 'radius': 62, 'center': (479, 131)}}
+{'Default Loaded': 'Fri, 07 Dec 2018 12:43:29 +0000'}
+{'Stone0': {'theme': 'BLUE', 'radius': 76, 'center': (524, 403)}}
+{'Default Loaded': 'Fri, 07 Dec 2018 12:45:41 +0000'}
+{'reset ': 'Fri, 07 Dec 2018 12:48:27 +0000'}
+{'Stone0': {'theme': 'BLUE', 'radius': 52, 'center': (813, 543)}}
+{'Stone1': {'theme': 'GREEN', 'radius': 60, 'center': (86, 453)}}
+{'Default Loaded': 'Fri, 07 Dec 2018 12:48:30 +0000'}
+{'reset ': 'Fri, 07 Dec 2018 12:48:46 +0000'}
+{'Stone0': {'theme': 'BLUE', 'radius': 52, 'center': (247, 568)}}
+{'Stone1': {'theme': 'BLUE', 'radius': 52, 'center': (813, 543)}}
+{'Stone2': {'theme': 'BLUE', 'radius': 52, 'center': (351, 472)}}
+{'Stone3': {'theme': 'GREEN', 'radius': 60, 'center': (86, 453)}}
+{'Default Loaded': 'Fri, 07 Dec 2018 12:48:48 +0000'}
+-----../saved_pickle/filep16g.pickle------
+{'Stone0': {'theme': 'GREEN', 'radius': 58, 'center': (881, 347)}}
+{'Stone1': {'theme': 'RED', 'radius': 60, 'center': (465, 136)}}
+{'Default Loaded': 'Tue, 04 Dec 2018 16:44:33 +0000'}
+{'reset ': 'Tue, 04 Dec 2018 16:46:28 +0000'}
+{'Stone0': {'theme': 'GREEN', 'radius': 59, 'center': (590, 560)}}
+{'Stone1': {'theme': 'BLUE', 'radius': 52, 'center': (287, 314)}}
+{'Stone2': {'theme': 'RED', 'radius': 61, 'center': (661, 100)}}
+{'Default Loaded': 'Tue, 04 Dec 2018 16:46:29 +0000'}
+{'reset ': 'Tue, 04 Dec 2018 16:51:13 +0000'}
+{'Stone0': {'theme': 'BLUE', 'radius': 52, 'center': (300, 441)}}
+{'Stone1': {'theme': 'RED', 'radius': 60, 'center': (823, 367)}}
+{'Stone2': {'theme': 'GREEN', 'radius': 58, 'center': (467, 172)}}
+{'Default Loaded': 'Tue, 04 Dec 2018 16:51:15 +0000'}
+{'reset ': 'Tue, 04 Dec 2018 16:53:18 +0000'}
+{'Stone0': {'theme': 'RED', 'radius': 60, 'center': (678, 589)}}
+{'Stone1': {'theme': 'GREEN', 'radius': 58, 'center': (182, 555)}}
+{'Stone2': {'theme': 'RED', 'radius': 60, 'center': (673, 395)}}
+{'Stone3': {'theme': 'BLUE', 'radius': 52, 'center': (920, 354)}}
+{'Stone4': {'theme': 'GREEN', 'radius': 57, 'center': (294, 240)}}
+{'Stone5': {'theme': 'GREEN', 'radius': 58, 'center': (203, 196)}}
+{'Stone6': {'theme': 'RED', 'radius': 60, 'center': (584, 188)}}
+{'Stone7': {'theme': 'BLUE', 'radius': 52, 'center': (923, 144)}}
+{'Stone8': {'theme': 'BLUE', 'radius': 52, 'center': (756, 83)}}
+{'Default Loaded': 'Tue, 04 Dec 2018 16:53:20 +0000'}
+{'Stone0': {'theme': 'BLUE', 'radius': 76, 'center': (524, 403)}}
+{'Default Loaded': 'Tue, 04 Dec 2018 16:55:23 +0000'}
+-----../saved_pickle/fileP6Z1.pickle------
+{'Camera Start': 'Mon, 03 Dec 2018 15:17:42 +0000'}
+{'Stone0 ': {'theme': 'BLUE', 'radius': 50, 'center': (318, 292)}}
+{'Stone1 ': {'theme': 'RED', 'radius': 55, 'center': (82, 183)}}
+{'Stone2 ': {'theme': 'GREEN', 'radius': 48, 'center': (381, 48)}}
+{'load_callibration ': 'Mon, 03 Dec 2018 15:17:52 +0000'}
+{'Stone0 ': {'theme': 'RED', 'radius': 58, 'center': (55, 260)}}
+{'Stone1 ': {'theme': 'GREEN', 'radius': 57, 'center': (402, 194)}}
+{'Stone2 ': {'theme': 'BLUE', 'radius': 54, 'center': (233, 49)}}
+{'load_callibration ': 'Mon, 03 Dec 2018 15:19:31 +0000'}
+{'load_callibration ': 'Mon, 03 Dec 2018 15:19:31 +0000'}
+{'Stone0 ': {'theme': 'GREEN', 'radius': 45, 'center': (313, 328)}}
+{'Stone1 ': {'theme': 'RED', 'radius': 56, 'center': (54, 263)}}
+{'Stone2 ': {'theme': 'RED', 'radius': 53, 'center': (23, 110)}}
+{'Stone3 ': {'theme': 'BLUE', 'radius': 52, 'center': (233, 51)}}
+{'load_callibration ': 'Mon, 03 Dec 2018 15:19:56 +0000'}
+{'load_callibration ': 'Mon, 03 Dec 2018 15:19:56 +0000'}
+{'Camera Start': 'Mon, 03 Dec 2018 15:21:58 +0000'}
+{'reset ': 'Mon, 03 Dec 2018 15:21:58 +0000'}
+{'Stone0 ': {'theme': 'BLUE', 'radius': 59, 'center': (66, 274)}}
+{'Stone1 ': {'theme': 'BLUE', 'radius': 56, 'center': (356, 283)}}
+{'Stone2 ': {'theme': 'RED', 'radius': 55, 'center': (160, 102)}}
+{'Stone3 ': {'theme': 'GREEN', 'radius': 52, 'center': (380, 57)}}
+{'load_callibration ': 'Mon, 03 Dec 2018 15:22:45 +0000'}
+{'Camera Start': 'Mon, 03 Dec 2018 15:23:54 +0000'}
+{'reset ': 'Mon, 03 Dec 2018 15:23:54 +0000'}
+{'Stone0 ': {'theme': 'RED', 'radius': 56, 'center': (388, 344)}}
+{'Stone1 ': {'theme': 'RED', 'radius': 53, 'center': (96, 344)}}
+{'Stone2 ': {'theme': 'BLUE', 'radius': 46, 'center': (206, 304)}}
+{'Stone3 ': {'theme': 'GREEN', 'radius': 45, 'center': (41, 154)}}
+{'Stone4 ': {'theme': 'RED', 'radius': 51, 'center': (408, 46)}}
+{'Stone5 ': {'theme': 'BLUE', 'radius': 55, 'center': (173, 54)}}
+{'load_callibration ': 'Mon, 03 Dec 2018 15:24:47 +0000'}
+{'Stone0': {'theme': 'BLUE', 'radius': 77, 'center': (525, 402)}}
+{'Default Loaded': 'Mon, 03 Dec 2018 15:27:08 +0000'}
+{'Camera Start': 'Mon, 03 Dec 2018 15:30:13 +0000'}
+{'reset ': 'Mon, 03 Dec 2018 15:30:13 +0000'}
+{'Stone0 ': {'theme': 'BLUE', 'radius': 49, 'center': (125, 342)}}
+{'Stone1 ': {'theme': 'BLUE', 'radius': 53, 'center': (414, 152)}}
+{'load_callibration ': 'Mon, 03 Dec 2018 15:30:15 +0000'}
+-----../saved_pickle/fileP7Z1.pickle------
+{'Camera Start': 'Mon, 03 Dec 2018 15:54:08 +0000'}
+{'Stone0 ': {'theme': 'GREEN', 'radius': 43, 'center': (415, 353)}}
+{'Stone1 ': {'theme': 'RED', 'radius': 55, 'center': (122, 255)}}
+{'Stone2 ': {'theme': 'GREEN', 'radius': 54, 'center': (290, 38)}}
+{'load_callibration ': 'Mon, 03 Dec 2018 15:54:44 +0000'}
+{'load_callibration ': 'Mon, 03 Dec 2018 15:54:44 +0000'}
+{'Stone0 ': {'theme': 'RED', 'radius': 68, 'center': (254, 392)}}
+{'load_callibration ': 'Mon, 03 Dec 2018 15:56:02 +0000'}
+{'load_callibration ': 'Mon, 03 Dec 2018 15:56:02 +0000'}
+{'Stone0 ': {'theme': 'RED', 'radius': 61, 'center': (282, 331)}}
+{'Stone1 ': {'theme': 'BLUE', 'radius': 45, 'center': (405, 338)}}
+{'Stone2 ': {'theme': 'BLUE', 'radius': 50, 'center': (240, 194)}}
+{'Stone3 ': {'theme': 'GREEN', 'radius': 55, 'center': (353, 43)}}
+{'load_callibration ': 'Mon, 03 Dec 2018 15:56:26 +0000'}
+{'load_callibration ': 'Mon, 03 Dec 2018 15:56:26 +0000'}
+{'Camera Start': 'Mon, 03 Dec 2018 15:59:28 +0000'}
+{'reset ': 'Mon, 03 Dec 2018 15:59:28 +0000'}
+{'Stone0 ': {'theme': 'GREEN', 'radius': 43, 'center': (39, 218)}}
+{'Stone1 ': {'theme': 'GREEN', 'radius': 55, 'center': (383, 215)}}
+{'Stone2 ': {'theme': 'RED', 'radius': 52, 'center': (362, 89)}}
+{'Stone3 ': {'theme': 'GREEN', 'radius': 52, 'center': (63, 74)}}
+{'load_callibration ': 'Mon, 03 Dec 2018 16:00:15 +0000'}
+{'Camera Start': 'Mon, 03 Dec 2018 16:00:27 +0000'}
+{'reset ': 'Mon, 03 Dec 2018 16:00:27 +0000'}
+{'Stone0 ': {'theme': 'BLUE', 'radius': 53, 'center': (199, 362)}}
+{'Stone1 ': {'theme': 'RED', 'radius': 61, 'center': (324, 319)}}
+{'Stone2 ': {'theme': 'GREEN', 'radius': 45, 'center': (43, 215)}}
+{'Stone3 ': {'theme': 'GREEN', 'radius': 56, 'center': (384, 216)}}
+{'Stone4 ': {'theme': 'RED', 'radius': 52, 'center': (363, 90)}}
+{'Stone5 ': {'theme': 'RED', 'radius': 53, 'center': (82, 80)}}
+{'load_callibration ': 'Mon, 03 Dec 2018 16:00:36 +0000'}
+{'Camera Start': 'Mon, 03 Dec 2018 16:01:56 +0000'}
+{'reset ': 'Mon, 03 Dec 2018 16:01:56 +0000'}
+{'Stone0 ': {'theme': 'RED', 'radius': 55, 'center': (258, 296)}}
+{'Stone1 ': {'theme': 'GREEN', 'radius': 55, 'center': (90, 231)}}
+{'Stone2 ': {'theme': 'GREEN', 'radius': 43, 'center': (390, 128)}}
+{'Stone3 ': {'theme': 'RED', 'radius': 56, 'center': (263, 73)}}
+{'load_callibration ': 'Mon, 03 Dec 2018 16:03:02 +0000'}
+{'Camera Start': 'Mon, 03 Dec 2018 16:04:13 +0000'}
+{'reset ': 'Mon, 03 Dec 2018 16:04:13 +0000'}
+{'Stone0': {'theme': 'BLUE', 'radius': 77, 'center': (525, 402)}}
+{'Default Loaded': 'Mon, 03 Dec 2018 16:04:58 +0000'}
+{'Camera Start': 'Mon, 03 Dec 2018 16:09:33 +0000'}
+{'reset ': 'Mon, 03 Dec 2018 16:09:33 +0000'}
+{'Stone0 ': {'theme': 'BLUE', 'radius': 55, 'center': (156, 309)}}
+{'Stone1 ': {'theme': 'BLUE', 'radius': 48, 'center': (415, 121)}}
+{'load_callibration ': 'Mon, 03 Dec 2018 16:09:40 +0000'}
+-----../saved_pickle/filep18g3.pickle------
+{'Stone0': {'theme': 'BLUE', 'radius': 52, 'center': (880, 540)}}
+{'Stone1': {'theme': 'BLUE', 'radius': 52, 'center': (239, 194)}}
+{'Stone2': {'theme': 'GREEN', 'radius': 58, 'center': (882, 200)}}
+{'Default Loaded': 'Fri, 07 Dec 2018 14:28:15 +0000'}
+{'Stone0': {'theme': 'BLUE', 'radius': 76, 'center': (524, 403)}}
+{'Default Loaded': 'Fri, 07 Dec 2018 14:30:38 +0000'}
+{'reset ': 'Fri, 07 Dec 2018 14:32:28 +0000'}
+{'Stone0': {'theme': 'BLUE', 'radius': 52, 'center': (850, 493)}}
+{'Stone1': {'theme': 'BLUE', 'radius': 52, 'center': (158, 228)}}
+{'Default Loaded': 'Fri, 07 Dec 2018 14:32:33 +0000'}
+-----../saved_pickle/filep19g3.pickle------
+{'Stone0': {'theme': 'GREEN', 'radius': 57, 'center': (855, 488)}}
+{'Stone1': {'theme': 'BLUE', 'radius': 52, 'center': (473, 300)}}
+{'Stone2': {'theme': 'RED', 'radius': 57, 'center': (182, 53)}}
+{'Default Loaded': 'Tue, 11 Dec 2018 13:06:06 +0000'}
+{'reset ': 'Tue, 11 Dec 2018 13:08:06 +0000'}
+{'Stone0': {'theme': 'BLUE', 'radius': 52, 'center': (456, 308)}}
+{'Stone1': {'theme': 'GREEN', 'radius': 58, 'center': (122, 314)}}
+{'Stone2': {'theme': 'RED', 'radius': 60, 'center': (785, 303)}}
+{'Default Loaded': 'Tue, 11 Dec 2018 13:08:08 +0000'}
+{'reset ': 'Tue, 11 Dec 2018 13:11:45 +0000'}
+{'Stone0': {'theme': 'GREEN', 'radius': 58, 'center': (52, 580)}}
+{'Stone1': {'theme': 'RED', 'radius': 60, 'center': (505, 362)}}
+{'Stone2': {'theme': 'BLUE', 'radius': 52, 'center': (853, 66)}}
+{'Default Loaded': 'Tue, 11 Dec 2018 13:11:47 +0000'}
+{'reset ': 'Tue, 11 Dec 2018 13:13:30 +0000'}
+{'Stone0': {'theme': 'BLUE', 'radius': 52, 'center': (62, 551)}}
+{'Stone1': {'theme': 'RED', 'radius': 51, 'center': (862, 46)}}
+{'Default Loaded': 'Tue, 11 Dec 2018 13:13:31 +0000'}
+{'reset ': 'Tue, 11 Dec 2018 13:14:08 +0000'}
+{'Stone0': {'theme': 'BLUE', 'radius': 76, 'center': (524, 403)}}
+{'Default Loaded': 'Tue, 11 Dec 2018 13:14:18 +0000'}
+{'reset ': 'Tue, 11 Dec 2018 13:16:21 +0000'}
+{'Stone0': {'theme': 'BLUE', 'radius': 52, 'center': (43, 573)}}
+{'Stone1': {'theme': 'BLUE', 'radius': 49, 'center': (915, 568)}}
+{'Default Loaded': 'Tue, 11 Dec 2018 13:17:05 +0000'}
+{'reset ': 'Tue, 11 Dec 2018 13:17:24 +0000'}
+-----../saved_pickle/filep13z1.pickle------
+{'Camera Start': 'Tue, 04 Dec 2018 12:48:31 +0000'}
+{'Stone0 ': {'theme': 'GREEN', 'radius': 53, 'center': (235, 330)}}
+{'Stone1 ': {'theme': 'GREEN', 'radius': 55, 'center': (234, 187)}}
+{'Stone2 ': {'theme': 'RED', 'radius': 52, 'center': (387, 67)}}
+{'load_callibration ': 'Tue, 04 Dec 2018 12:48:33 +0000'}
+{'Camera Start': 'Tue, 04 Dec 2018 12:48:40 +0000'}
+{'reset ': 'Tue, 04 Dec 2018 12:48:40 +0000'}
+{'Stone0 ': {'theme': 'GREEN', 'radius': 53, 'center': (235, 329)}}
+{'Stone1 ': {'theme': 'BLUE', 'radius': 52, 'center': (225, 178)}}
+{'Stone2 ': {'theme': 'RED', 'radius': 52, 'center': (387, 66)}}
+{'load_callibration ': 'Tue, 04 Dec 2018 12:48:48 +0000'}
+{'load_callibration ': 'Tue, 04 Dec 2018 12:50:15 +0000'}
+{'load_callibration ': 'Tue, 04 Dec 2018 12:50:15 +0000'}
+{'Stone0 ': {'theme': 'BLUE', 'radius': 51, 'center': (51, 60)}}
+{'load_callibration ': 'Tue, 04 Dec 2018 12:50:31 +0000'}
+{'load_callibration ': 'Tue, 04 Dec 2018 12:50:31 +0000'}
+{'Camera Start': 'Tue, 04 Dec 2018 12:50:36 +0000'}
+{'reset ': 'Tue, 04 Dec 2018 12:50:36 +0000'}
+{'Stone0 ': {'theme': 'GREEN', 'radius': 53, 'center': (407, 339)}}
+{'Stone1 ': {'theme': 'BLUE', 'radius': 49, 'center': (49, 58)}}
+{'load_callibration ': 'Tue, 04 Dec 2018 12:50:37 +0000'}
+{'Camera Start': 'Tue, 04 Dec 2018 12:53:19 +0000'}
+{'reset ': 'Tue, 04 Dec 2018 12:53:19 +0000'}
+{'Stone0 ': {'theme': 'GREEN', 'radius': 44, 'center': (392, 342)}}
+{'Stone1 ': {'theme': 'BLUE', 'radius': 51, 'center': (54, 347)}}
+{'Stone2 ': {'theme': 'RED', 'radius': 53, 'center': (393, 88)}}
+{'load_callibration ': 'Tue, 04 Dec 2018 12:53:37 +0000'}
+{'Camera Start': 'Tue, 04 Dec 2018 12:55:54 +0000'}
+{'reset ': 'Tue, 04 Dec 2018 12:55:54 +0000'}
+{'Stone0 ': {'theme': 'GREEN', 'radius': 55, 'center': (84, 358)}}
+{'Stone1 ': {'theme': 'BLUE', 'radius': 48, 'center': (404, 359)}}
+{'Stone2 ': {'theme': 'GREEN', 'radius': 44, 'center': (380, 59)}}
+{'Stone3 ': {'theme': 'BLUE', 'radius': 49, 'center': (46, 61)}}
+{'load_callibration ': 'Tue, 04 Dec 2018 12:56:24 +0000'}
+{'Stone0': {'theme': 'GREEN', 'radius': 59, 'center': (140, 495)}}
+{'Stone1': {'theme': 'BLUE', 'radius': 51, 'center': (827, 109)}}
+{'Default Loaded': 'Tue, 04 Dec 2018 12:58:42 +0000'}
+{'Camera Start': 'Tue, 04 Dec 2018 13:01:27 +0000'}
+{'reset ': 'Tue, 04 Dec 2018 13:01:27 +0000'}
+{'Stone0 ': {'theme': 'BLUE', 'radius': 52, 'center': (60, 355)}}
+{'Stone1 ': {'theme': 'BLUE', 'radius': 55, 'center': (397, 59)}}
+{'Stone2 ': {'theme': 'GREEN', 'radius': 56, 'center': (85, 40)}}
+{'load_callibration ': 'Tue, 04 Dec 2018 13:01:28 +0000'}
+-----../saved_pickle/fileP19Z1.pickle------
+{'Camera Start': 'Tue, 11 Dec 2018 12:43:14 +0000'}
+{'load_callibration ': 'Tue, 11 Dec 2018 12:43:56 +0000'}
+{'load_callibration ': 'Tue, 11 Dec 2018 12:43:56 +0000'}
+{'Stone0 ': {'theme': 'BLUE', 'radius': 53, 'center': (220, 179)}}
+{'load_callibration ': 'Tue, 11 Dec 2018 12:44:04 +0000'}
+{'Camera Start': 'Tue, 11 Dec 2018 12:44:26 +0000'}
+{'reset ': 'Tue, 11 Dec 2018 12:44:26 +0000'}
+{'Stone0 ': {'theme': 'RED', 'radius': 56, 'center': (376, 342)}}
+{'Stone1 ': {'theme': 'BLUE', 'radius': 54, 'center': (220, 179)}}
+{'load_callibration ': 'Tue, 11 Dec 2018 12:44:27 +0000'}
+{'load_callibration ': 'Tue, 11 Dec 2018 12:45:57 +0000'}
+{'load_callibration ': 'Tue, 11 Dec 2018 12:45:57 +0000'}
+{'load_callibration ': 'Tue, 11 Dec 2018 12:46:19 +0000'}
+{'load_callibration ': 'Tue, 11 Dec 2018 12:46:19 +0000'}
+{'Camera Start': 'Tue, 11 Dec 2018 12:47:03 +0000'}
+{'reset ': 'Tue, 11 Dec 2018 12:47:03 +0000'}
+{'Stone0 ': {'theme': 'RED', 'radius': 56, 'center': (119, 308)}}
+{'Stone1 ': {'theme': 'BLUE', 'radius': 53, 'center': (232, 215)}}
+{'Stone2 ': {'theme': 'GREEN', 'radius': 46, 'center': (350, 112)}}
+{'load_callibration ': 'Tue, 11 Dec 2018 12:47:04 +0000'}
+-----../saved_pickle/filep13g3.pickle------
+{'Stone0': {'theme': 'BLUE', 'radius': 76, 'center': (524, 403)}}
+{'Default Loaded': 'Tue, 04 Dec 2018 13:13:17 +0000'}
+{'reset ': 'Tue, 04 Dec 2018 13:17:16 +0000'}
+{'Camera Start': 'Tue, 04 Dec 2018 13:17:18 +0000'}
+-----../saved_pickle/filep9g1.pickle------
+{'Stone0': {'theme': 'BLUE', 'radius': 52, 'center': (370, 642)}}
+{'Stone1': {'theme': 'BLUE', 'radius': 52, 'center': (519, 640)}}
+{'Stone2': {'theme': 'BLUE', 'radius': 52, 'center': (641, 639)}}
+{'Stone3': {'theme': 'GREEN', 'radius': 60, 'center': (344, 223)}}
+{'Stone4': {'theme': 'RED', 'radius': 61, 'center': (685, 223)}}
+{'Stone5': {'theme': 'GREEN', 'radius': 58, 'center': (219, 77)}}
+{'Stone6': {'theme': 'GREEN', 'radius': 58, 'center': (829, 74)}}
+{'Default Loaded': 'Mon, 03 Dec 2018 17:52:18 +0000'}
+{'reset ': 'Mon, 03 Dec 2018 17:54:38 +0000'}
+{'Stone0': {'theme': 'RED', 'radius': 60, 'center': (362, 588)}}
+{'Stone1': {'theme': 'BLUE', 'radius': 52, 'center': (812, 563)}}
+{'Stone2': {'theme': 'GREEN', 'radius': 58, 'center': (879, 413)}}
+{'Stone3': {'theme': 'BLUE', 'radius': 52, 'center': (818, 302)}}
+{'Stone4': {'theme': 'RED', 'radius': 60, 'center': (306, 253)}}
+{'Stone5': {'theme': 'BLUE', 'radius': 52, 'center': (868, 173)}}
+{'Stone6': {'theme': 'GREEN', 'radius': 59, 'center': (456, 118)}}
+{'Stone7': {'theme': 'GREEN', 'radius': 58, 'center': (207, 109)}}
+{'Default Loaded': 'Mon, 03 Dec 2018 17:54:41 +0000'}
+{'reset ': 'Mon, 03 Dec 2018 18:00:13 +0000'}
+{'Stone0': {'theme': 'GREEN', 'radius': 57, 'center': (699, 257)}}
+{'Stone1': {'theme': 'RED', 'radius': 62, 'center': (215, 227)}}
+{'Stone2': {'theme': 'RED', 'radius': 60, 'center': (92, 133)}}
+{'Default Loaded': 'Mon, 03 Dec 2018 18:00:14 +0000'}
+{'reset ': 'Mon, 03 Dec 2018 18:01:33 +0000'}
+{'Stone0': {'theme': 'GREEN', 'radius': 58, 'center': (277, 566)}}
+{'Stone1': {'theme': 'GREEN', 'radius': 59, 'center': (740, 564)}}
+{'Stone2': {'theme': 'RED', 'radius': 60, 'center': (722, 94)}}
+{'Stone3': {'theme': 'RED', 'radius': 60, 'center': (283, 91)}}
+{'Default Loaded': 'Mon, 03 Dec 2018 18:02:13 +0000'}
+{'reset ': 'Mon, 03 Dec 2018 18:03:42 +0000'}
+{'Camera Start': 'Mon, 03 Dec 2018 18:03:45 +0000'}
+-----../saved_pickle/filep11z2.pickle------
+{'Camera Start': 'Tue, 04 Dec 2018 09:58:27 +0000'}
+{'Stone0 ': {'theme': 'RED', 'radius': 55, 'center': (74, 323)}}
+{'Stone1 ': {'theme': 'BLUE', 'radius': 50, 'center': (364, 318)}}
+{'Stone2 ': {'theme': 'GREEN', 'radius': 60, 'center': (226, 207)}}
+{'Stone3 ': {'theme': 'GREEN', 'radius': 46, 'center': (64, 80)}}
+{'Stone4 ': {'theme': 'BLUE', 'radius': 54, 'center': (366, 87)}}
+{'load_callibration ': 'Tue, 04 Dec 2018 09:58:33 +0000'}
+{'Camera Start': 'Tue, 04 Dec 2018 10:00:24 +0000'}
+{'reset ': 'Tue, 04 Dec 2018 10:00:24 +0000'}
+{'Stone0 ': {'theme': 'GREEN', 'radius': 51, 'center': (343, 215)}}
+{'Stone1 ': {'theme': 'BLUE', 'radius': 46, 'center': (64, 232)}}
+{'Stone2 ': {'theme': 'RED', 'radius': 53, 'center': (338, 72)}}
+{'load_callibration ': 'Tue, 04 Dec 2018 10:00:25 +0000'}
+{'Camera Start': 'Tue, 04 Dec 2018 10:02:32 +0000'}
+{'reset ': 'Tue, 04 Dec 2018 10:02:32 +0000'}
+{'Stone0': {'theme': 'BLUE', 'radius': 77, 'center': (525, 402)}}
+{'Default Loaded': 'Tue, 04 Dec 2018 10:02:35 +0000'}
+{'Camera Start': 'Tue, 04 Dec 2018 10:04:14 +0000'}
+{'reset ': 'Tue, 04 Dec 2018 10:04:14 +0000'}
+{'Stone0 ': {'theme': 'BLUE', 'radius': 52, 'center': (69, 327)}}
+{'Stone1 ': {'theme': 'GREEN', 'radius': 47, 'center': (231, 153)}}
+{'Stone2 ': {'theme': 'BLUE', 'radius': 56, 'center': (378, 54)}}
+{'load_callibration ': 'Tue, 04 Dec 2018 10:04:19 +0000'}
+-----../saved_pickle/filep10z2.pickle------
+{'Camera Start': 'Tue, 04 Dec 2018 09:31:27 +0000'}
+{'Stone0 ': {'theme': 'BLUE', 'radius': 52, 'center': (250, 339)}}
+{'Stone1 ': {'theme': 'GREEN', 'radius': 48, 'center': (140, 198)}}
+{'Stone2 ': {'theme': 'RED', 'radius': 55, 'center': (234, 53)}}
+{'load_callibration ': 'Tue, 04 Dec 2018 09:31:32 +0000'}
+{'load_callibration ': 'Tue, 04 Dec 2018 09:32:46 +0000'}
+{'load_callibration ': 'Tue, 04 Dec 2018 09:32:46 +0000'}
+{'Camera Start': 'Tue, 04 Dec 2018 09:33:35 +0000'}
+{'reset ': 'Tue, 04 Dec 2018 09:33:35 +0000'}
+{'Camera Start': 'Tue, 04 Dec 2018 09:33:38 +0000'}
+{'Stone0 ': {'theme': 'BLUE', 'radius': 52, 'center': (263, 357)}}
+{'Stone1 ': {'theme': 'RED', 'radius': 54, 'center': (384, 279)}}
+{'Stone2 ': {'theme': 'GREEN', 'radius': 45, 'center': (49, 207)}}
+{'Stone3 ': {'theme': 'GREEN', 'radius': 59, 'center': (345, 188)}}
+{'Stone4 ': {'theme': 'RED', 'radius': 51, 'center': (178, 80)}}
+{'load_callibration ': 'Tue, 04 Dec 2018 09:33:40 +0000'}
+{'Stone0 ': {'theme': 'BLUE', 'radius': 52, 'center': (259, 358)}}
+{'Stone1 ': {'theme': 'BLUE', 'radius': 55, 'center': (194, 307)}}
+{'Stone2 ': {'theme': 'RED', 'radius': 55, 'center': (383, 279)}}
+{'Stone3 ': {'theme': 'GREEN', 'radius': 44, 'center': (49, 205)}}
+{'Stone4 ': {'theme': 'GREEN', 'radius': 60, 'center': (345, 189)}}
+{'Stone5 ': {'theme': 'RED', 'radius': 50, 'center': (178, 80)}}
+{'load_callibration ': 'Tue, 04 Dec 2018 09:33:45 +0000'}
+{'load_callibration ': 'Tue, 04 Dec 2018 09:33:45 +0000'}
+{'Camera Start': 'Tue, 04 Dec 2018 09:33:47 +0000'}
+{'reset ': 'Tue, 04 Dec 2018 09:33:47 +0000'}
+{'Stone0 ': {'theme': 'BLUE', 'radius': 52, 'center': (259, 358)}}
+{'Stone1 ': {'theme': 'BLUE', 'radius': 55, 'center': (196, 308)}}
+{'Stone2 ': {'theme': 'RED', 'radius': 55, 'center': (384, 279)}}
+{'Stone3 ': {'theme': 'GREEN', 'radius': 45, 'center': (49, 207)}}
+{'Stone4 ': {'theme': 'GREEN', 'radius': 59, 'center': (345, 188)}}
+{'Stone5 ': {'theme': 'RED', 'radius': 51, 'center': (178, 81)}}
+{'load_callibration ': 'Tue, 04 Dec 2018 09:33:48 +0000'}
+{'Camera Start': 'Tue, 04 Dec 2018 09:35:52 +0000'}
+{'reset ': 'Tue, 04 Dec 2018 09:35:52 +0000'}
+{'Stone0 ': {'theme': 'BLUE', 'radius': 52, 'center': (260, 358)}}
+{'Stone1 ': {'theme': 'BLUE', 'radius': 56, 'center': (199, 310)}}
+{'Stone2 ': {'theme': 'RED', 'radius': 55, 'center': (383, 280)}}
+{'Stone3 ': {'theme': 'GREEN', 'radius': 40, 'center': (43, 203)}}
+{'Stone4 ': {'theme': 'GREEN', 'radius': 63, 'center': (349, 186)}}
+{'Stone5 ': {'theme': 'RED', 'radius': 53, 'center': (177, 78)}}
+{'load_callibration ': 'Tue, 04 Dec 2018 09:35:57 +0000'}
+{'Camera Start': 'Tue, 04 Dec 2018 09:37:22 +0000'}
+{'reset ': 'Tue, 04 Dec 2018 09:37:22 +0000'}
+-----../saved_pickle/filep8g.pickle------
+{'Stone0': {'theme': 'BLUE', 'radius': 52, 'center': (822, 203)}}
+{'Default Loaded': 'Mon, 03 Dec 2018 16:39:22 +0000'}
+{'reset ': 'Mon, 03 Dec 2018 16:41:04 +0000'}
+{'Stone0': {'theme': 'RED', 'radius': 60, 'center': (267, 452)}}
+{'Stone1': {'theme': 'GREEN', 'radius': 58, 'center': (404, 128)}}
+{'Default Loaded': 'Mon, 03 Dec 2018 16:41:05 +0000'}
+{'reset ': 'Mon, 03 Dec 2018 16:44:10 +0000'}
+{'Stone0': {'theme': 'RED', 'radius': 61, 'center': (367, 462)}}
+{'Stone1': {'theme': 'GREEN', 'radius': 58, 'center': (505, 234)}}
+{'Default Loaded': 'Mon, 03 Dec 2018 16:44:24 +0000'}
+{'reset ': 'Mon, 03 Dec 2018 16:46:46 +0000'}
+{'Stone0': {'theme': 'GREEN', 'radius': 58, 'center': (841, 592)}}
+{'Stone1': {'theme': 'BLUE', 'radius': 52, 'center': (746, 314)}}
+{'Default Loaded': 'Mon, 03 Dec 2018 16:46:48 +0000'}
+{'Stone0': {'theme': 'BLUE', 'radius': 77, 'center': (525, 402)}}
+{'Default Loaded': 'Mon, 03 Dec 2018 16:49:20 +0000'}
+{'reset ': 'Mon, 03 Dec 2018 16:51:23 +0000'}
+{'Camera Start': 'Mon, 03 Dec 2018 16:51:25 +0000'}
+-----../saved_pickle/filep13g1.pickle------
+{'Stone0': {'theme': 'GREEN', 'radius': 57, 'center': (848, 597)}}
+{'Stone1': {'theme': 'GREEN', 'radius': 59, 'center': (825, 144)}}
+{'Stone2': {'theme': 'RED', 'radius': 60, 'center': (98, 112)}}
+{'Default Loaded': 'Tue, 04 Dec 2018 13:03:50 +0000'}
+{'reset ': 'Tue, 04 Dec 2018 13:05:56 +0000'}
+{'Stone0': {'theme': 'RED', 'radius': 60, 'center': (863, 582)}}
+{'Stone1': {'theme': 'BLUE', 'radius': 52, 'center': (499, 353)}}
+{'Stone2': {'theme': 'RED', 'radius': 60, 'center': (104, 113)}}
+{'Default Loaded': 'Tue, 04 Dec 2018 13:05:59 +0000'}
+{'reset ': 'Tue, 04 Dec 2018 13:07:56 +0000'}
+{'Stone0': {'theme': 'GREEN', 'radius': 59, 'center': (880, 606)}}
+{'Stone1': {'theme': 'BLUE', 'radius': 52, 'center': (510, 98)}}
+{'Stone2': {'theme': 'RED', 'radius': 60, 'center': (863, 96)}}
+{'Default Loaded': 'Tue, 04 Dec 2018 13:09:08 +0000'}
+{'reset ': 'Tue, 04 Dec 2018 13:11:04 +0000'}
+{'Stone0': {'theme': 'RED', 'radius': 60, 'center': (864, 577)}}
+{'Stone1': {'theme': 'RED', 'radius': 60, 'center': (123, 108)}}
+{'Default Loaded': 'Tue, 04 Dec 2018 13:11:07 +0000'}
+{'reset ': 'Tue, 04 Dec 2018 13:12:41 +0000'}
+{'Camera Start': 'Tue, 04 Dec 2018 13:12:45 +0000'}
+-----../saved_pickle/filep19z3.pickle------
+{'Stone0': {'theme': 'GREEN', 'radius': 59, 'center': (140, 495)}}
+{'Stone1': {'theme': 'BLUE', 'radius': 51, 'center': (827, 109)}}
+{'Default Loaded': 'Tue, 11 Dec 2018 12:59:48 +0000'}
+{'reset ': 'Tue, 11 Dec 2018 13:01:58 +0000'}
+-----../saved_pickle/filep9g3.pickle------
+{'Stone0': {'theme': 'BLUE', 'radius': 77, 'center': (525, 402)}}
+{'Default Loaded': 'Mon, 03 Dec 2018 18:04:21 +0000'}
+{'reset ': 'Mon, 03 Dec 2018 18:08:18 +0000'}
+{'Camera Start': 'Mon, 03 Dec 2018 18:08:20 +0000'}
+-----../saved_pickle/filep12z3.pickle------
+{'Camera Start': 'Tue, 04 Dec 2018 12:24:42 +0000'}
+{'Stone0 ': {'theme': 'RED', 'radius': 81, 'center': (304, 335)}}
+{'load_callibration ': 'Tue, 04 Dec 2018 12:25:25 +0000'}
+{'load_callibration ': 'Tue, 04 Dec 2018 12:25:25 +0000'}
+{'Camera Start': 'Tue, 04 Dec 2018 12:25:52 +0000'}
+{'reset ': 'Tue, 04 Dec 2018 12:25:52 +0000'}
+{'Stone0 ': {'theme': 'GREEN', 'radius': 43, 'center': (308, 322)}}
+{'Stone1 ': {'theme': 'BLUE', 'radius': 55, 'center': (184, 211)}}
+{'Stone2 ': {'theme': 'BLUE', 'radius': 55, 'center': (390, 56)}}
+{'Stone3 ': {'theme': 'RED', 'radius': 53, 'center': (167, 51)}}
+{'load_callibration ': 'Tue, 04 Dec 2018 12:25:54 +0000'}
+{'Camera Start': 'Tue, 04 Dec 2018 12:27:27 +0000'}
+{'reset ': 'Tue, 04 Dec 2018 12:27:27 +0000'}
+{'Stone0 ': {'theme': 'BLUE', 'radius': 53, 'center': (387, 350)}}
+{'Stone1 ': {'theme': 'GREEN', 'radius': 55, 'center': (104, 357)}}
+{'Stone2 ': {'theme': 'RED', 'radius': 58, 'center': (64, 225)}}
+{'Stone3 ': {'theme': 'BLUE', 'radius': 56, 'center': (222, 194)}}
+{'Stone4 ': {'theme': 'GREEN', 'radius': 51, 'center': (140, 33)}}
+{'load_callibration ': 'Tue, 04 Dec 2018 12:28:01 +0000'}
+{'Camera Start': 'Tue, 04 Dec 2018 12:31:31 +0000'}
+{'reset ': 'Tue, 04 Dec 2018 12:31:31 +0000'}
+{'Stone0 ': {'theme': 'BLUE', 'radius': 53, 'center': (214, 344)}}
+{'Stone1 ': {'theme': 'BLUE', 'radius': 53, 'center': (229, 185)}}
+{'Stone2 ': {'theme': 'RED', 'radius': 56, 'center': (81, 93)}}
+{'load_callibration ': 'Tue, 04 Dec 2018 12:32:16 +0000'}
+{'Camera Start': 'Tue, 04 Dec 2018 12:33:33 +0000'}
+{'reset ': 'Tue, 04 Dec 2018 12:33:33 +0000'}
+{'Stone0 ': {'theme': 'GREEN', 'radius': 54, 'center': (391, 348)}}
+{'Stone1 ': {'theme': 'BLUE', 'radius': 54, 'center': (213, 199)}}
+{'Stone2 ': {'theme': 'BLUE', 'radius': 53, 'center': (220, 51)}}
+{'load_callibration ': 'Tue, 04 Dec 2018 12:34:00 +0000'}
+{'Camera Start': 'Tue, 04 Dec 2018 12:35:24 +0000'}
+{'reset ': 'Tue, 04 Dec 2018 12:35:24 +0000'}
+{'Stone0': {'theme': 'GREEN', 'radius': 59, 'center': (140, 495)}}
+{'Stone1': {'theme': 'BLUE', 'radius': 51, 'center': (827, 109)}}
+{'Default Loaded': 'Tue, 04 Dec 2018 12:36:16 +0000'}
+{'Camera Start': 'Tue, 04 Dec 2018 12:39:14 +0000'}
+{'reset ': 'Tue, 04 Dec 2018 12:39:14 +0000'}
+{'Stone0 ': {'theme': 'GREEN', 'radius': 55, 'center': (399, 327)}}
+{'Stone1 ': {'theme': 'BLUE', 'radius': 56, 'center': (243, 162)}}
+{'Stone2 ': {'theme': 'RED', 'radius': 54, 'center': (382, 61)}}
+{'load_callibration ': 'Tue, 04 Dec 2018 12:39:17 +0000'}
+-----../saved_pickle/filep19g1.pickle------
+{'Stone0': {'theme': 'BLUE', 'radius': 52, 'center': (97, 516)}}
+{'Default Loaded': 'Thu, 13 Dec 2018 14:40:01 +0000'}
+{'reset ': 'Thu, 13 Dec 2018 14:41:52 +0000'}
+{'Stone0': {'theme': 'BLUE', 'radius': 52, 'center': (50, 502)}}
+{'Stone1': {'theme': 'BLUE', 'radius': 52, 'center': (848, 494)}}
+{'Default Loaded': 'Thu, 13 Dec 2018 14:41:54 +0000'}
+-----../saved_pickle/fileP9Z1.pickle------
+{'Camera Start': 'Mon, 03 Dec 2018 17:33:51 +0000'}
+{'load_callibration ': 'Mon, 03 Dec 2018 17:34:20 +0000'}
+{'load_callibration ': 'Mon, 03 Dec 2018 17:34:20 +0000'}
+{'Stone0 ': {'theme': 'BLUE', 'radius': 54, 'center': (353, 350)}}
+{'Stone1 ': {'theme': 'GREEN', 'radius': 45, 'center': (342, 124)}}
+{'Stone2 ': {'theme': 'GREEN', 'radius': 48, 'center': (133, 85)}}
+{'Stone3 ': {'theme': 'RED', 'radius': 54, 'center': (246, 47)}}
+{'load_callibration ': 'Mon, 03 Dec 2018 17:34:44 +0000'}
+{'load_callibration ': 'Mon, 03 Dec 2018 17:36:18 +0000'}
+{'load_callibration ': 'Mon, 03 Dec 2018 17:36:18 +0000'}
+{'load_callibration ': 'Mon, 03 Dec 2018 17:36:38 +0000'}
+{'load_callibration ': 'Mon, 03 Dec 2018 17:36:38 +0000'}
+{'Camera Start': 'Mon, 03 Dec 2018 17:36:53 +0000'}
+{'reset ': 'Mon, 03 Dec 2018 17:36:53 +0000'}
+{'Stone0 ': {'theme': 'RED', 'radius': 63, 'center': (277, 349)}}
+{'Stone1 ': {'theme': 'GREEN', 'radius': 61, 'center': (69, 67)}}
+{'load_callibration ': 'Mon, 03 Dec 2018 17:36:54 +0000'}
+{'Camera Start': 'Mon, 03 Dec 2018 17:41:29 +0000'}
+{'reset ': 'Mon, 03 Dec 2018 17:41:29 +0000'}
+{'Stone0 ': {'theme': 'GREEN', 'radius': 51, 'center': (73, 361)}}
+{'Stone1 ': {'theme': 'BLUE', 'radius': 58, 'center': (189, 180)}}
+{'Stone2 ': {'theme': 'RED', 'radius': 54, 'center': (388, 47)}}
+{'load_callibration ': 'Mon, 03 Dec 2018 17:41:38 +0000'}
+{'Stone0': {'theme': 'GREEN', 'radius': 59, 'center': (140, 495)}}
+{'Stone1': {'theme': 'BLUE', 'radius': 51, 'center': (827, 109)}}
+{'Default Loaded': 'Mon, 03 Dec 2018 17:44:28 +0000'}
+{'Camera Start': 'Mon, 03 Dec 2018 17:48:05 +0000'}
+{'reset ': 'Mon, 03 Dec 2018 17:48:05 +0000'}
+{'Stone0 ': {'theme': 'BLUE', 'radius': 41, 'center': (110, 375)}}
+{'Stone1 ': {'theme': 'BLUE', 'radius': 53, 'center': (91, 275)}}
+{'Stone2 ': {'theme': 'GREEN', 'radius': 69, 'center': (314, 280)}}
+{'Stone3 ': {'theme': 'GREEN', 'radius': 51, 'center': (308, 113)}}
+{'Stone4 ': {'theme': 'BLUE', 'radius': 52, 'center': (63, 26)}}
+{'load_callibration ': 'Mon, 03 Dec 2018 17:48:07 +0000'}
+-----../saved_pickle/filep10g2.pickle------
+{'Stone0': {'theme': 'GREEN', 'radius': 59, 'center': (140, 495)}}
+{'Stone1': {'theme': 'BLUE', 'radius': 51, 'center': (827, 109)}}
+{'Default Loaded': 'Tue, 04 Dec 2018 09:24:29 +0000'}
+{'reset ': 'Tue, 04 Dec 2018 09:26:35 +0000'}
+{'Camera Start': 'Tue, 04 Dec 2018 09:26:55 +0000'}
+-----../saved_pickle/filep12g.pickle------
+{'Stone0': {'theme': 'BLUE', 'radius': 52, 'center': (227, 505)}}
+{'Stone1': {'theme': 'RED', 'radius': 61, 'center': (475, 339)}}
+{'Stone2': {'theme': 'BLUE', 'radius': 58, 'center': (222, 139)}}
+{'Default Loaded': 'Tue, 04 Dec 2018 12:05:48 +0000'}
+{'reset ': 'Tue, 04 Dec 2018 12:07:32 +0000'}
+{'Camera Start': 'Tue, 04 Dec 2018 12:07:35 +0000'}
+-----../saved_pickle/filepickletest.pickle------
+{'Camera Start': 'Mon, 03 Dec 2018 13:25:19 +0000'}
+{'Stone0 ': {'theme': 'BLUE', 'radius': 49, 'center': (298, 298)}}
+{'load_callibration ': 'Mon, 03 Dec 2018 13:25:28 +0000'}
+-----../saved_pickle/filep10z4.pickle------
+{'Stone0': {'theme': 'BLUE', 'radius': 77, 'center': (525, 402)}}
+{'Default Loaded': 'Tue, 04 Dec 2018 09:40:04 +0000'}
+{'reset ': 'Tue, 04 Dec 2018 09:43:48 +0000'}
+{'Camera Start': 'Tue, 04 Dec 2018 09:43:50 +0000'}
+{'Stone0 ': {'theme': 'BLUE', 'radius': 51, 'center': (406, 362)}}
+{'Stone1 ': {'theme': 'BLUE', 'radius': 50, 'center': (54, 351)}}
+{'Stone2 ': {'theme': 'BLUE', 'radius': 50, 'center': (283, 128)}}
+{'load_callibration ': 'Tue, 04 Dec 2018 09:43:51 +0000'}
+-----../saved_pickle/filep15g1.pickle------
+{'Stone0': {'theme': 'BLUE', 'radius': 52, 'center': (462, 608)}}
+{'Stone1': {'theme': 'GREEN', 'radius': 58, 'center': (804, 397)}}
+{'Stone2': {'theme': 'GREEN', 'radius': 58, 'center': (264, 343)}}
+{'Stone3': {'theme': 'BLUE', 'radius': 52, 'center': (205, 117)}}
+{'Default Loaded': 'Tue, 04 Dec 2018 16:09:35 +0000'}
+{'reset ': 'Tue, 04 Dec 2018 16:11:37 +0000'}
+{'Stone0': {'theme': 'GREEN', 'radius': 59, 'center': (864, 510)}}
+{'Stone1': {'theme': 'BLUE', 'radius': 52, 'center': (160, 368)}}
+{'Stone2': {'theme': 'RED', 'radius': 60, 'center': (552, 332)}}
+{'Stone3': {'theme': 'BLUE', 'radius': 52, 'center': (805, 229)}}
+{'Default Loaded': 'Tue, 04 Dec 2018 16:11:39 +0000'}
+{'reset ': 'Tue, 04 Dec 2018 16:15:56 +0000'}
+{'Stone0': {'theme': 'BLUE', 'radius': 52, 'center': (362, 552)}}
+{'Stone1': {'theme': 'BLUE', 'radius': 52, 'center': (824, 537)}}
+{'Stone2': {'theme': 'GREEN', 'radius': 57, 'center': (439, 399)}}
+{'Stone3': {'theme': 'BLUE', 'radius': 52, 'center': (115, 269)}}
+{'Stone4': {'theme': 'GREEN', 'radius': 58, 'center': (814, 95)}}
+{'Default Loaded': 'Tue, 04 Dec 2018 16:15:59 +0000'}
+{'reset ': 'Tue, 04 Dec 2018 16:18:03 +0000'}
+{'Stone0': {'theme': 'RED', 'radius': 60, 'center': (192, 478)}}
+{'Stone1': {'theme': 'BLUE', 'radius': 52, 'center': (760, 462)}}
+{'Stone2': {'theme': 'BLUE', 'radius': 52, 'center': (366, 342)}}
+{'Stone3': {'theme': 'RED', 'radius': 60, 'center': (474, 309)}}
+{'Stone4': {'theme': 'RED', 'radius': 52, 'center': (454, 90)}}
+{'Default Loaded': 'Tue, 04 Dec 2018 16:18:05 +0000'}
+{'Stone0': {'theme': 'GREEN', 'radius': 59, 'center': (140, 495)}}
+{'Stone1': {'theme': 'BLUE', 'radius': 51, 'center': (827, 109)}}
+{'Default Loaded': 'Tue, 04 Dec 2018 16:19:41 +0000'}
+-----../saved_pickle/filep10g.pickle------
+{'Stone0': {'theme': 'GREEN', 'radius': 59, 'center': (468, 556)}}
+{'Stone1': {'theme': 'RED', 'radius': 60, 'center': (212, 236)}}
+{'Default Loaded': 'Tue, 04 Dec 2018 09:09:56 +0000'}
+{'reset ': 'Tue, 04 Dec 2018 09:12:15 +0000'}
+{'Stone0': {'theme': 'GREEN', 'radius': 58, 'center': (322, 602)}}
+{'Stone1': {'theme': 'BLUE', 'radius': 52, 'center': (449, 165)}}
+{'Default Loaded': 'Tue, 04 Dec 2018 09:12:18 +0000'}
+{'reset ': 'Tue, 04 Dec 2018 09:14:34 +0000'}
+{'Stone0': {'theme': 'GREEN', 'radius': 57, 'center': (802, 559)}}
+{'Stone1': {'theme': 'RED', 'radius': 60, 'center': (347, 398)}}
+{'Stone2': {'theme': 'RED', 'radius': 60, 'center': (798, 341)}}
+{'Stone3': {'theme': 'GREEN', 'radius': 52, 'center': (799, 103)}}
+{'Default Loaded': 'Tue, 04 Dec 2018 09:18:58 +0000'}
+{'reset ': 'Tue, 04 Dec 2018 09:19:07 +0000'}
+{'Stone0': {'theme': 'GREEN', 'radius': 57, 'center': (802, 559)}}
+{'Stone1': {'theme': 'RED', 'radius': 60, 'center': (347, 398)}}
+{'Stone2': {'theme': 'RED', 'radius': 60, 'center': (798, 341)}}
+{'Stone3': {'theme': 'GREEN', 'radius': 52, 'center': (821, 107)}}
+{'Default Loaded': 'Tue, 04 Dec 2018 09:19:12 +0000'}
+{'reset ': 'Tue, 04 Dec 2018 09:20:31 +0000'}
+{'Camera Start': 'Tue, 04 Dec 2018 09:20:34 +0000'}
+-----../saved_pickle/filep15z.pickle------
+{'Camera Start': 'Tue, 04 Dec 2018 15:53:17 +0000'}
+{'load_callibration ': 'Tue, 04 Dec 2018 15:53:30 +0000'}
+{'load_callibration ': 'Tue, 04 Dec 2018 15:53:30 +0000'}
+{'Stone0 ': {'theme': 'GREEN', 'radius': 43, 'center': (83, 319)}}
+{'load_callibration ': 'Tue, 04 Dec 2018 15:53:45 +0000'}
+{'load_callibration ': 'Tue, 04 Dec 2018 15:54:58 +0000'}
+{'load_callibration ': 'Tue, 04 Dec 2018 15:54:58 +0000'}
+{'load_callibration ': 'Tue, 04 Dec 2018 15:55:12 +0000'}
+{'load_callibration ': 'Tue, 04 Dec 2018 15:55:12 +0000'}
+{'Camera Start': 'Tue, 04 Dec 2018 15:55:25 +0000'}
+{'reset ': 'Tue, 04 Dec 2018 15:55:25 +0000'}
+{'Stone0 ': {'theme': 'BLUE', 'radius': 54, 'center': (349, 263)}}
+{'Stone1 ': {'theme': 'GREEN', 'radius': 43, 'center': (130, 96)}}
+{'load_callibration ': 'Tue, 04 Dec 2018 15:55:29 +0000'}
+-----../saved_pickle/filep14z1.pickle------
+{'Camera Start': 'Tue, 04 Dec 2018 14:41:49 +0000'}
+{'Stone0 ': {'theme': 'RED', 'radius': 88, 'center': (367, 328)}}
+{'load_callibration ': 'Tue, 04 Dec 2018 14:42:15 +0000'}
+{'load_callibration ': 'Tue, 04 Dec 2018 14:42:15 +0000'}
+{'Camera Start': 'Tue, 04 Dec 2018 14:42:24 +0000'}
+{'reset ': 'Tue, 04 Dec 2018 14:42:24 +0000'}
+{'Stone0 ': {'theme': 'GREEN', 'radius': 46, 'center': (360, 287)}}
+{'Stone1 ': {'theme': 'RED', 'radius': 54, 'center': (148, 244)}}
+{'Stone2 ': {'theme': 'BLUE', 'radius': 54, 'center': (348, 115)}}
+{'load_callibration ': 'Tue, 04 Dec 2018 14:42:38 +0000'}
+{'Camera Start': 'Tue, 04 Dec 2018 14:44:38 +0000'}
+{'reset ': 'Tue, 04 Dec 2018 14:44:38 +0000'}
+{'Stone0 ': {'theme': 'RED', 'radius': 50, 'center': (232, 319)}}
+{'Stone1 ': {'theme': 'BLUE', 'radius': 73, 'center': (386, 86)}}
+{'Stone2 ': {'theme': 'RED', 'radius': 54, 'center': (158, 35)}}
+{'load_callibration ': 'Tue, 04 Dec 2018 14:45:14 +0000'}
+-----../saved_pickle/filep17z2.pickle------
+{'Camera Start': 'Fri, 07 Dec 2018 12:20:38 +0000'}
+{'Stone0 ': {'theme': 'GREEN', 'radius': 62, 'center': (65, 336)}}
+{'Stone1 ': {'theme': 'RED', 'radius': 52, 'center': (291, 200)}}
+{'Stone2 ': {'theme': 'BLUE', 'radius': 55, 'center': (95, 94)}}
+{'load_callibration ': 'Fri, 07 Dec 2018 12:21:37 +0000'}
+{'Camera Start': 'Fri, 07 Dec 2018 12:23:50 +0000'}
+{'reset ': 'Fri, 07 Dec 2018 12:23:50 +0000'}
+{'Stone0 ': {'theme': 'BLUE', 'radius': 54, 'center': (319, 302)}}
+{'Stone1 ': {'theme': 'GREEN', 'radius': 61, 'center': (241, 184)}}
+{'Stone2 ': {'theme': 'RED', 'radius': 53, 'center': (101, 87)}}
+{'load_callibration ': 'Fri, 07 Dec 2018 12:23:51 +0000'}
+{'Camera Start': 'Fri, 07 Dec 2018 12:25:07 +0000'}
+{'reset ': 'Fri, 07 Dec 2018 12:25:07 +0000'}
+{'Stone0': {'theme': 'GREEN', 'radius': 59, 'center': (140, 495)}}
+{'Stone1': {'theme': 'BLUE', 'radius': 51, 'center': (827, 109)}}
+{'Default Loaded': 'Fri, 07 Dec 2018 12:26:14 +0000'}
+{'Camera Start': 'Fri, 07 Dec 2018 12:30:32 +0000'}
+{'reset ': 'Fri, 07 Dec 2018 12:30:32 +0000'}
+{'Camera Start': 'Fri, 07 Dec 2018 12:30:34 +0000'}
+{'Stone0 ': {'theme': 'GREEN', 'radius': 55, 'center': (190, 332)}}
+{'Stone1 ': {'theme': 'BLUE', 'radius': 53, 'center': (315, 183)}}
+{'Stone2 ': {'theme': 'GREEN', 'radius': 55, 'center': (221, 32)}}
+{'load_callibration ': 'Fri, 07 Dec 2018 12:30:36 +0000'}
+-----../saved_pickle/filep20z1.pickle------
+{'Camera Start': 'Thu, 13 Dec 2018 15:02:24 +0000'}
+{'Stone0 ': {'theme': 'RED', 'radius': 55, 'center': (95, 321)}}
+{'Stone1 ': {'theme': 'RED', 'radius': 60, 'center': (153, 229)}}
+{'Stone2 ': {'theme': 'RED', 'radius': 54, 'center': (197, 151)}}
+{'Stone3 ': {'theme': 'BLUE', 'radius': 54, 'center': (389, 49)}}
+{'load_callibration ': 'Thu, 13 Dec 2018 15:02:33 +0000'}
+{'load_callibration ': 'Thu, 13 Dec 2018 15:05:06 +0000'}
+{'load_callibration ': 'Thu, 13 Dec 2018 15:05:06 +0000'}
+-----../saved_pickle/filep18g.pickle------
+{'Stone0': {'theme': 'RED', 'radius': 60, 'center': (233, 243)}}
+{'Stone1': {'theme': 'GREEN', 'radius': 58, 'center': (832, 231)}}
+{'Default Loaded': 'Fri, 07 Dec 2018 14:17:44 +0000'}
+{'reset ': 'Fri, 07 Dec 2018 14:20:42 +0000'}
+{'Stone0': {'theme': 'BLUE', 'radius': 52, 'center': (900, 627)}}
+{'Stone1': {'theme': 'GREEN', 'radius': 58, 'center': (241, 288)}}
+{'Stone2': {'theme': 'GREEN', 'radius': 57, 'center': (355, 232)}}
+{'Default Loaded': 'Fri, 07 Dec 2018 14:20:45 +0000'}
+{'reset ': 'Fri, 07 Dec 2018 14:25:37 +0000'}
+{'Stone0': {'theme': 'RED', 'radius': 60, 'center': (656, 545)}}
+{'Stone1': {'theme': 'RED', 'radius': 62, 'center': (471, 204)}}
+{'Default Loaded': 'Fri, 07 Dec 2018 14:25:39 +0000'}
+[Finished in 0.389s]

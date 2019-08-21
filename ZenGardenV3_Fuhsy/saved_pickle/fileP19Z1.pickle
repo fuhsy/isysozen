@@ -1,0 +1,131 @@
+(lp0
+(lp1
+(dp2
+S'Camera Start'
+p3
+S'Tue, 11 Dec 2018 12:43:14 +0000'
+p4
+sa(dp5
+S'load_callibration '
+p6
+S'Tue, 11 Dec 2018 12:43:56 +0000'
+p7
+sag5
+a(dp8
+S'Stone0 '
+p9
+(dp10
+S'theme'
+p11
+S'BLUE'
+p12
+sS'radius'
+p13
+I53
+sS'center'
+p14
+(I220
+I179
+tp15
+ssa(dp16
+g6
+S'Tue, 11 Dec 2018 12:44:04 +0000'
+p17
+sa(dp18
+g3
+S'Tue, 11 Dec 2018 12:44:26 +0000'
+p19
+sa(dp20
+S'reset '
+p21
+S'Tue, 11 Dec 2018 12:44:26 +0000'
+p22
+sa(dp23
+S'Stone0 '
+p24
+(dp25
+g11
+S'RED'
+p26
+sg13
+I56
+sg14
+(I376
+I342
+tp27
+ssa(dp28
+S'Stone1 '
+p29
+(dp30
+g11
+g12
+sg13
+I54
+sg14
+(I220
+I179
+tp31
+ssa(dp32
+g6
+S'Tue, 11 Dec 2018 12:44:27 +0000'
+p33
+sa(dp34
+g6
+S'Tue, 11 Dec 2018 12:45:57 +0000'
+p35
+sag34
+a(dp36
+g6
+S'Tue, 11 Dec 2018 12:46:19 +0000'
+p37
+sag36
+a(dp38
+g3
+S'Tue, 11 Dec 2018 12:47:03 +0000'
+p39
+sa(dp40
+g21
+S'Tue, 11 Dec 2018 12:47:03 +0000'
+p41
+sa(dp42
+S'Stone0 '
+p43
+(dp44
+g11
+g26
+sg13
+I56
+sg14
+(I119
+I308
+tp45
+ssa(dp46
+S'Stone1 '
+p47
+(dp48
+g11
+g12
+sg13
+I53
+sg14
+(I232
+I215
+tp49
+ssa(dp50
+S'Stone2 '
+p51
+(dp52
+g11
+S'GREEN'
+p53
+sg13
+I46
+sg14
+(I350
+I112
+tp54
+ssa(dp55
+g6
+S'Tue, 11 Dec 2018 12:47:04 +0000'
+p56
+saa.

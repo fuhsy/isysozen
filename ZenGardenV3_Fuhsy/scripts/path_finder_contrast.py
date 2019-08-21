@@ -9,10 +9,26 @@ import time
 
 class PathFinder():
     def __init__(self):
+        """Pathfinder class
+
+        Attributes
+        ----------
+
+        Parameters
+        ----------
+        x : int
+            coordinate
+
+        Returns
+        -------
+        y : float or numpy.ndarray
+            Result of the ,xxxx
+
+        """
         self.auto_contrl = True
-        self.radius = 55
-        self.radius_slider = 55
-        self.detecting_angle = 35
+        self.radius = 35
+        self.radius_slider = 35
+        self.detecting_angle = 25
         self.detecting_angle_slider = 35
         self.px_thresh = 60
         self.average_direction  = 0
@@ -31,10 +47,9 @@ class PathFinder():
         self.time_wall = time.time()
 
     # This func is called every Frame and realizes the movement through the sand lines
-    def finder(self,img,stone_features,color_im):
+    def finder(self, img,stone_features, color_im):
 
         self.average_direction  = 0
-
         current_point_tuple = (self.current_point[0],self.current_point[1])
         current_point_t = Point(self.current_point[0],self.current_point[1])
 
@@ -42,7 +57,7 @@ class PathFinder():
         self.img_width = img.shape[1]
         self.img_height = img.shape[0]
         # Check if Movment-Dot is in image-area
-        if self.current_point[0]+self.radius < self.img_width and self.current_point[0]-self.radius > 0 and self.current_point[1]+self.radius < self.img_height and self.current_point[1]-self.radius > 0:
+        if self.current_point[0]+self.radius < self.img_width and self.current_point[0] - self.radius > 0 and self.current_point[1]+self.radius < self.img_height and self.current_point[1]-self.radius > 0:
             # range can be changed to set focus on diffrent radius.
             # max range devides the radius in several path_finder_contrast
             for i in range(1,2):
@@ -83,8 +98,8 @@ class PathFinder():
         path_len_x = int(self.current_point[0]+(self.radius*dir_path_x_norm))
         path_len_y = int(self.current_point[1]+(self.radius*dir_path_y_norm))
         path_pointer = (path_len_x, path_len_y)
-        color_im = cv2.line(color_im, current_point_tuple, path_pointer, (0,200,0),3)
-        color_im = cv2.circle(color_im, current_point_tuple, self.radius+5, (0,0,255), 2)
+        color_im = cv2.arrowedLine(color_im, current_point_tuple, path_pointer, (0,200,0),2)
+        color_im = cv2.circle(color_im, current_point_tuple, self.radius+12, (0,0,255), 2)
         return img, color_im
     def cart2pol(x, y):
         rho = np.sqrt(x**2 + y**2)
@@ -171,20 +186,19 @@ class PathFinder():
     def path_direction(self,angle):
         cos =  math.cos(math.radians(angle))
         sin = math.sin(math.radians(angle))
-        # x = cos
-        # y = sin
         return cos,sin
 
     def GetAngleOfLineBetweenTwoPoints(self,p1, p2):
             xDiff = p2.x - p1.x
             yDiff = p2.y - p1.y
-            # print degrees(atan2(yDiff, xDiff))
             return degrees(atan2(yDiff, xDiff))
     def set_current_point(self,x,y):
         self.current_point = [x,y]
     def distance(p1,p2):
         distance = math.sqrt( ((p1[0]-p2[0])**2)+((p1[1]-p2[1])**2) )
         return distance
+
+
 class Point():
     def __init__(self,x=None,y=None):
         self.x = x or 0

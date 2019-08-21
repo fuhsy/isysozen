@@ -63,7 +63,6 @@ class Controller():
         self.view = view
         self.camera = camera.Camera()
         self.view.register(self)
-        self.view.register_buttons()
         # self.previous_angle = 0
         self.feat = None
         self.stone_feat = None
@@ -96,6 +95,8 @@ class Controller():
             self.view.select_audio_output.addItem(self.devicelist[0][i])
             audio_index_count = audio_index_count+1
         self.theme = audio_theme.AudioTheme('water')
+        self.view.register_buttons()
+        self.view.show()
 
     def __del__(self):
         try:
@@ -173,7 +174,7 @@ class Controller():
             print 'No Camera connected'
         self.view.set_enabled_selection(start=False,cnt_sl=True,audio_out_chn=False,new_cal=False,load_cal=False,start_default=False)
         # self.view.set_enabled_selection(new_cal=False,load_cal=False,stop=True,play=True)
-        html_im = ImageGrab.grab(bbox=(1840,140,2840,840)) # X1,Y1,X2,Y2
+        html_im = ImageGrab.grab(bbox=(1700,180,2640,840)) # X1,Y1,X2,Y2
         html_im = np.asarray(html_im)
         cv2.imwrite('../images/saved_data/'+str(self.view.save_text.text())+'('+str(self.c_saveimg)+').jpg', html_im)
         # imsave('images/saved_data/'+str(self.view.save_text.text())+'('+str(self.c_saveimg)+').jpg',imagetosave)
@@ -218,8 +219,8 @@ class Controller():
         self.view.im_show = html_im
         self.view.im = html_im
         cv2.imwrite('../images/saved_data/'+str(self.view.save_text.text())+'('+str(self.c_saveimg)+').jpg', html_im)
-        self.audio_controller.img_height = self.view.im.shape[0]+60
-        self.audio_controller.img_width = self.view.im.shape[1]+60
+        # self.audio_controller.img_height = self.view.im.shape[0]+60
+        # self.audio_controller.img_width = self.view.im.shape[1]+60
         # self.view.qImage_show(self.view.im_show)
         self.view.qImage_show(html_im)
         self.path_timer = QtCore.QTimer()
@@ -477,13 +478,14 @@ class Controller():
     def serialize(self):
         self.logs.dataset = [self.logs.single_dataset]
         print self.logs.dataset
-        with open("../images/file"+str(self.view.save_text.text())+".pickle", "wb") as pfile:
+        with open("../saved_pickle/file"+str(self.view.save_text.text())+".pickle", "wb") as pfile:
             pickle.dump(self.logs.dataset, pfile)
 
     def deserialize(self):
-        with open("../imgges/file.pickle", "rb") as pfile:
+        with open("../saved_pickle/file.pickle", "rb") as pfile:
             data = pickle.load(pfile)
         return data
+
     def linlin(self,x, smi, sma, dmi, dma):
         return (x-smi)/(sma-smi)*(dma-dmi) + dmi
 class Logs():

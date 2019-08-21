@@ -1,8 +1,8 @@
 import sys
+print sys.version
+
 import view as v
 import controller as c
-
-
 
 def main():
 

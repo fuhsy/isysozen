@@ -1,0 +1,47 @@
+(lp0
+(lp1
+(dp2
+S'Stone0'
+p3
+(dp4
+S'theme'
+p5
+S'GREEN'
+p6
+sS'radius'
+p7
+I59
+sS'center'
+p8
+(I140
+I495
+tp9
+ssa(dp10
+S'Stone1'
+p11
+(dp12
+g5
+S'BLUE'
+p13
+sg7
+I51
+sg8
+(I827
+I109
+tp14
+ssa(dp15
+S'Default Loaded'
+p16
+S'Tue, 04 Dec 2018 09:24:29 +0000'
+p17
+sa(dp18
+S'reset '
+p19
+S'Tue, 04 Dec 2018 09:26:35 +0000'
+p20
+sa(dp21
+S'Camera Start'
+p22
+S'Tue, 04 Dec 2018 09:26:55 +0000'
+p23
+saa.

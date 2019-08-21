@@ -12,6 +12,7 @@ from PIL import Image, ImageStat
 from matplotlib import style
 from collections import deque
 import pylab
+import thread
 import collections
 import random
 import math
@@ -28,6 +29,7 @@ import audio_controller as actrl
 import audio_theme as atheme
 from pyo import pa_get_output_devices,pa_get_output_max_channels
 import usb
+from thread import start_new_thread
 
 # Gui elements
 
@@ -54,7 +56,7 @@ class View(QtGui.QWidget):
         self.timewindow = 10
         self.size = (1920,1080)
         self.layout = QtGui.QGridLayout()
-        self.w = QtGui.QWidget()
+        # self.w = QtGui.QWidget()
         self.pic = QtGui.QLabel()
         self.video_frame = QtGui.QLabel()
         self.select_audio_output = QtGui.QComboBox()
@@ -125,7 +127,7 @@ class View(QtGui.QWidget):
         self.listw = QtGui.QListWidget()
         self.listw.setFixedWidth(300)
         #self.plot = pg.PlotWidget()
-        self.w.setLayout(self.layout)
+        self.setLayout(self.layout)
         self.layout.setMargin(10)
         self.widget_pos = 0
         self.layout.addWidget(self.button_start, self.widget_pos, 0)
@@ -177,9 +179,7 @@ class View(QtGui.QWidget):
         self.widget_pos+=1
         self.layout.addWidget(self.listw, self.widget_pos, 0)
         self.widget_pos+=1
-
-
-        self.connect(self, QtCore.SIGNAL('triggered()'), self.closeEvent)
+        # self.connect(self, QtCore.SIGNAL('triggered()'), self.closeEvent)
         self.layout.addWidget(self.pic, 0, 1, self.widget_pos, 1)
         self.layout.addWidget(self.video_frame, 0, 1, self.widget_pos, 1)
         self.im = cv2.imread("../images/default/export.jpg")
@@ -205,14 +205,22 @@ class View(QtGui.QWidget):
         self.slider3.setEnabled(False)
         self.button_reset.setEnabled(False)
         self.controller = None
-        self.w.show()
-
+    #     start_new_thread(self.run,())
+    #
+    #
+    # def run(self):
+    #     while 1:
+    #         self.app.processEvents()
+    #         time.sleep(0.1)
     def register(self, controller):
         self.controller = controller
 
     def register_buttons(self):
-        self.button_start.clicked.connect(lambda: self.controller.start())
-        self.button_stop.clicked.connect(lambda: self.controller.stop_n_play())
+        # self.button_start.clicked.connect(lambda: self.controller.start())
+        self.connect(self.button_start, QtCore.SIGNAL("clicked()"), self.controller.start)
+        # self.connect(self.ui.PB_button1, QtCore.SIGNAL("clicked()"),
+        #              self.funct_button1)
+        self.button_stop.clicked.connect(lambda: start_new_thread(self.controller.stop_n_play,()))
         self.button_play.clicked.connect(lambda: self.controller.play())
         self.button_reset.clicked.connect(lambda: self.controller.reset())
         self.save_btn.clicked.connect(lambda: self.controller.serialize())
@@ -272,7 +280,7 @@ class View(QtGui.QWidget):
 
     def deleteLater(self):
         print('closed')
-        self.cap.release()
+        # self.cap.release()
         super(QtGui.QWidget, self).deleteLater()
 
     def set_enabled_selection(self,start=True,det_am=True,audio_out_chn=True,cnt_sl=True,new_cal=True,load_cal=True,start_default=True,stop=True,play=True,reset=True,sl1=True,sl2=True,sl3=True):
