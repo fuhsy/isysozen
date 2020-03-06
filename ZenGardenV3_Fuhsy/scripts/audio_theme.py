@@ -5,6 +5,18 @@ class AudioTheme():
 
 
     def __init__(self,str_theme):
+        """AudioTheme Class
+
+        Arguments
+        ----------
+        str_theme : String
+            Theme (Forest,Sea,Fire)
+        Parameters
+        ----------
+        type : Dictionary
+            All Soundfiles are saved here
+
+        """
         self.type = {
         		'Sea' : {
                 		0 : 'seaA1.wav',

@@ -1,7 +1,25 @@
 import numpy as np
 import cv2
 def four_point_transform(image, pts):
+    """four_point_transform func
 
+    Arguments
+    ----------
+    pts : np.ndarray len 4
+        Needs four points in rect form to warp image
+    Parameters
+    ----------
+    widthA,heightA, widthB, heightB : float
+    maxWidth, maxHeight : int
+        Params for warping image
+    dst, M, warped : np.ndarray
+        cv2.getPerspectiveTransform needs dst and position array to calc
+        warped image
+    Returns
+    ---------
+    warped : np.ndarray
+        warped image
+    """
     rect = order_points(pts)
     (tl, tr, br, bl) = rect
 
@@ -29,6 +47,23 @@ def four_point_transform(image, pts):
     return warped
 
 def order_points(pts):
+    """order_points func
+
+    Arguments
+    ----------
+    pts : np.ndarray len 4
+        Needs four points to order in right sequence
+
+    Parameters
+    ----------
+    rect : np.ndarray
+        Rect to order points
+    Returns
+    ---------
+    rect : np.ndarray
+        Rect in right order to use four_point_transform
+
+    """
     # initialzie a list of coordinates that will be ordered
     # such that the first entry in the list is the top-left,
     # the second entry is the top-right, the third is the

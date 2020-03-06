@@ -10,7 +10,10 @@ import pyscreenshot as ImageGrab
 import sys
 def main():
     # view = v.View()
+    """
+    PJust used for experiments to grab an slice of a screen
 
+    """
     html_im = ImageGrab.grab(bbox=(1840,140,2840,840))
     html_im.show()
 

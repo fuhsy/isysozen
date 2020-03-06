@@ -1,6 +1,7 @@
 import numpy as np
 import scipy.io.wavfile as wavfile
 
+print scipy.io.wavfile.__version__
 def ampradio_to_angle(x):
     # converts ratio of amplitude of left and right channel to degree in radians """
     if x == 1:

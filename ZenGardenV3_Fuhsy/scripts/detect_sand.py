@@ -13,6 +13,19 @@ import detect_stones as dstones
 class LineFeatures():
 
     def __init__(self,l_midp,l_len,l_dir,l_cur,p1,p2):
+        """LineFeatures Class
+
+        Arguments
+        ----------
+        line_mid_point = l_mid : float
+
+        line_len = l_len : float
+        line_direction = l_dir : float
+        line_curvyness = l_cur : float
+        line_p1 = p1 : float
+        line_p2 = p2 : float
+
+        """
         self.line_mid_point = l_midp
         self.line_len = l_len
         self.line_direction = l_dir
@@ -26,7 +39,23 @@ class LineFeatures():
 
 
 def getFeatures(img,contour_value):
+    """getFeatures func
 
+    Arguments
+    ----------
+    img : np.ndarray
+    contour_value : int
+        amount of iterations for erode and delate operators
+
+    Parameters
+    ----------
+    clahe - operation for reducing noisy area applied in lab color
+
+    blob detection for sound items
+
+    This function does the feature analysis where image operators are used to
+    get a sharper view ot the sand pattern.
+    """
     # img = cv2.imread('test2.png')
     font = cv2.FONT_HERSHEY_DUPLEX
     # gray = cv2.cvtColor(img,cv2.COLOR_BGR2GRAY)
@@ -65,8 +94,24 @@ def getFeatures(img,contour_value):
 
     return stone_features,color_im
 def color_stones(color_im,stone_features):
+    """getFeatures func
+
+    Arguments
+    ----------
+    color_im : np.ndarray
+    stone_features : Stone_Features
+        amount of iterations for erode and delate operators
+
+    Parameters
+    ----------
+    clahe - operation for reducing noisy area applied in lab color
+
+    blob detection for sound items
+
+    """
     noisy_area = 5
     font = cv2.FONT_HERSHEY_SIMPLEX
+
     # campfire = cv2.imread("../images/objects/fire.png")
     # campfire = cv2.resize(campfire, None, fx = 2, fy = 2, interpolation = cv2.INTER_CUBIC)
     # cy,cx = campfire.shape[:2]
@@ -93,14 +138,33 @@ def color_stones(color_im,stone_features):
             # color_im[feat.center[0]:feat.center[0]+fy,feat.center[1]:feat.center[1]+fx] = forest
     return color_im
 def distance(p1,p2):
-    distance = math.sqrt( ((p1[0]-p2[0])**2)+((p1[1]-p2[1])**2) )
+    """distance func
+
+    Arguments
+    ----------
+    p1 : Point(x,y)
+    p1 : Point(x,y)
+
+    Calc Distance in Pixels (float)
+
+    """
+    distance = math.sqrt(((p1[0]-p2[0])**2)+((p1[1]-p2[1])**2))
     return distance
 
 def GetAngleOfLineBetweenTwoPoints(p1, p2):
-        xDiff = p2.x - p1.x
-        yDiff = p2.y - p1.y
-        # print degrees(atan2(yDiff, xDiff))
-        return degrees(atan2(yDiff, xDiff))
+    """GetAngleOfLineBetweenTwoPoints func
+
+    Arguments
+    ----------
+    p1 : Point(x,y)
+    p1 : Point(x,y)
+
+    Calc angle in degree between two point and origin
+
+    """
+    xDiff = p2.x - p1.x
+    yDiff = p2.y - p1.y        # print degrees(atan2(yDiff, xDiff))
+    return degrees(atan2(yDiff, xDiff))
 
 def GetMidPoint(p1,p2):
     midx = (p1.x+p2.x)/2
@@ -113,15 +177,3 @@ class Point():
     def __init__(self,x=None,y=None):
         self.x = x or 0
         self.y = y or 0
-# cv2.imwrite("result.jpg", result)
-# images = []
-# images.append(im)
-# images.append(img)
-# montages = build_montages(images, (800, 600), (2, 1))
-# for montage in montages:
-# 	cv2.imshow("Montage", montage)
-#
-#
-#
-# cv2.waitKey(0)
-# cv2.destroyAllWindows()

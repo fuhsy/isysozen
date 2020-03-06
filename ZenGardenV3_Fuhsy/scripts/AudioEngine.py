@@ -1,5 +1,9 @@
 import OSC
+"""AudioEngine Class
 
+Just for adjusting speaker volume
+
+"""
 class AudioEngine():
     def __init__(self, *args):
         print "Init Audio Engine"

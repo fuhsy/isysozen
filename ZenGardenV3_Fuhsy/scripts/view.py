@@ -1,8 +1,9 @@
 import cv2,sys, time
-from PyQt4 import QtGui
-from PyQt4.QtGui import QImage,QPixmap
+from PyQt5.QtWidgets import QApplication, QWidget, QPushButton, QLabel,QGroupBox, QLineEdit, QComboBox, QMessageBox,\
+    QSlider, QProgressBar, QGridLayout, QSpinBox, QListWidget, QMainWindow, QCheckBox, QListWidgetItem
+from PyQt5.QtGui import QImage,QPixmap
 import pyqtgraph as pg
-import PyQt4.QtCore as QtCore
+import PyQt5.QtCore as QtCore
 import re
 import subprocess
 import os
@@ -33,14 +34,14 @@ from thread import start_new_thread
 
 # Gui elements
 
-class View(QtGui.QWidget):
-    def __del__(self):
+class View(QMainWindow):
+    # def __del__(self):
         # self.cap.release()
-        super(QtGui.QWidget, self).deleteLater()
+        # super(QWidget, self).deleteLater()
 
     def __init__(self, *args):
-        self.app = QtGui.QApplication(sys.argv)
-        super(QtGui.QWidget, self).__init__()
+        self.app = QApplication(sys.argv)
+        super(QMainWindow, self).__init__()
         # self.theme = audio_theme.AudioTheme('water')
         self.fps = 50
         # print pa_get_output_max_channels(4)
@@ -55,39 +56,39 @@ class View(QtGui.QWidget):
         self.brightness_v = 0
         self.timewindow = 10
         self.size = (1920,1080)
-        self.layout = QtGui.QGridLayout()
-        # self.w = QtGui.QWidget()
-        self.pic = QtGui.QLabel()
-        self.video_frame = QtGui.QLabel()
-        self.select_audio_output = QtGui.QComboBox()
-        self.audio_submit = QtGui.QPushButton('Submit')
-        self.detector_amount = QtGui.QSpinBox()
+        self.layout = QGridLayout()
+        # self.w = QWidget()
+        self.pic = QLabel()
+        self.video_frame = QLabel()
+        self.select_audio_output =  QComboBox()
+        self.audio_submit = QPushButton('Submit')
+        self.detector_amount =  QSpinBox()
         self.min_detectors = 1
         self.max_detectors = 5
         self.detector_amount.setMinimum(self.min_detectors)
         self.detector_amount.setMaximum(self.max_detectors)
         self.detector_amount.setAlignment(QtCore.Qt.AlignRight)
-        self.button_start = QtGui.QPushButton('Camera Connect')
-        self.button_start_default = QtGui.QPushButton('Start Computer GUI')
-        self.button_listen_task = QtGui.QPushButton('Listening Task')
-        self.button_listen_task_2 = QtGui.QPushButton('Listening Task 2')
-        self.button_load_cal = QtGui.QPushButton('Load Calibration')
-        self.button_stop = QtGui.QPushButton('Pause/Play')
-        self.save_btn = QtGui.QPushButton('Save Dataset')
-        self.save_text = QtGui.QLineEdit('User ID')
-        self.button_play = QtGui.QPushButton('Start')
-        self.button_reset = QtGui.QPushButton('Reset Scene')
-        self.button_new_cal = QtGui.QPushButton('New Calibration')
-        self.auto_checkbox = QtGui.QCheckBox('Auto Slider')
-        self.slider1 = QtGui.QSlider(QtCore.Qt.Horizontal)
-        self.slider2 = QtGui.QSlider(QtCore.Qt.Horizontal)
-        self.slider3 = QtGui.QSlider(QtCore.Qt.Horizontal)
-        self.contour_slider = QtGui.QSlider(QtCore.Qt.Horizontal)
-        self.txtslider1 = QtGui.QLabel('Radius of Circle')
-        self.txtslider2 = QtGui.QLabel('Speed '+str(self.fps)+' fps')
-        self.txtslider3 = QtGui.QLabel('Detecting Angle')
-        self.contour_slider_txt = QtGui.QLabel('Contour Detection')
-        self.detector_amount_txt = QtGui.QLabel('                                             Amount of Detectors')
+        self.button_start = QPushButton('Camera Connect')
+        self.button_start_default = QPushButton('Start Computer GUI')
+        self.button_listen_task = QPushButton('Listening Task')
+        self.button_listen_task_2 = QPushButton('Listening Task 2')
+        self.button_load_cal = QPushButton('Load Calibration')
+        self.button_stop = QPushButton('Pause/Play')
+        self.save_btn = QPushButton('Save Dataset')
+        self.save_text = QLineEdit('User ID')
+        self.button_play = QPushButton('Start')
+        self.button_reset = QPushButton('Reset Scene')
+        self.button_new_cal = QPushButton('New Calibration')
+        self.auto_checkbox = QCheckBox('Auto Slider')
+        self.slider1 = QSlider(QtCore.Qt.Horizontal)
+        self.slider2 = QSlider(QtCore.Qt.Horizontal)
+        self.slider3 = QSlider(QtCore.Qt.Horizontal)
+        self.contour_slider = QSlider(QtCore.Qt.Horizontal)
+        self.txtslider1 = QLabel('Radius of Circle')
+        self.txtslider2 = QLabel('Speed '+str(self.fps)+' fps')
+        self.txtslider3 = QLabel('Detecting Angle')
+        self.contour_slider_txt = QLabel('Contour Detection')
+        self.detector_amount_txt = QLabel('                                             Amount of Detectors')
 
         self.plt = pg.PlotWidget(title='Lightning Conditions')
         self.plt.setFixedWidth(300)
@@ -124,7 +125,7 @@ class View(QtGui.QWidget):
         self.button_start.setFixedWidth(300)
         self.button_load_cal.setFixedWidth(300)
         self.button_new_cal.setFixedWidth(300)
-        self.listw = QtGui.QListWidget()
+        self.listw = QListWidget()
         self.listw.setFixedWidth(300)
         #self.plot = pg.PlotWidget()
         self.setLayout(self.layout)
@@ -205,8 +206,10 @@ class View(QtGui.QWidget):
         self.slider3.setEnabled(False)
         self.button_reset.setEnabled(False)
         self.controller = None
+        self.setCentralWidget(QWidget(self))
+        self.centralWidget().setLayout(self.layout)
+        self.show()
     #     start_new_thread(self.run,())
-    #
     #
     # def run(self):
     #     while 1:
@@ -216,11 +219,11 @@ class View(QtGui.QWidget):
         self.controller = controller
 
     def register_buttons(self):
-        # self.button_start.clicked.connect(lambda: self.controller.start())
-        self.connect(self.button_start, QtCore.SIGNAL("clicked()"), self.controller.start)
+        self.button_start.clicked.connect(lambda: self.controller.start())
+        # self.connect(self.button_start, QtCore.SIGNAL("clicked()"), self.controller.start)
         # self.connect(self.ui.PB_button1, QtCore.SIGNAL("clicked()"),
         #              self.funct_button1)
-        self.button_stop.clicked.connect(lambda: start_new_thread(self.controller.stop_n_play,()))
+        self.button_stop.clicked.connect(lambda: self.controller.stop_n_play())
         self.button_play.clicked.connect(lambda: self.controller.play())
         self.button_reset.clicked.connect(lambda: self.controller.reset())
         self.save_btn.clicked.connect(lambda: self.controller.serialize())
@@ -254,7 +257,7 @@ class View(QtGui.QWidget):
 
 
     def setListInfo(self,message):
-        itemlist= QtGui.QListWidgetItem(message)
+        itemlist= QListWidgetItem(message)
         self.listw.addItem(itemlist)
 
     def qImage_show(self,frame_input):
@@ -265,9 +268,9 @@ class View(QtGui.QWidget):
             else:
                 qformat=QImage.Format_RGB888
 
-        temp_img = QtGui.QImage(frame_input, frame_input.shape[1], frame_input.shape[0], frame_input.strides[0], qformat)
+        temp_img = QImage(frame_input, frame_input.shape[1], frame_input.shape[0], frame_input.strides[0], qformat)
         temp_img = temp_img.rgbSwapped()
-        self.video_frame.setPixmap(QtGui.QPixmap.fromImage(temp_img))
+        self.video_frame.setPixmap(QPixmap.fromImage(temp_img))
         self.video_frame.setScaledContents(True)
 
 
@@ -281,7 +284,7 @@ class View(QtGui.QWidget):
     def deleteLater(self):
         print('closed')
         # self.cap.release()
-        super(QtGui.QWidget, self).deleteLater()
+        super(QWidget, self).deleteLater()
 
     def set_enabled_selection(self,start=True,det_am=True,audio_out_chn=True,cnt_sl=True,new_cal=True,load_cal=True,start_default=True,stop=True,play=True,reset=True,sl1=True,sl2=True,sl3=True):
         self.button_start.setEnabled(start)

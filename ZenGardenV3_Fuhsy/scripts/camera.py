@@ -1,5 +1,15 @@
 class Camera():
     def __init__(self):
+        """Camera Class
+
+        Parameters
+        ----------
+        max_smooth, max_smooth_brightness, mean_frame_diff_div : int
+        mean_brightness_div, max_brightness, fps : int
+        frame : np.ndarray
+
+        usage as name is explaining
+        """
         self.max_smooth = 5
         self.max_smooth_brightness = 2
         self.mean_frame_diff_div = 0

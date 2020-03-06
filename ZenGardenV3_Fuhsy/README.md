@@ -20,7 +20,7 @@ You can also set up different params for detecting sand lines. You can change:
     1. Radius of virtual object
     2. Detecting Angle 
     3. Speed 
-    4. 
+    
 
 Reset:
 

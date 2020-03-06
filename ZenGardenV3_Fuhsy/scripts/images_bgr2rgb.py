@@ -1,6 +1,10 @@
 import glob
 import cv2
 
+"""
+Rechange images. for experiments.
+
+"""
 # files = glob.glob("/Users/fuhsy/Desktop/sozen/Data_0912/images/saved_data/*.jpg")
 #
 # for file in files:

@@ -8,23 +8,8 @@ import time
 # import statistics
 
 class PathFinder():
+
     def __init__(self):
-        """Pathfinder class
-
-        Attributes
-        ----------
-
-        Parameters
-        ----------
-        x : int
-            coordinate
-
-        Returns
-        -------
-        y : float or numpy.ndarray
-            Result of the ,xxxx
-
-        """
         self.auto_contrl = True
         self.radius = 35
         self.radius_slider = 35
@@ -45,10 +30,97 @@ class PathFinder():
         self.img_height = 0
         self.wall_detected = 'default'
         self.time_wall = time.time()
+        """Pathfinder class
+
+        Attributes
+        ----------
+        func finder
+        func cart2pol
+        func pol2cart
+        func reflect
+        func check_angle
+        func stone_interact_view
+        func setStart_radius
+        func path_direction
+        func GetAngleOfLineBetweenTwoPoints
+        func set_current_point
+        func distance
+        Parameters
+        ----------
+        auto_contrl : bool
+            autocontrol trigger for gestures
+        radius = 35 : int
+            Radius of Sonic Anchor
+        radius_slider = 35 : int
+            Max Value of Radius, if no sandline is detected
+        detecting_angle = 25 : int
+            Detecting angle of sonic Anchor. Searching radius
+        detecting_angle_slider = 35 : int
+            Max Value of detecting angle, if no sandline is detected
+        px_thresh = 60 : int
+            Treshold for shadow pixel (sand)
+        average_direction  = 0 : int
+            Average of all Direction, where a shadow pixel is recognized
+            init with zero
+        mov_step = 10 : int
+            Moves 10 Pixel into direction of detecting angle
+        col_px = [] : array
+            Pixel Value of Pixel in Searching area
+        img_mid_point = Point(442/2,393/2) : np.ndarray
+            init mid point of image
+        current_point = [150,150] : np.ndarray
+            init current point of sonic anchor
+        previous_angle = 0 : int
+            Previous detected moving direction in degree
+        speed = 200 : int
+            Moving Speed
+        start_radius = 20 : int
+            Start radius of Waves by hitting sound item
+        start_radius_2 = 20 : int
+            Start radius of Waves by hitting sound item
+        start_radius_3 = 20 : int
+            Start radius of Waves by hitting sound item
+        img_width = 0 : int
+            Saved width of image, init 0
+        img_height = 0 : int
+            Saved height of image, init 0
+        wall_detected = 'default' : String (Left,Right,Top,Bottom)
+            Detection direction
+        time_wall = time.time() : double
+            Time after hitting wall
+
+        """
 
     # This func is called every Frame and realizes the movement through the sand lines
-    def finder(self, img,stone_features, color_im):
+    def finder(self, img, color_im):
+        """finder func
 
+        Arguments
+        ----------
+        img : np.ndarray
+            Current Image frame
+        color_im : np.ndarray
+            Image to paint on
+
+        Parameters
+        ----------
+        temp_iter_angle : int
+            temporal angle of detection
+        current_point_t : np.ndarray
+            Current point of sonic anchor
+        path_pointer : np.ndarray
+            Next Moving point
+        path_len_x : int
+        path_len_y : int
+            Moving Step in Pixels
+
+        Returns
+        -------
+        img : np.array
+            Current Image frame
+        color_im : np.array
+            Image to paint on
+        """
         self.average_direction  = 0
         current_point_tuple = (self.current_point[0],self.current_point[1])
         current_point_t = Point(self.current_point[0],self.current_point[1])
@@ -101,17 +173,69 @@ class PathFinder():
         color_im = cv2.arrowedLine(color_im, current_point_tuple, path_pointer, (0,200,0),2)
         color_im = cv2.circle(color_im, current_point_tuple, self.radius+12, (0,0,255), 2)
         return img, color_im
+
     def cart2pol(x, y):
+        """cart2pol func
+
+        Arguments
+        ----------
+        x : int
+            Len x from origin
+        y : int
+            Len y from origin
+
+        Returns
+        ----------
+        rho : float
+            rho angle Polar Coordinates
+        phi : float
+            phi angle Polar Coordinates
+        """
         rho = np.sqrt(x**2 + y**2)
         phi = np.arctan2(y, x)
         return(rho, phi)
 
     def pol2cart(rho, phi):
+        """pol2cart func
+
+        Arguments
+        ----------
+        rho : float
+            rho angle Polar Coordinates
+        phi : float
+            phi angle Polar Coordinates
+
+        Returns
+        ----------
+        x : int
+            Len x from origin
+        y : int
+            Len y from origin
+        """
         x = rho * np.cos(phi)
         y = rho * np.sin(phi)
         return(x, y)
 
     def reflect(self,p,pre_a):
+        """reflect func
+
+        Arguments
+        ----------
+        p : Class Point(x,y)
+            Current point
+        pre_a : Class Point(x,y)
+            Previous detected Point
+
+        Parameters
+        ----------
+        edge : int
+            Distance from Wall
+
+        Returns
+        -------
+        prev_angle : int
+            reflected angle
+        """
         prev_angle = pre_a
         edge = 45
         if p.x <= edge and pre_a < 180 and (self.wall_detected != 'left' or time.time() - self.time_wall > 2):
@@ -151,6 +275,23 @@ class PathFinder():
         return prev_angle
 
     def check_angle(self,j):
+        """check_angle func
+
+        Arguments
+        ----------
+        j : int
+            Iter Value of each ray to find shadow pixels
+
+        Parameters
+        ----------
+        iter_angle : int
+            degree value for kart. coordinate system
+
+        Returns
+        -------
+        iter_angle : int
+            degree value for kart. coordinate system
+        """
         iter_angle = (self.previous_angle-(self.detecting_angle/2))+j
         if iter_angle > 360:
             iter_angle = iter_angle - 360
@@ -160,6 +301,27 @@ class PathFinder():
         return iter_angle
 
     def stone_interact_view(self,img,feat):
+        """stone_interact_view func
+
+        Arguments
+        ----------
+        img : np.ndarray
+            current frame
+        feat : np.ndarray
+            All informations of sonic items(place, theme)
+
+        Parameters
+        ----------
+        stone_trigger : bool
+            wave animation of sonic item activator
+
+        Returns
+        -------
+        img : np.ndarray
+            painted outcoming image (waves animated)
+        stone_trigger : bool
+            wave animation of sonic item activator
+        """
         if self.start_radius <= feat.radius:
             cv2.circle(img,(feat.center),(self.start_radius),(200,200,200),2)
             self.start_radius += 2
@@ -179,19 +341,48 @@ class PathFinder():
         return img,stone_trigger
 
     def setStart_radius(self):
+        """setStart_radius func
+            Simple default setter
+        """
         self.start_radius = 20
         self.start_radius_2 = 20
         self.start_radius_3 = 20
 
     def path_direction(self,angle):
+        """stone_interact_view func
+
+        Arguments
+        ----------
+        angle : int
+            current moving direction
+
+        Returns
+        -------
+        cos : float
+            transform angle in cos
+        sin : float
+            transform angle in sin
+        """
         cos =  math.cos(math.radians(angle))
         sin = math.sin(math.radians(angle))
         return cos,sin
 
     def GetAngleOfLineBetweenTwoPoints(self,p1, p2):
-            xDiff = p2.x - p1.x
-            yDiff = p2.y - p1.y
-            return degrees(atan2(yDiff, xDiff))
+        """GetAngleOfLineBetweenTwoPoints func
+
+        Arguments
+        ----------
+        p1 : Class Point(x,y)
+        p2 : Class Point(x,y)
+
+        Returns
+        -------
+         degree : float
+            degree (0,360)
+        """
+        xDiff = p2.x - p1.x
+        yDiff = p2.y - p1.y
+        return degrees(atan2(yDiff, xDiff))
     def set_current_point(self,x,y):
         self.current_point = [x,y]
     def distance(p1,p2):
@@ -203,7 +394,3 @@ class Point():
     def __init__(self,x=None,y=None):
         self.x = x or 0
         self.y = y or 0
-
-    # def getMedian(self,list):
-
-    # print math.cos(math.radians(90))

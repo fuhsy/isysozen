@@ -12,7 +12,12 @@ class PathFinder():
 
 
     def finder(self,lineFeatures,current_point,img,previous_angle):
+        """
 
+        Not used and old version of the sonic anchor.
+        Each sand line was used to get a navigation system.
+
+        """
         radius = 100
         angles_in_radius = 0
         angles_in_radius_n = 0

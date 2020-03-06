@@ -10,6 +10,11 @@ import numpy as np
 class DynamicPlotter():
 
     def __init__(self, sampleinterval=0.1, timewindow=10., size=(600,350)):
+        """
+        Dynamic Plotter plots continous brightness values in a qt window.
+        thats it.
+
+        """
         # Data stuff
         self._interval = int(sampleinterval*1000)
         self._bufsize = int(timewindow/sampleinterval)

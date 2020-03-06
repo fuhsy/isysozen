@@ -4,6 +4,17 @@ import copy
 
 class StoneFeatures():
     def __init__(self,center,radius,theme):
+        """
+        Arguments : Parameters
+        -----------
+        center : Point(x,y)
+            Position of detected sound item
+        radius : int
+            Radius of sound item
+        theme : String
+            Name theme of sound item
+
+        """
         self.center = center
         self.radius = radius
         self.theme = theme
@@ -12,6 +23,23 @@ class StoneFeatures():
 
 
 def blob_detection(img,img_col,hsv):
+    """
+    Parameters
+    -----------
+    img_col : np.ndarray
+        cap frame
+    hsv : np.ndarray
+        img in hsv color space
+
+    1. Color mask ist set for sound item detection.
+    2. Image is set into three images, blue, red and green domations.
+    3. Blob detection in each rgb image.
+    4. Connect image type blue, red, green to specific blob poisiton and settings
+    5. save into stone_features for starting the sonic anchor afterwards
+
+    linear mapping from one range with value to another
+
+    """
     color_img = copy.copy(img_col)
     output_img = copy.copy(img_col)
     # HSV-space
