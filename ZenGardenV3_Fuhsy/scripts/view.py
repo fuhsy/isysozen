@@ -300,6 +300,8 @@ class View(QMainWindow):
         self.slider1.setEnabled(sl1)
         self.slider2.setEnabled(sl2)
         self.slider3.setEnabled(sl3)
+
+        
     def set_enabled_selection_n(self,start=False,det_am=False,audio_out_chn=False,cnt_sl=False,new_cal=False,load_cal=False,start_default=False,stop=False,play=False,reset=False,sl1=False,sl2=False,sl3=False):
         self.button_start.setEnabled(start)
         self.select_audio_output.setEnabled(audio_out_chn)

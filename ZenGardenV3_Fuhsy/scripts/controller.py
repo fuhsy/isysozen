@@ -1,7 +1,6 @@
 import view
 import camera
 import path_finder_contrast as pfc
-from pyo import pa_get_output_devices,pa_get_output_max_channels
 import cv2,sys, time
 import copy
 from PyQt5.QtGui import QImage,QPixmap
