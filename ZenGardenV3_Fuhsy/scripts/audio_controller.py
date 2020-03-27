@@ -129,6 +129,7 @@ class AudioController():
         self.one_fire = True
         self.one_forest = True
         self.one_sea = True
+        self.maxVol = 80
 
     def __del__(self):
         """__del__ func
@@ -157,7 +158,7 @@ class AudioController():
         dir_mult = 200/self.distance(pos,s_center)
         for i in range(0,self.n_out_channel):
             if dir_mult > 1: dir_mult=1
-            self.background_mixer[mixkey].setAmp(0,i,panning[i]*dir_mult)
+            self.background_mixer[mixkey].setAmp(0,i,panning[i]*dir_mult*self.maxVol)
             # print str(dir_mult)+' '+str(s_center)
     def setAmplitude(self,mixkey,panning):
         """setAmplitude func
@@ -166,7 +167,7 @@ class AudioController():
         """
         for i in range(0,self.n_out_channel):
             # with fading in panning
-            self.mixer[mixkey].setAmp(0,i,panning[i])
+            self.mixer[mixkey].setAmp(0,i,panning[i]*self.maxVol)
 
     def stop_all(self):
         """stop_all func
@@ -183,7 +184,7 @@ class AudioController():
         """
         for i in range(0,len(self.stone_feat)):
             for j in range(0,self.n_out_channel):
-                self.background_mixer[i].setAmp(0,j,self.panning_main[j])
+                self.background_mixer[i].setAmp(0,j,self.panning_main[j]*self.maxVol)
     #         self.mixer[i].play()
     #         self.mixer[i].out()
     #cur_position is norm starting top left (0,1)
@@ -196,7 +197,7 @@ class AudioController():
         for i in range(0,len(self.background_mixer)):
             self.background_mixer[i].out()
             for j in range(0,self.n_out_channel):
-                self.background_mixer[i].setAmp(0,j,self.panning_main[j])
+                self.background_mixer[i].setAmp(0,j,self.panning_main[j]*self.maxVol)
         # self.mixer[0].setAmp(0,3,self.panning[1])
 
     def interact(self,cur_position):

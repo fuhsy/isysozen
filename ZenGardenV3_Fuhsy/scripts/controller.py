@@ -13,7 +13,7 @@ from PIL import Image
 from scipy.misc import imsave
 import numpy as np
 from matplotlib import pyplot as plt
-from matplotlib import style
+#from matplotlib import stylet
 from collections import deque
 import random
 import math
@@ -28,14 +28,16 @@ import detect_sand as ds
 import detect_stones as dstones
 import audio_controller as actrl
 import audio_theme as atheme
-from pyo import pa_get_output_devices,pa_get_output_max_channels
+from pyo import pa_get_output_devices, pa_get_output_max_channels
 import usb
 import pyscreenshot as ImageGrab
 import time
 from random import randint
 import sys
 import glob
-
+# import Scheduler
+import schedule
+from apscheduler.scheduler import Scheduler
 # PyQt4 version '4.8.6'
 # pyo version '4.0.23'
 
@@ -137,7 +139,8 @@ class Controller():
         self.audio_controller = None
         self.cap = None
         self.c_saveimg = 0
-        self.logs = Logs()
+        self.maxVol = 80
+        # self.logs = Logs()
         for i in range(0,self.path_finder_max):
             self.path_finder.append(pfc.PathFinder())
             self.path_finder[i].set_current_point(randint(100,250),randint(100,250))
@@ -145,10 +148,12 @@ class Controller():
         view.setSliderDefault()
         n_out_channel = pa_get_output_max_channels(self.output_device_index+1)
         self.devicelist = pa_get_output_devices()
-        audio_index_count =0
-        for i in range(0,len(self.devicelist[0])):
-            self.view.select_audio_output.addItem(self.devicelist[0][i])
-            audio_index_count = audio_index_count+1
+
+        self.updateDeviceList()
+        self.sched_device = Scheduler()
+        self.sched_device.start()
+        self.sched_device.add_interval_job(self.updateDeviceList, seconds=20)
+
         self.theme = audio_theme.AudioTheme('water')
         self.view.register_buttons()
         self.view.show()
@@ -166,15 +171,41 @@ class Controller():
             self.cap.release()
         except Exception, e:
             print 'Video Cap blocks'
-
-
         sys.exit()
 
         # from collections import namedtuple
         # Color = namedtuple('Color',['hue','saturation','luminosity'])
         # p = Color(170,0.1,0.6)
         # p.saturation
+    def updateDeviceList(self):
+        audio_index_count = 0
+        self.view.select_audio_output.clear()
+        self.view.select_camera.clear()
+        for i in range(0,len(self.devicelist[0])):
+            self.view.select_audio_output.addItem(self.devicelist[0][i])
+            audio_index_count = audio_index_count+1
+        self.usbdevices = self.getUsbDevices()
+        for i in range(0,len(self.usbdevices)):
+            self.view.select_camera.addItem(self.usbdevices.values()[i])
 
+    def getUsbDevices(self):
+        import sys
+        import usb.core
+        # find USB devices
+        dev = usb.core.find(find_all=True)
+        devices = {}
+        for cfg in dev:
+          if cfg.port_number < 4:
+              devices[cfg.port_number] = cfg.product
+        return devices
+
+    def setMaxVolume(self):
+        self.maxVol = self.view.maxVolume_slider.value()
+        self.view.maxVolume_slider_txt.setText("Max Volume: "+str(self.maxVol)+"%")
+        if self.audio_controller != None:
+            self.audio_controller.maxVol = self.maxVol
+        else:
+            print "Audiocontroller not loaded"
 
     def setDefaultSoundDevice(self):
         """AudioTheme Class
@@ -210,7 +241,10 @@ class Controller():
         try:
             self.view.set_enabled_selection(stop=False,play=False)
             # Camera index -> default to 1 (left macbook pro usb port)
-            self.cap = cv2.VideoCapture(1)
+            camera_port = self.usbdevices.keys()[self.view.select_camera.currentIndex()]
+            if camera_port == -1:
+                camera_port = 0
+            self.cap = cv2.VideoCapture(camera_port)
             self.cap.set(cv2.CAP_PROP_FRAME_HEIGHT,480)
             self.cap.set(cv2.CAP_PROP_FRAME_WIDTH,640)
             self.view.pic.setFixedWidth(940)
@@ -225,6 +259,7 @@ class Controller():
             self.view.setListInfo('Camera Activated')
             self.path_finder[0].radius = 35
             self.path_finder[0].radius_slider = 35
+            self.sched_device.shutdown()
 
             # self.view.set_enabled_selection(play=False,stop=False)
             # self.view.qImage_show(self.camera.frame)
@@ -232,9 +267,9 @@ class Controller():
             self.view.set_enabled_selection(new_cal=False,load_cal=False,stop=False,play=False)
             self.view.setListInfo('Camera Activation failed')
 
-        self.logs.camera_start = {'Camera Start': strftime("%a, %d %b %Y %H:%M:%S +0000", gmtime())}
-        self.logs.single_dataset.append(self.logs.camera_start)
-        print 'logged: '+str(self.logs.single_dataset)
+        # self.logs.camera_start = {'Camera Start': strftime("%a, %d %b %Y %H:%M:%S +0000", gmtime())}
+        # self.logs.single_dataset.append(self.logs.camera_start)
+        # print 'logged: '+str(self.logs.single_dataset)
 
 
     def start_default_image(self):
@@ -276,12 +311,12 @@ class Controller():
         self.path_finder[0].radius_slider = 55
         for i in range(0,len(self.stone_feat)):
             features = {'center': self.stone_feat[i].center, 'radius': self.stone_feat[i].radius, 'theme': self.stone_feat[i].theme }
-            self.logs.image_infos = {'Stone'+str(i): features}
-            self.logs.single_dataset.append(self.logs.image_infos)
-            print 'logged'+str(self.logs.single_dataset)
-        self.logs.camera_start = {'Default Loaded': strftime("%a, %d %b %Y %H:%M:%S +0000", gmtime())}
-        self.logs.single_dataset.append(self.logs.camera_start)
-        print 'logged: '+str(self.logs.single_dataset)
+            # self.logs.image_infos = {'Stone'+str(i): features}
+            # self.logs.single_dataset.append(self.logs.image_infos)
+            # print 'logged'+str(self.logs.single_dataset)
+        # self.logs.camera_start = {'Default Loaded': strftime("%a, %d %b %Y %H:%M:%S +0000", gmtime())}
+        # self.logs.single_dataset.append(self.logs.camera_start)
+        # print 'logged: '+str(self.logs.single_dataset)
 
     def listen_task(self, index):
         """listen_task func
@@ -320,12 +355,12 @@ class Controller():
         self.path_finder[0].radius_slider = 55
         for i in range(0,len(self.stone_feat)):
             features = {'center': self.stone_feat[i].center, 'radius': self.stone_feat[i].radius, 'theme': self.stone_feat[i].theme }
-            self.logs.image_infos = {'Stone'+str(i): features}
-            self.logs.single_dataset.append(self.logs.image_infos)
-            print 'logged'+str(self.logs.single_dataset)
-        self.logs.camera_start = {'Default Loaded': strftime("%a, %d %b %Y %H:%M:%S +0000", gmtime())}
-        self.logs.single_dataset.append(self.logs.camera_start)
-        print 'logged: '+str(self.logs.single_dataset)
+        #     self.logs.image_infos = {'Stone'+str(i): features}
+        #     self.logs.single_dataset.append(self.logs.image_infos)
+        #     print 'logged'+str(self.logs.single_dataset)
+        # self.logs.camera_start = {'Default Loaded': strftime("%a, %d %b %Y %H:%M:%S +0000", gmtime())}
+        # self.logs.single_dataset.append(self.logs.camera_start)
+        # print 'logged: '+str(self.logs.single_dataset)
 
 
     def stop_n_play(self):
@@ -374,9 +409,9 @@ class Controller():
             self.view.set_enabled_selection_n(start=True,start_default=True)
         self.stop_flag_init = True
         self.view.button_reset.setEnabled(False)
-        self.logs.camera_end = {'reset ': strftime("%a, %d %b %Y %H:%M:%S +0000", gmtime())}
-        self.logs.single_dataset.append(self.logs.camera_end)
-        print self.logs.single_dataset
+        # self.logs.camera_end = {'reset ': strftime("%a, %d %b %Y %H:%M:%S +0000", gmtime())}
+        # self.logs.single_dataset.append(self.logs.camera_end)
+        # print self.logs.single_dataset
 
 
     def new_calibration(self):
@@ -446,9 +481,9 @@ class Controller():
         self.c_saveimg += 1
         for i in range(0,len(self.stone_feat)):
             features = {'center': self.stone_feat[i].center, 'radius': self.stone_feat[i].radius, 'theme': self.stone_feat[i].theme }
-            self.logs.image_infos = {'Stone'+str(i)+' ': features}
-            self.logs.single_dataset.append(self.logs.image_infos)
-            print 'logged'+str(self.logs.single_dataset)
+            # self.logs.image_infos = {'Stone'+str(i)+' ': features}
+            # self.logs.single_dataset.append(self.logs.image_infos)
+            # print 'logged'+str(self.logs.single_dataset)
         print self.stone_feat
         # self.logs.camera_end = {'load_callibration ': strftime("%a, %d %b %Y %H:%M:%S +0000", gmtime())}
         # self.logs.single_dataset.append(self.logs.camera_end)
@@ -518,9 +553,9 @@ class Controller():
                 self.play()
             else:
                 self.audio_controller.s.stop()
-            self.logs.camera_start = {'auto_snapshot ': strftime("%a, %d %b %Y %H:%M:%S +0000", gmtime())}
-            self.logs.single_dataset.append(self.logs.camera_end)
-            print self.logs.single_dataset
+            # self.logs.camera_start = {'auto_snapshot ': strftime("%a, %d %b %Y %H:%M:%S +0000", gmtime())}
+            # self.logs.single_dataset.append(self.logs.camera_end)
+            # print self.logs.single_dataset
 
 
     def follow_garden(self):

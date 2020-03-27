@@ -1,6 +1,6 @@
 import cv2,sys, time
 from PyQt5.QtWidgets import QApplication, QWidget, QPushButton, QLabel,QGroupBox, QLineEdit, QComboBox, QMessageBox,\
-    QSlider, QProgressBar, QGridLayout, QSpinBox, QListWidget, QMainWindow, QCheckBox, QListWidgetItem
+    QSlider, QProgressBar, QGridLayout, QSpinBox, QListWidget, QMainWindow, QCheckBox, QListWidgetItem, QFrame
 from PyQt5.QtGui import QImage,QPixmap
 import pyqtgraph as pg
 import PyQt5.QtCore as QtCore
@@ -29,8 +29,6 @@ import detect_stones as dstones
 import audio_controller as actrl
 import audio_theme as atheme
 from pyo import pa_get_output_devices,pa_get_output_max_channels
-import usb
-from thread import start_new_thread
 
 # Gui elements
 
@@ -43,6 +41,23 @@ class View(QMainWindow):
         self.app = QApplication(sys.argv)
         super(QMainWindow, self).__init__()
         # self.theme = audio_theme.AudioTheme('water')
+        # rgba(126,177,119,255)
+        super(QMainWindow, self).setStyleSheet(
+        "QMainWindow {background-color: qlineargradient(x1:0, y1:0, x2:0, y2:1, stop:0 rgb(156,207,149), stop:1 rgb(158,216,245));border: 1px solid black;}"
+        # "QPushButton {background-color: qlineargradient(x1:0, y1:0, x2:0, y2:1, stop:0 rgb(152,206,185), stop:1 rgb(172,226,205));color: rgba(192,246,225);border-radius:5px;}"
+        # "QPushButton {background-color: rgb(152,206,185);color: rgb(255,255,255);border-radius:5px;}"
+        "QPushButton {background-color: rgb(237,185,119);border-radius:5px;}"
+        "QPushButton:disabled{ color: 'gray' ;}"
+        "QPushButton:enabled{ color: 'white' ;}"
+        "QListWidget {background-color: qlineargradient(x1:0, y1:0, x2:0, y2:1, stop:0 rgb(152,206,185), stop:1 rgb(172,226,205));color: rgba(255,255,255,255);}"
+        "QCheckBox {background-color: rgba(101,156,151,255);border: solid;border-radius:5px;}"
+        "QLabel {color: rgba(255,255,255,255);}"
+        "QAbstractItemView{background: rgba(101,156,151,255);}"
+        "QComboBox {background-color: rgba(152,206,185,255);editable: rgba(152,206,185,255);color: rgba(255,255,255,255);}"
+        "QSpinBox {background-color: rgba(152,206,185,255);color: rgba(255,255,255,255);}"
+        )
+        #self.setWindowFlags(QtCore.Qt.CustomizeWindowHint)
+        #super(QMainWindow, self).setStyleSheet("QPushButton {background-color: 'green';border-color: beige;}")
         self.fps = 50
         # print pa_get_output_max_channels(4)
         #Lowest snapshot threshold for starting detection
@@ -61,7 +76,9 @@ class View(QMainWindow):
         self.pic = QLabel()
         self.video_frame = QLabel()
         self.select_audio_output =  QComboBox()
-        self.audio_submit = QPushButton('Submit')
+        self.select_camera = QComboBox()
+        self.audio_submit = QPushButton('Audio Device Connect')
+        self.audio_submit.setToolTip('Select an audio Source: \n 2-Chanel or 4-Channel speakers are supported')
         self.detector_amount =  QSpinBox()
         self.min_detectors = 1
         self.max_detectors = 5
@@ -69,25 +86,37 @@ class View(QMainWindow):
         self.detector_amount.setMaximum(self.max_detectors)
         self.detector_amount.setAlignment(QtCore.Qt.AlignRight)
         self.button_start = QPushButton('Camera Connect')
+        self.button_start.setToolTip('Connect to selected Camera')
         self.button_start_default = QPushButton('Start Computer GUI')
         self.button_listen_task = QPushButton('Listening Task')
         self.button_listen_task_2 = QPushButton('Listening Task 2')
         self.button_load_cal = QPushButton('Load Calibration')
+        self.button_load_cal.setToolTip('Load latest saved Calibration')
         self.button_stop = QPushButton('Pause/Play')
         self.save_btn = QPushButton('Save Dataset')
         self.save_text = QLineEdit('User ID')
         self.button_play = QPushButton('Start')
+        self.button_play.setToolTip('Stop/Play the current soundscape.')
+        self.button_play.setToolTip('Starts Playing the Soundscape')
         self.button_reset = QPushButton('Reset Scene')
+        self.button_reset.setToolTip('If you want to rearrange the Zen Garden press here and the Scene will automatically rerendered')
         self.button_new_cal = QPushButton('New Calibration')
+        self.button_new_cal.setToolTip('Please Click on the Corners of the Zen Garden to crop the image.\n 1.Left-Top Corner 2.Right-Top-Corner 3. Right-Bottom-Corner 4. Left-Bottom Corner ')
         self.auto_checkbox = QCheckBox('Auto Slider')
         self.slider1 = QSlider(QtCore.Qt.Horizontal)
         self.slider2 = QSlider(QtCore.Qt.Horizontal)
         self.slider3 = QSlider(QtCore.Qt.Horizontal)
         self.contour_slider = QSlider(QtCore.Qt.Horizontal)
+        self.maxVolume_slider = QSlider(QtCore.Qt.Horizontal)
         self.txtslider1 = QLabel('Radius of Circle')
+        self.txtslider1.setToolTip('Set the radius of contour detection for sonic anchor')
         self.txtslider2 = QLabel('Speed '+str(self.fps)+' fps')
+        self.txtslider2.setToolTip('Set the speed of the Sonic Anchor')
         self.txtslider3 = QLabel('Detecting Angle')
+        self.txtslider3.setToolTip('Set the detection angle in dircetion of movement')
         self.contour_slider_txt = QLabel('Contour Detection')
+        self.contour_slider_txt.setToolTip('Setup the Contour Detection from canny to rough')
+        self.maxVolume_slider_txt = QLabel('Max Volume: 80%')
         self.detector_amount_txt = QLabel('                                             Amount of Detectors')
 
         self.plt = pg.PlotWidget(title='Lightning Conditions')
@@ -109,6 +138,8 @@ class View(QMainWindow):
         self.txtslider2.setFixedWidth(300)
         self.txtslider3.setFixedWidth(300)
         self.contour_slider_txt.setFixedWidth(300)
+        self.maxVolume_slider_txt.setFixedWidth(300)
+        self.maxVolume_slider.setFixedWidth(300)
         self.detector_amount_txt.setFixedWidth(300)
         self.save_btn.setFixedWidth(300)
         self.save_text.setFixedWidth(300)
@@ -119,30 +150,53 @@ class View(QMainWindow):
         self.button_listen_task.setFixedWidth(300)
         self.button_listen_task_2.setFixedWidth(300)
         self.select_audio_output.setFixedWidth(300)
+        self.select_camera.setFixedWidth(300)
         self.audio_submit.setFixedWidth(300)
+        self.audio_submit.setFixedHeight(70)
+        self.audio_submit.setStyleSheet("QPushButton {border-radius: 30px;}")
         self.detector_amount.setFixedWidth(150)
         # self.select_theme.setFixedWidth(300)
         self.button_start.setFixedWidth(300)
+        self.button_start.setFixedHeight(70)
+        self.button_start.setStyleSheet("QPushButton {border-radius: 30px;}")
         self.button_load_cal.setFixedWidth(300)
         self.button_new_cal.setFixedWidth(300)
         self.listw = QListWidget()
         self.listw.setFixedWidth(300)
+        self.separatorLine = QFrame()
+        self.separatorLine.setFrameShape( QFrame.HLine )
+        self.separatorLine.setFrameShadow( QFrame.Raised )
+        self.separatorLine2 = QFrame()
+        self.separatorLine2.setFrameShape( QFrame.HLine )
+        self.separatorLine2.setFrameShadow( QFrame.Raised )
         #self.plot = pg.PlotWidget()
-        self.setLayout(self.layout)
         self.layout.setMargin(10)
         self.widget_pos = 0
-        self.layout.addWidget(self.button_start, self.widget_pos, 0)
-        self.widget_pos+=1
-        self.layout.addWidget(self.button_start_default,self.widget_pos,0)
-        self.widget_pos+=1
-        self.layout.addWidget(self.button_listen_task,self.widget_pos,0)
-        self.widget_pos+=1
-        self.layout.addWidget(self.button_listen_task_2,self.widget_pos,0)
-        self.widget_pos+=1
-        self.layout.addWidget(self.select_audio_output,self.widget_pos,0)
-        self.widget_pos+=1
         self.layout.addWidget(self.audio_submit,self.widget_pos,0)
         self.widget_pos+=1
+        self.layout.addWidget(self.select_audio_output,self.widget_pos,0)
+        self.widget_pos+=2
+        self.layout.addWidget(self.maxVolume_slider_txt,self.widget_pos,0)
+        self.widget_pos+=1
+        self.layout.addWidget(self.maxVolume_slider,self.widget_pos,0)
+        self.widget_pos+=3
+        self.layout.addWidget(self.separatorLine, self.widget_pos, 0)
+        self.widget_pos+=1
+
+
+        self.layout.addWidget(self.button_start, self.widget_pos, 0)
+        self.widget_pos+=1
+        self.layout.addWidget(self.select_camera,self.widget_pos,0)
+        self.widget_pos+=3
+        self.layout.addWidget(self.separatorLine2, self.widget_pos, 0)
+        self.widget_pos+=3
+        # self.layout.addWidget(self.button_start_default,self.widget_pos,0)
+        # self.widget_pos+=1
+        # self.layout.addWidget(self.button_listen_task,self.widget_pos,0)
+        # self.widget_pos+=1
+        # self.layout.addWidget(self.button_listen_task_2,self.widget_pos,0)
+        # self.widget_pos+=1
+
         # self.layout.addWidget(self.select_theme,self.widget_pos,0)
         # self.widget_pos+=1
         self.layout.addWidget(self.detector_amount_txt,self.widget_pos,0)
@@ -174,10 +228,10 @@ class View(QMainWindow):
         self.widget_pos+=1
         self.layout.addWidget(self.slider3,self.widget_pos,0)
         self.widget_pos+=1
-        self.layout.addWidget(self.save_btn, self.widget_pos, 0)
-        self.widget_pos+=1
-        self.layout.addWidget(self.save_text, self.widget_pos, 0)
-        self.widget_pos+=1
+        # self.layout.addWidget(self.save_btn, self.widget_pos, 0)
+        # self.widget_pos+=1
+        # self.layout.addWidget(self.save_text, self.widget_pos, 0)
+        # self.widget_pos+=1
         self.layout.addWidget(self.listw, self.widget_pos, 0)
         self.widget_pos+=1
         # self.connect(self, QtCore.SIGNAL('triggered()'), self.closeEvent)
@@ -206,6 +260,7 @@ class View(QMainWindow):
         self.slider3.setEnabled(False)
         self.button_reset.setEnabled(False)
         self.controller = None
+
         self.setCentralWidget(QWidget(self))
         self.centralWidget().setLayout(self.layout)
         self.show()
@@ -240,6 +295,7 @@ class View(QMainWindow):
         self.slider3.sliderReleased.connect(lambda: self.controller.threshold_slider3())
         self.auto_checkbox.clicked.connect(lambda: self.controller.auto_slider())
         self.contour_slider.sliderReleased.connect(lambda: self.controller.contour_config())
+        self.maxVolume_slider.valueChanged.connect(lambda: self.controller.setMaxVolume())
 
 
     def setSliderDefault(self,radius=25,speed=(1./50.),angle=60):
@@ -249,7 +305,8 @@ class View(QMainWindow):
         self.slider3.setValue(angle)
         self.contour_slider.setValue(20)
         self.select_audio_output.setEnabled(True)
-
+        self.maxVolume_slider.setValue(80)
+        self.maxVolume_slider.setMaximum(100)
 
 
     def setFPS(self, fps):
@@ -301,7 +358,7 @@ class View(QMainWindow):
         self.slider2.setEnabled(sl2)
         self.slider3.setEnabled(sl3)
 
-        
+
     def set_enabled_selection_n(self,start=False,det_am=False,audio_out_chn=False,cnt_sl=False,new_cal=False,load_cal=False,start_default=False,stop=False,play=False,reset=False,sl1=False,sl2=False,sl3=False):
         self.button_start.setEnabled(start)
         self.select_audio_output.setEnabled(audio_out_chn)

@@ -7,3 +7,4 @@ scikit-image >= 0.13.1
 imutils == 0.4.6
 matplotlib == 2.1.2
 pyodbc==4.0.27
+APScheduler==2.1.2
